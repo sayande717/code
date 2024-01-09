@@ -1,5 +1,11 @@
+To clone this repository, run:
+
+```bash
+git clone https://github.com/sayande717/code.git
+```
+
 Contents:
-- Platforms
+- Platform
     - [LeetCode](#platformleetcode)
 
 
