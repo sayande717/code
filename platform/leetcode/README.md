@@ -445,6 +445,30 @@
     7. Finally, we return `answer`, which is the solution to our problem.
 - **Implementation**: [Code](./code/18.java)
 
+## 88
+- Q.**83**: Remove duplicates from sorted list
+- **Problem Statement**: [Link](https://leetcode.com/problems/remove-duplicates-from-sorted-list/)
+- **Description**: Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.
+- **Constraints**:
+    - Number of nodes is in the range [0, 300].
+    - -100 <= `Node.val` <= 100
+    - List is sorted in ascending order.
+- **Example**:
+    | Input: *$Integer Linked List$* | Output: *$Integer Linked List$* |
+    | :---: | :---: |
+    | $[1,1,2]$ | $[1,2]$ |
+    | $[1,1,2,3,3]$ | $[1,2,3]$ |
+
+- **Data Structure**: `Linked List`
+- **Logic**:
+    1. If head is `null` or there's only 1 element in the list, return head.
+    2. Run a loop till `current.next` is not `null`.
+    3. Check if the value at current node is same as the value at the next node.
+        1. If true, make current node point to the next's next node (`current.next == current.next.next`).
+        2. If false, move current to the next node (`current=current.next`).
+    4. Return head.
+- **Implementation**: [Code](./code/32.java)
+
 <!-- ## 1523
 - Q.**1523**: Count Odd Numbers in an Interval Range
 - **Problem Statement**: [Link](https://leetcode.com/problems/count-odd-numbers-in-an-interval-range/)
@@ -453,4 +477,4 @@
 - **Logic**:
     1. Use the hashmap to store the frequency of all the elements.
     2. Traverse the hashmap. Return the first element whose frequency is 1.
-- **Implementation**: [Code](./1.cpp) -->
+-->
