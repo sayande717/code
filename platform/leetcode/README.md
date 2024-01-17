@@ -454,7 +454,7 @@
     - -100 <= `Node.val` <= 100
     - List is sorted in ascending order.
 - **Example**:
-    | Input: *$Integer Linked List$* | Output: *$Integer Linked List$* |
+    | Input: *Integer Linked List* | Output: *Integer Linked List* |
     | :---: | :---: |
     | $[1,1,2]$ | $[1,2]$ |
     | $[1,1,2,3,3]$ | $[1,2,3]$ |
