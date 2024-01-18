@@ -376,7 +376,7 @@
     | $["c","f","j"]$, $c$ | $f$ |
     | $["x","x","y","y"]$, $z$ | $x$ |
 
-- **Data Structure**: ``
+- **Data Structure**: `Array`
 - **Logic**:
     1. We will use `Binary Search` to solve the problem.
     2. EDGE Case: If there's only 1 element in the input array, there's no point in searching for anything, so we simply return that element.
@@ -468,6 +468,32 @@
         2. If false, move current to the next node (`current=current.next`).
     4. Return head.
 - **Implementation**: [Code](./code/32.java)
+
+## 35
+- Q.**83**: Remove duplicates from sorted list
+- **Problem Statement**: [Link](https://leetcode.com/problems/search-insert-position/)
+- **Description**: Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order. You must write an algorithm with $O(log n)$ runtime complexity.
+
+- **Constraints**:
+    - $1 \leq nums.length \leq 10^4$
+    - $-10^4 \leq nums[i] \leq 10^4$
+    - $nums$ contains distinct values sorted in ascending order.
+    - $-10^4 \leq target \leq 10^4$
+
+- **Example**:
+    | Input: *Integer Array*, *Integer* | Output: *Integer Array* |
+    | :---: | :---: |
+    | $[1,3,5,6]$, $5$ | $2$ |
+    | $[1,3,5,6]$, $2$ | $1$ |
+    | $[1,3,5,6]$, $7$ | $4$ |
+
+- **Data Structure**: `Array`
+- **Logic**:
+    1. Implement the usual Binary Search.
+    2. If `nums[mid]` matches the target, return `mid`.
+    3. If the while loop ends without returning anything, `low` will point to the index where it would be if it were inserted in order. So, return `low`.
+
+- **Implementation**: [Code](./code/33.java)
 
 <!-- ## 1523
 - Q.**1523**: Count Odd Numbers in an Interval Range
