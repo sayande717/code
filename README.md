@@ -7,6 +7,14 @@ git clone https://github.com/sayande717/code.git
 Contents:
 - Platform
     - [LeetCode](#platformleetcode)
+- [Self](#self)
+
+## Self
+### C++
+> [Notes](https://github.com/sayande717/notes/blob/main/topics/TIL-Coding.md#c++) (in notes repository)
+
+1. [hello.cpp](./self/C++/hello.cpp) | Hello, World!
+    - Why `return 0`?
 
 
 ## Platform/LeetCode
