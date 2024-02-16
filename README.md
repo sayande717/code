@@ -10,6 +10,9 @@ Contents:
 - [Self](#self)
 
 ## Self
+### Data Structures
+> [Notes](https://github.com/sayande717/notes/blob/main/topics/Data-Structures.md) (in notes repository)
+
 ### C++
 > [Notes](https://github.com/sayande717/notes/blob/main/topics/TIL-Coding.md#c++) (in notes repository)
 
