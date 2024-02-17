@@ -18,7 +18,12 @@ Contents:
 
 1. [hello.cpp](./self/C++/hello.cpp) | Hello, World!
     - Why `return 0`?
-
+1. [add.cpp](./self/C++/add.cpp) | Add 2 numbers using function
+    - Use both function and direct assignment to add 2 numbers.
+1. [input.cpp](./self/C++/input.cpp) | Take input & print output
+    - Input Stream: std::cin, std::getline(std::cin,string)
+    - Output Streams: std::cout, std::cerr, std::clog
+    - Data Type: std::string
 
 ## Platform/LeetCode
 
