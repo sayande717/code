@@ -25,6 +25,9 @@ Contents:
     - Output Streams: std::cout, std::cerr, std::clog
     - Data Type: std::string
 
+### Java
+1. [initArray.java](./self/Java/initArray.java) | Get started with arrays
+
 ## Platform/LeetCode
 
 > In case you can't access the link, the **Problem Description** has been provided in the respective **Intuition** part.
