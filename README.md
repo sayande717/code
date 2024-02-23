@@ -10,15 +10,20 @@ Contents:
 - [Self](#self)
 
 ## Self
+### \[Syntax\] Name of programming language:
+1. [title.ext](/path/to/title.ext) | `Data Structure 1` `Data Structure 2`
+    - Description
+    - Important Takeaways
 ### Data Structures
 > [Notes](https://github.com/sayande717/notes/blob/main/topics/Data-Structures.md) (in notes repository)
 
 ### C++
 > [Notes](https://github.com/sayande717/notes/blob/main/topics/TIL-Coding.md#c++) (in notes repository)
-
-1. [hello.cpp](./self/C++/hello.cpp) | Hello, World!
+1. [hello.cpp](./self/C++/hello.cpp)
+    - Hello, World!
     - Why `return 0`?
-1. [add.cpp](./self/C++/add.cpp) | Add 2 numbers using function
+1. [add.cpp](./self/C++/add.cpp)
+    - Add 2 numbers using function
     - Use both function and direct assignment to add 2 numbers.
 1. [input.cpp](./self/C++/input.cpp) | Take input & print output
     - Input Stream: std::cin, std::getline(std::cin,string)
@@ -26,10 +31,17 @@ Contents:
     - Data Type: std::string
 
 ### Java
-1. [initArray.java](./self/Java/initArray.java) | Get started with arrays
+1. [initArray.java](./self/Java/initArray.java) | `Array`
+    - Get started with arrays.
+1. [rmIntegersFromArray.java](./self/Java/rmIntegersFromArray.java) | `Array`
+    - Remove integers from the array.
+1. [reverseArray.java](./self/Java/reverseArray.java) | `Array`
+    - Directly print array in reverse.
+    - Reverse the array in-place.
+1. [findMinInArray.java](./self/Java/findMinInArray.java) | `Array`
+    - Find the minimum value in the array.
 
 ## Platform/LeetCode
-
 > In case you can't access the link, the **Problem Description** has been provided in the respective **Intuition** part.
 
 <center>
