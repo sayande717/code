@@ -25,10 +25,14 @@ Contents:
 1. [add.cpp](./self/C++/add.cpp)
     - Add 2 numbers using function
     - Use both function and direct assignment to add 2 numbers.
-1. [input.cpp](./self/C++/input.cpp) | Take input & print output
+1. [input.cpp](./self/C++/input.cpp)
+    - Take input & print output
     - Input Stream: std::cin, std::getline(std::cin,string)
     - Output Streams: std::cout, std::cerr, std::clog
     - Data Type: std::string
+1. [numbersystems.cpp](./self/C++/numbersystems.cpp)
+    - Represent the number systems in C++
+    - Number Systems: `Binary` `Octal` `Decimel` `Hexadecimel`
 
 ### Java
 1. [initArray.java](./self/Java/initArray.java) | `Array`
@@ -40,6 +44,10 @@ Contents:
     - Reverse the array in-place.
 1. [findMinInArray.java](./self/Java/findMinInArray.java) | `Array`
     - Find the minimum value in the array.
+1. [findSecondMaxInArray.java](./self/Java/findSecondMaxInArray.java) | `Array`
+    - Find the 2nd maximum value in the array.
+1. [mvZeroArray.java](./self/Java/mvZeroArray.java) | `Array`
+    - Move all zeroes to the end of the array.
 
 ## Platform/LeetCode
 > In case you can't access the link, the **Problem Description** has been provided in the respective **Intuition** part.
