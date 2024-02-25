@@ -3,11 +3,9 @@ To clone this repository, run:
 ```bash
 git clone https://github.com/sayande717/code.git
 ```
-
-Contents:
-- Platform
-    - [LeetCode](#platformleetcode)
-- [Self](#self)
+## Notes
+|0| Theory | [Markdown](./notes/Theory.md) | null | null | `null` |
+|1| C++ | [Markdown](./notes/Languages.md#c++) | [FreeCodeCamp](https://youtu.be/8jLOx1hD3_o) | till 03:54:00 | `In Progress` |
 
 ## Self
 ### \[Syntax\] Name of programming language:
@@ -18,7 +16,8 @@ Contents:
 > [Notes](https://github.com/sayande717/notes/blob/main/topics/Data-Structures.md) (in notes repository)
 
 ### C++
-> [Notes](https://github.com/sayande717/notes/blob/main/topics/TIL-Coding.md#c++) (in notes repository)
+> [Notes](./notes/Languages.md#c++)
+
 1. [hello.cpp](./self/C++/hello.cpp)
     - Hello, World!
     - Why `return 0`?
@@ -34,7 +33,15 @@ Contents:
     - Represent the number systems in C++
     - Number Systems: `Binary` `Octal` `Decimel` `Hexadecimel`
 
+1. [initVariables.cpp](./self/C++/initVariables.cpp)
+    - Different ways of initializing integers
+    - When implicit conversion occurs
+    - sizeof(): Find the size of different variables
+    - Variable modifiers: signed, unsigned, short, long
+
 ### Java
+<!-- > [Notes](./notes/Languages.md#java) -->
+
 1. [initArray.java](./self/Java/initArray.java) | `Array`
     - Get started with arrays.
 1. [rmIntegersFromArray.java](./self/Java/rmIntegersFromArray.java) | `Array`
