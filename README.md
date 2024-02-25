@@ -5,7 +5,7 @@ git clone https://github.com/sayande717/code.git
 ```
 ## Notes
 |0| Theory | [Markdown](./notes/Theory.md) | null | null | `null` |
-|1| C++ | [Markdown](./notes/Languages.md#c++) | [FreeCodeCamp](https://youtu.be/8jLOx1hD3_o) | till 03:54:00 | `In Progress` |
+|1| Languages/C++ | [Markdown](./notes/Languages.md#c++) | [FreeCodeCamp](https://youtu.be/8jLOx1hD3_o) | till 03:54:00 | `In Progress` |
 
 ## Self
 ### \[Syntax\] Name of programming language:
