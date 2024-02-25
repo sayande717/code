@@ -16,8 +16,9 @@ class mvZeroArray {
     }
 
     private static int[] moveZeroes(int[] inArr) {
+        int pointer1 = 0;
         int pointer2 = 0;
-        for(int pointer1=0;pointer1<inArr.length;pointer1++) {
+        while (pointer1<inArr.length) {
             // pointer1 is on the right of pointer2 if this is true
             if(inArr[pointer1]!=0 && inArr[pointer2]==0) {
                 int temp=inArr[pointer1];
@@ -27,6 +28,8 @@ class mvZeroArray {
             if(inArr[pointer2]!=0) {
                 pointer2++;
             }
+
+            pointer1++;
         }
         return inArr;
     }
