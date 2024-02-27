@@ -8,8 +8,10 @@ git clone https://github.com/sayande717/code.git
 |:--- | :---: | :---: | :---: | :---: | :---: |
 |0| Theory | [Markdown](./notes/Theory.md) | null | null | `In Progress` |
 |1| Languages/C++ | [Markdown](./notes/Languages.md#c++) | [FreeCodeCamp](https://youtu.be/8jLOx1hD3_o) | till 03:54:00 | `In Progress` |
-|2| Platform/LeetCode | [Markdown](./platform/LeetCode/README.md) | null | [link](#platform-leetcode)  |`In Progress` |
-|3| Platform/GeeksForGeeks | [Markdown](./platform/GeeksForGeeks/README.md) | null | [link](#platform-geeksforgeeks)  |`In Progress` |
+|2| Languages/Java | null | [FreeCodeCamp](https://www.youtube.com/watch?v=2ZLl8GAk1X4&pp=ygUeZnJlZSBjb2RlIGNhbXAgZnVsbCBkc2EgY291cnNl) | till 04:03:00 | `In Progress` |
+|3| Platform/LeetCode | [Markdown](./platform/LeetCode/README.md) | null | [link](#platform-leetcode)  |`In Progress` |
+|4| Platform/GeeksForGeeks | [Markdown](./platform/GeeksForGeeks/README.md) | null | [link](#platform-geeksforgeeks)  |`In Progress` |
+
 
 ## Self
 ### \[Syntax\] Name of programming language:
@@ -59,6 +61,15 @@ git clone https://github.com/sayande717/code.git
     - Find the 2nd maximum value in the array.
 1. [mvZeroArray.java](./self/Java/mvZeroArray.java) | `Array`
     - Move all zeroes to the end of the array.
+1. [findMissing.java](./self/Java/findMissing.java) | `Array`
+    - Given an array of $n-1$ distinct numbers in the range $1$ to $n-1$, find the missing number.
+    - Time constraint: $O(n)$
+    - Using formula: Sum of 1st n natural numbers = $n(n+1)/2$
+1. [palindromeString.java](./self/Java/palindromeString.java) | `String`
+    - Check if a string is palindrome or not.
+    - A palindrome string is one which remains same even when reversed.
+1. [initSinglyLinkedList.java](./self/Java/initSinglyLinkedList.java) | `String`
+    - Create a singly linked list. 
 
 ## Platform/LeetCode
 > In case you can't access the link, the **Problem Description** has been provided in the respective **Intuition** part.
