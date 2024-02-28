@@ -68,10 +68,14 @@ git clone https://github.com/sayande717/code.git
 1. [palindromeString.java](./self/Java/palindromeString.java) | `String`
     - Check if a string is palindrome or not.
     - A palindrome string is one which remains same even when reversed.
-1. [initSinglyLinkedList.java](./self/Java/initSinglyLinkedList.java) | `String`
+1. [initSinglyLinkedList.java](./self/Java/initSinglyLinkedList.java) | `Linked List`
     - Create a singly linked list. 
+    - Print the node values.
+    - Add a node to beginning of the linked list.
+1. [modifyLinkedList.java](./self/Java/modifyLinkedList.java) | `Linked List`
+    - Add to the beginning of a linked list.
+    - Add to the end of a linked list.
 
-## Platform/LeetCode
 > In case you can't access the link, the **Problem Description** has been provided in the respective **Intuition** part.
 
 <center>
