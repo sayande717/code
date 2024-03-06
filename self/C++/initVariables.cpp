@@ -1,3 +1,5 @@
+#include <iomanip>
+#include <ios>
 #include <iostream>
 
 // {}: Does not implicitely convert,(): Implicitely converts
@@ -25,7 +27,30 @@ int main() {
     long long int var11 {23};  // size: 4*2 bytes
     
     std::cout << var7 << " " << var8 << std::endl;
-     std::cout << sizeof(var9) << " " << sizeof(var10) << " " << sizeof(var11) << std::endl;   
+    std::cout << sizeof(var9) << " " << sizeof(var10) << " " << sizeof(var11) << std::endl;   
+
+    // Initializing fractional numbers
+    float var12 {1.12345f};
+    double var13 {1.12345};
+    long double var14 {1.12345678L};
+    double var15 {1.924e8}; // ^{10^8}
+    double var16 {1.924e-8}; // ^10{^-8}
+
+    std::cout << std::setprecision(20); // Set precision to 20 (including number on the LHS of decimel)
+
+    double var17 {5.6};
+    double var18 {}; // initialized to 0
+    std::cout << "Infinity, NaN" << std::endl;
+    
+    std::cout << var17/var18 << std::endl;      // +ve Infinity
+    std::cout << (var17*-1)/var18 << std::endl; // -ve Infinity
+    std::cout << var18/var18 << std::endl; // NaN
+
+    bool var19 {true};
+    std::cout << var19 << std::endl;        // Prints 1
+    std::cout << std::boolalpha;
+    std::cout << var19 << std::endl;        // Prints true
+
 
     return 0;
 }

@@ -7,8 +7,8 @@ git clone https://github.com/sayande717/code.git
 |ID| **Name** | **Notes** | **References** | **Progress** | **Status** |
 |:--- | :---: | :---: | :---: | :---: | :---: |
 |0| Theory | [Markdown](./notes/Theory.md) | null | null | `In Progress` |
-|1| Languages/C++ | [Markdown](./notes/Languages.md#c++) | [FreeCodeCamp](https://youtu.be/8jLOx1hD3_o) | till 03:54:00 | `In Progress` |
-|2| Languages/Java | null | [FreeCodeCamp](https://www.youtube.com/watch?v=2ZLl8GAk1X4&pp=ygUeZnJlZSBjb2RlIGNhbXAgZnVsbCBkc2EgY291cnNl) | till 04:03:00 | `In Progress` |
+|1| Languages/C++ | [Markdown](./notes/Languages.md#c++) | [FreeCodeCamp](https://youtu.be/8jLOx1hD3_o) | till 04:24:48 | `In Progress` |
+|2| Languages/Java | null | [FreeCodeCamp](https://www.youtube.com/watch?v=2ZLl8GAk1X4&pp=ygUeZnJlZSBjb2RlIGNhbXAgZnVsbCBkc2EgY291cnNl) | till 04:47:34 | `In Progress` |
 |3| Platform/LeetCode | [Markdown](./platform/LeetCode/README.md) | null | [link](#platform-leetcode)  |`In Progress` |
 |4| Platform/GeeksForGeeks | [Markdown](./platform/GeeksForGeeks/README.md) | null | [link](#platform-geeksforgeeks)  |`In Progress` |
 
@@ -41,9 +41,13 @@ git clone https://github.com/sayande717/code.git
 
 1. [initVariables.cpp](./self/C++/initVariables.cpp)
     - Different ways of initializing integers
-    - When implicit conversion occurs
+        - When implicit conversion occurs
+        - Variable modifiers: signed, unsigned, short, long
     - sizeof(): Find the size of different variables
-    - Variable modifiers: signed, unsigned, short, long
+    - Different ways of initializing fractional numbers
+        - Set number precision for output screen
+        - Infinity (1.5/0), NaN (0.0/0.0)
+    - Initializing boolean values
 
 ### Java
 <!-- > [Notes](./notes/Languages.md#java) -->

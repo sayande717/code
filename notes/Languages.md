@@ -100,3 +100,16 @@ Image taken from [here](https://youtu.be/8jLOx1hD3_o)
     - Size: $4$ bytes
     - Signed: allows negative, 0, and positive integers
     - Un-signed: allows only 0 & positive integers
+- Fractional:
+    - Float: 4 bytes, Double: 8 bytes, Long Double: 16 bytes
+    - Initialization:
+        - float var12 {1.12345f};
+        - double var13 {1.12345};
+        - long double var14 {1.12345678L};
+    - Precision: The number of digits that will be printed, including the ones in LHS of decimel. Set: `std::cout << std::setprecision(20)`.
+    - Infinity: 1.5 / 0 (positive), -1.5/0 (negative)
+    - NaN: 0.0/0.0 or 0/0
+- Boolean
+    - bool: true (1) & false (0)
+    - Size: $1$ byte
+    - std::cout prints in notation: 1 & 0, by default. To print true & false, set `std::cout << std::boolalpha`.
