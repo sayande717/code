@@ -46,16 +46,42 @@ class modifyLinkedList {
         current.next = newNode;
     }
 
+    private static void addAtPosition(int val, int pos) {
+        ListNode newNode = new ListNode(val);
+        if(pos == 1) {
+            newNode.next = head;
+            head = newNode;
+
+            return;
+        }
+
+        ListNode previous = head;
+        int counter = 1;
+        while(counter<(pos-1)) {
+            previous = previous.next;
+            counter++;
+        }
+        newNode.next = previous.next;
+        previous.next = newNode;
+    }
+    
+    private static void deleteHead() {
+        head = head.next;
+    }
+
     public static void main(String[] args) {
         modifyLinkedList listClass = new modifyLinkedList();
         
         addToBeginning(5);
-        addToBeginning(6);
-        addToBeginning(7);     
+        //addToBeginning(6);
+        //addToBeginning(7);     
         // 7 -> 6 -> 5 -> null
         
-        addToEnd(10);
+        //addToEnd(10);
         // 7 -> 6 -> 5 -> 10 -> null
         printList();
+
+        // addAtPosition(20,2);
+        // deleteHead();
     }
 }
