@@ -8,7 +8,7 @@ git clone https://github.com/sayande717/code.git
 |:--- | :---: | :---: | :---: | :---: | :---: |
 |0| Theory | [Markdown](./notes/Theory.md) | null | null | `In Progress` |
 |1| Languages/C++ | [Markdown](./notes/Languages.md#c++) | [FreeCodeCamp](https://youtu.be/8jLOx1hD3_o) | till 04:46:45 | `In Progress` |
-|2| Languages/Java | null | [FreeCodeCamp](https://www.youtube.com/watch?v=2ZLl8GAk1X4&pp=ygUeZnJlZSBjb2RlIGNhbXAgZnVsbCBkc2EgY291cnNl) | till 05:29:34 | `In Progress` |
+|2| Languages/Java | null | [FreeCodeCamp](https://www.youtube.com/watch?v=2ZLl8GAk1X4&pp=ygUeZnJlZSBjb2RlIGNhbXAgZnVsbCBkc2EgY291cnNl) | till 05:22:54 | `In Progress` |
 |3| Platform/LeetCode | [Markdown](./platform/LeetCode/README.md) | null | [link](#platform-leetcode)  |`In Progress` |
 |4| Platform/GeeksForGeeks | [Markdown](./platform/GeeksForGeeks/README.md) | null | [link](#platform-geeksforgeeks)  |`In Progress` |
 
@@ -80,11 +80,15 @@ git clone https://github.com/sayande717/code.git
     - Create a singly linked list. 
     - Print the node values.
     - Add a node to beginning of the linked list.
-1. [modifyLinkedList.java](./self/Java/modifyLinkedList.java) | `Linked List`
+1. [modifySinglyLinkedList.java](./self/Java/modifySinglyLinkedList.java) | `Linked List`
     - Add to the beginning of a linked list.
     - Add to the end of a linked list.
     - Add to a particular position in a linked list.
     - Delete the head node.
+    - Delete the tail node.
+    - Delete the node at a particular position.
+    - Search for an element in a linked list, and return it's position.
+    
 
 > In case you can't access the link, the **Problem Description** has been provided in the respective **Intuition** part.
 
