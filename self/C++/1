@@ -1,0 +1,16 @@
+: 1709881150:0;g++ initVariables.cpp
+: 1709881152:0;./a.out
+: 1709881555:0;g++ initVariables.cpp
+: 1709881556:0;./a.out
+: 1709881654:0;g++ initVariables.cpp
+: 1709881655:0;./a.out
+: 1709882231:0;g++ initVariables.cpp
+: 1709882232:0;./a.out
+: 1709882260:0;g++ initVariables.cpp
+: 1709882261:0;./a.out
+: 1709882271:0;g++ initVariables.cpp
+: 1709882271:0;./a.out
+: 1709882281:0;g++ initVariables.cpp
+: 1709882282:0;./a.out
+: 1709882348:0;g++ initVariables.cpp
+: 1709882859:0;cd ../..

@@ -21,6 +21,7 @@ int main() {
 
     signed int var7 {-23};  // Allows all integers
     unsigned int var8 {23}; // Only allows >=0
+    // int var8 {23u};      // also unsigned
 
     short int var9 {23}; // size: 4/2 bytes
     long int var10 {23};  // size: 4*2 bytes
@@ -49,8 +50,16 @@ int main() {
     bool var19 {true};
     std::cout << var19 << std::endl;        // Prints 1
     std::cout << std::boolalpha;
-    std::cout << var19 << std::endl;        // Prints true
 
+    char var20 {'a'};
+    char var21 {65};
+    std::cout << var20 << var20+2 << var21 << std::endl;        // Prints 'a'
+    std::cout << static_cast<int>(var20) << std::endl;          // Prints 97
+
+    auto var22 {123u};
+    auto var23 {124.0f};
+    // auto var23 {-2};     // Will fail, because the data type was automatically deduced as an unsigned integer, which does not allow negative numbers.
+    std::cout << var22 << " " << var23 << std::endl;
 
     return 0;
 }

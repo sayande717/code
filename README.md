@@ -7,7 +7,7 @@ git clone https://github.com/sayande717/code.git
 |ID| **Name** | **Notes** | **References** | **Progress** | **Status** |
 |:--- | :---: | :---: | :---: | :---: | :---: |
 |0| Theory | [Markdown](./notes/Theory.md) | null | null | `In Progress` |
-|1| Languages/C++ | [Markdown](./notes/Languages.md#c++) | [FreeCodeCamp](https://youtu.be/8jLOx1hD3_o) | till 04:24:48 | `In Progress` |
+|1| Languages/C++ | [Markdown](./notes/Languages.md#c++) | [FreeCodeCamp](https://youtu.be/8jLOx1hD3_o) | till 04:46:45 | `In Progress` |
 |2| Languages/Java | null | [FreeCodeCamp](https://www.youtube.com/watch?v=2ZLl8GAk1X4&pp=ygUeZnJlZSBjb2RlIGNhbXAgZnVsbCBkc2EgY291cnNl) | till 05:29:34 | `In Progress` |
 |3| Platform/LeetCode | [Markdown](./platform/LeetCode/README.md) | null | [link](#platform-leetcode)  |`In Progress` |
 |4| Platform/GeeksForGeeks | [Markdown](./platform/GeeksForGeeks/README.md) | null | [link](#platform-geeksforgeeks)  |`In Progress` |
@@ -48,6 +48,10 @@ git clone https://github.com/sayande717/code.git
         - Set number precision for output screen
         - Infinity (1.5/0), NaN (0.0/0.0)
     - Initializing boolean values
+    - Initializing characters
+        - ASCII notation of characters
+        - static_cast<int>('c')
+    - Initializing variables without data types (`auto`)
 
 ### Java
 <!-- > [Notes](./notes/Languages.md#java) -->

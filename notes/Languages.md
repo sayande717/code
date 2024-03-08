@@ -95,6 +95,9 @@ Image taken from [here](https://youtu.be/8jLOx1hD3_o)
 - Modifiers: 
     - Signed, Un-signed: Allows negative numbers, doesn't allow negative numbers.
     - short, long: reduce size by half, increase size by 2x
+    - {123u}: Un-signed
+    - {123ul}: Un-signed long
+    - {123ll}: long long
 - Int:
     - Integers
     - Size: $4$ bytes
@@ -113,3 +116,20 @@ Image taken from [here](https://youtu.be/8jLOx1hD3_o)
     - bool: true (1) & false (0)
     - Size: $1$ byte
     - std::cout prints in notation: 1 & 0, by default. To print true & false, set `std::cout << std::boolalpha`.
+- Character
+    - Size: $1$ byte
+    - Can be encoded in ASCII.
+        - 0-9: 48-57, A-Z: 65-90, a-z: 97-122.
+        - $a+2=c$
+        ![ASCII](https://www.asciitable.com/asciifull.gif)
+        - `static_cast<int>('a')` prints `97`: this tells the compiler to interpret the input as an integer.
+- Auto
+    - auto var1 {12.05f}
+    - Tells compiler to automatically determine the data type
+    - Once type is deduced during Initialization, the variable will only accept values of that type during further assignments.
+        Example:
+        ```cpp
+        auto var1 {123u};
+        auto var1 {56u}; // possible
+        auto var1 {-22}; // not possible
+        ```

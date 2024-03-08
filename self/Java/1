@@ -1,8 +1,0 @@
-: 1709814893:0;javac modifyLinkedList.java
-: 1709814895:0;java modifyLinkedList
-: 1709814905:0;javac modifyLinkedList.java
-: 1709814908:0;java modifyLinkedList
-: 1709814941:0;javac modifyLinkedList.java
-: 1709814943:0;java modifyLinkedList
-: 1709815007:0;rm *.class
-: 1709815065:0;cd ..
