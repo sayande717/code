@@ -26,7 +26,7 @@ int main() {
     short int var9 {23}; // size: 4/2 bytes
     long int var10 {23};  // size: 4*2 bytes
     long long int var11 {23};  // size: 4*2 bytes
-    
+
     std::cout << var7 << " " << var8 << std::endl;
     std::cout << sizeof(var9) << " " << sizeof(var10) << " " << sizeof(var11) << std::endl;   
 
