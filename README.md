@@ -7,7 +7,7 @@ git clone https://github.com/sayande717/code.git
 |ID| **Name** | **Notes** | **References** | **Progress** | **Status** |
 |:--- | :---: | :---: | :---: | :---: | :---: |
 |0| Theory | [Markdown](./notes/Theory.md) | null | null | `In Progress` |
-|1| Languages/C++ | [Markdown](./notes/Languages.md#c++) | [FreeCodeCamp](https://youtu.be/8jLOx1hD3_o) | till 05:56:13 | `In Progress` |
+|1| Languages/C++ | [Markdown](./notes/Languages.md#c++) | [FreeCodeCamp](https://youtu.be/8jLOx1hD3_o) | till 06:06:06 | `In Progress` |
 |2| Languages/Java | null | [FreeCodeCamp](https://www.youtube.com/watch?v=2ZLl8GAk1X4&pp=ygUeZnJlZSBjb2RlIGNhbXAgZnVsbCBkc2EgY291cnNl) | till 05:22:54 | `In Progress` |
 |3| Platform/LeetCode | [Markdown](./platform/LeetCode/README.md) | null | [link](#platform-leetcode)  |`In Progress` |
 |4| Platform/GeeksForGeeks | [Markdown](./platform/GeeksForGeeks/README.md) | null | [link](#platform-geeksforgeeks)  |`In Progress` |
@@ -52,11 +52,16 @@ git clone https://github.com/sayande717/code.git
         - static_cast<int>('c')
     - Initializing variables without data types (`auto`)
 1. [operationsData.cpp](./self/C++/operationsData.cpp)
+    - [Full list](https://en.cppreference.com/w/cpp/language/operator_precedence)
     - Basic: +,-,*,/,%
     - Increment: ++ | Decrement: --
     - Compound Assignment: +=, -=, *=, /=, %=
     - Relational: <,<=,>,>=,==,!=
     - Logical: &&,||,!
+1. [formatOutput.cpp](./self/C++/formatOutput.cpp)
+    - [Full list](https://en.cppreference.com/w/cpp/io/manip)
+    - Header files: `ios`, `iomanip`
+    - Formatting the output
 
 ### Java
 <!-- > [Notes](./notes/Languages.md#java) -->

@@ -133,3 +133,43 @@ Image taken from [here](https://youtu.be/8jLOx1hD3_o)
         auto var1 {56u}; // possible
         auto var1 {-22}; // not possible
         ```
+
+## Operations on Data
+- Precedence: Which operation to do first
+- Associativity: The direction to execute operations in.
+- Check [here](https://en.cppreference.com/w/cpp/language/operator_precedence) for the complete list.
+- Basic: +,-,*,/,%
+- Increment: ++ | Decrement: --
+- Compound Assignment: +=, -=, *=, /=, %=
+- Relational: <,<=,>,>=,==,!=
+- Logical: &&,||,!
+- Increment: Add 1 to the value.
+- Decrement: Subtract 1 from the value.
+    ```cpp
+    int value = 29;
+    std::cout << value++ << std::endl;    // Postfix: Print first, then Increment.
+    std::cout << ++value << std::endl;    // Prefix: Increment first, then Print.
+    std::cout << value-- << std::endl;    // Postfix: Print first, then Decrement.
+    std::cout << --value << std::endl;    // Prefix: Decrement first, then Print.
+    ```
+
+## Output formatting
+- Headers: iomanip, ios
+- Formatters:
+    - `std::endl`, "\n": Prints a new line
+    - `std::cout`: First puts the string in a buffer, then prints it all at once
+    - `std::flush`: Prints the string directly, without involving a buffer.
+    - `std::setw(10)`: Set width of the text of the field, in which the string is printed. Measured in characters.
+    - `std::setfill('-')`: Used in conjunction with `set::setw()`. Sets the fill character to something other than ' '.
+    - `std::right`: Set right alignment *for following outputs*.
+    - `std::internal`: Set internal justified. In `-122.2`, `-` is left justified, while `122.2` is default justified.
+    - `std::boolalpha`: Force boolean output as `true` or `false` *for following outputs*.
+    - `std::noboolalpha`: Disable it.
+    - `std::showpos`: Prefix positive numbers with `+`, Example `+23`, *for following outputs*.
+    - `std::noshowpos`: Disable it.
+    - `std::showbase`: Show the base notation for the number systems, *for following outputs*.
+    - `std::uppercase`: show the base notation in uppercase, *for following outputs*.
+    - `std::nouppercase`: Disable it.
+    - `std::dec`: Show number as decimel.
+    - `std::hex`: Show number as hexadecimel.
+    - `std::oct`: Show number as octal.
