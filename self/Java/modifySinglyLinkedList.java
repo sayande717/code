@@ -118,23 +118,89 @@ class modifySinglyLinkedList {
         return -1;
     }
 
+    private static void reverseList() {
+        if(head.next == null) {
+            return;
+        }
+    
+        ListNode current = head;
+        ListNode previous = null;
+        ListNode next = null;
+        
+        while (current!=null) {
+            next = current.next;        // next keeps track of the RHS node
+            current.next = previous;    // current node now points to it's LHS node
+            previous = current;         // previous switches position with current
+            current = next;             // current switches position with next
+        }
+
+        head = previous;                // At the end, both current and next point to null. Previous points to the last node with all pointers reversed.
+    }
+
+    private static void removeDuplicates() {
+        if(head.next == null) {
+            return;
+        }
+
+        ListNode current = head;
+
+        while(current.next!=null) {
+            if(current.data == current.next.data) {
+                current.next = current.next.next;
+            } else {
+                current = current.next;
+            }
+        }
+    }
+
+    private static ListNode findnthNodeFromEnd(int n) {
+        
+        if(n == 0) {
+            return null;
+        }
+
+        ListNode p1 = head;
+        ListNode p2 = head;
+        int count=0;
+
+        while(count<n) {
+            // If p2 is null, it means the position is out of bounds for the linked list.
+            // Example: In 5 6 7 10, elements only exist till n=4. For n=4, p2 will start at `10`
+            if(p2==null) {
+                return null;
+            }
+            p2 = p2.next;
+            count++;
+        }
+
+        while(p2!=null) {
+            p1 = p1.next;
+            p2 = p2.next;
+        }
+
+        return p1; // p2 sits at null, p1 sits `n` positions before it.
+    }
+
     public static void main(String[] args) {
         modifySinglyLinkedList listClass = new modifySinglyLinkedList();
         
-       addToBeginning(5);
-       addToBeginning(6);
-       addToBeginning(7);     
+        addToBeginning(5);
+        addToBeginning(6);
+        addToBeginning(6);     
         // 7 -> 6 -> 5 -> null
-        addToEnd(10);
+        addToEnd(8);
         // 7 -> 6 -> 5 -> 10 -> null
-        printList();        
+        System.out.print("Original list: "); printList();
 
         // addAtPosition(20,2);
         // deleteHead();
         // deleteTail();
         // deleteAtPosition(4);
         // System.out.println(searchNode(10));
-
-        printList();
+        //reverseList();
+        removeDuplicates();
+        //System.out.println("3rd node from last: "+findnthNodeFromEnd(3).data);
+        //
+        System.out.print("Modified list: "); printList();
     }
 }
