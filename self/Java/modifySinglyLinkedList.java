@@ -181,12 +181,34 @@ class modifySinglyLinkedList {
         return p1; // p2 sits at null, p1 sits `n` positions before it.
     }
 
+    private static void insertInSortedList(int data) {
+        ListNode newNode = new ListNode(data);
+
+        if(head.data > newNode.data) {
+            newNode.next = head;
+            head = newNode;
+            return;
+        }
+
+        ListNode current = head;
+        ListNode previous = null;
+        
+        // current!=null: when the data is larger than all elements in linked list.
+        while(current!=null && current.data<newNode.data) {
+            previous = current;
+            current = current.next;
+        }
+
+        previous.next = newNode;
+        newNode.next = current;
+    }
+
     public static void main(String[] args) {
         modifySinglyLinkedList listClass = new modifySinglyLinkedList();
         
-        addToBeginning(5);
+        addToBeginning(7);
         addToBeginning(6);
-        addToBeginning(6);     
+        addToBeginning(5);     
         // 7 -> 6 -> 5 -> null
         addToEnd(8);
         // 7 -> 6 -> 5 -> 10 -> null
@@ -198,9 +220,9 @@ class modifySinglyLinkedList {
         // deleteAtPosition(4);
         // System.out.println(searchNode(10));
         //reverseList();
-        removeDuplicates();
+        //removeDuplicates();
         //System.out.println("3rd node from last: "+findnthNodeFromEnd(3).data);
-        //
+        //insertInSortedList(11);
         System.out.print("Modified list: "); printList();
     }
 }

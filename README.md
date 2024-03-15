@@ -101,6 +101,7 @@ git clone https://github.com/sayande717/code.git
     - Reverse the linked list.
     - Remove duplicates from linked list.
     - Return the nth number from the end.
+    - Insert an element in a sorted linked list.
 
 > In case you can't access the link, the **Problem Description** has been provided in the respective **Intuition** part.
 
