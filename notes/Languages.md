@@ -155,6 +155,7 @@ Image taken from [here](https://youtu.be/8jLOx1hD3_o)
 
 ## Output formatting
 - Headers: iomanip, ios
+- Check [here](https://en.cppreference.com/w/cpp/io/manip) for the complete list.
 - Formatters:
     - `std::endl`, "\n": Prints a new line
     - `std::cout`: First puts the string in a buffer, then prints it all at once
@@ -167,9 +168,14 @@ Image taken from [here](https://youtu.be/8jLOx1hD3_o)
     - `std::noboolalpha`: Disable it.
     - `std::showpos`: Prefix positive numbers with `+`, Example `+23`, *for following outputs*.
     - `std::noshowpos`: Disable it.
+    - `std::showpoint`: Show the point (even if output is `12` -> `12.0`, `13.1` -> `13.1000` etc), *for following outputs*.
+    - `std::noshowpoint`: Show the point when needed (default), *for following outputs*.
     - `std::showbase`: Show the base notation for the number systems, *for following outputs*.
     - `std::uppercase`: show the base notation in uppercase, *for following outputs*.
     - `std::nouppercase`: Disable it.
     - `std::dec`: Show number as decimel.
     - `std::hex`: Show number as hexadecimel.
     - `std::oct`: Show number as octal.
+    - `std::fixed`: Show fixed numbers (don't use E+10,E-10, etc), *for following outputs*.
+    - `std::scientific`: Show scientific notation (default), *for following outputs*.
+    - `std::setprecision(10)`: Show 10 digits after decimel, *for following outputs*.

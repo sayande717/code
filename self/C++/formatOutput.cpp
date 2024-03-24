@@ -1,5 +1,18 @@
+// Check notes
+#include<iomanip>
+#include<iostream>
+#include <ostream>
 int main() {
-    // std::endl, "\n": Prints a new line
-    // std::cout: First puts the string in a buffer, then prints it all at once
-    // std::flush: Prints the string directly, without involving a buffer.
+    std::cout << "something" << std::endl;
+    std::cout << "hi" << std::endl;
+
+    // Ensures that the string has been sent to the output stream. This may be useful in some use cases.
+    std::cout << "Hello!" << std::endl << std::flush;
+
+    // usual syntax
+    std::cout << std::fixed;
+    std::cout << 3.14E+10 << std::endl;
+
+    std::cout << std::setprecision(50);
+    std::cout << (22.0/7) << std::endl;
 }
