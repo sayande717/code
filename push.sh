@@ -25,7 +25,6 @@ commitMessage="update: $subjectName"
 if [ "$subjectID" -eq 0 ]; then                             
     git add README.md ./notes/$targetFile
 elif [ "$subjectID" -ge 1 ] && [ "$subjectID" -le 2 ]; then
-    rm ./self/$targetCodeDir/*.out ./self/$targetCodeDir/*.class        # Remove output files
     git add README.md ./notes/$targetFile ./self/$targetCodeDir/
 elif [ "$subjectID" -ge 3 ] && [ "$subjectID" -le 4 ]; then
     git add README.md ./notes/$targetFile ./platform/$targetCodeDir/

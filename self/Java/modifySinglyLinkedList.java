@@ -202,6 +202,44 @@ class modifySinglyLinkedList {
         previous.next = newNode;
         newNode.next = current;
     }
+    
+    private static void removeNode(int data) {
+        ListNode previous = null;
+        ListNode current = head;
+        if(head.data == data) {
+            head = head.next;
+            return;
+        }
+
+        while(current != null) {
+            if(current.data == data) {
+                previous.next = current.next;
+                return;
+            }
+            previous = current;
+            current = current.next;
+
+        }
+    }
+    
+    public static boolean detectLoop() {
+        // Logic: There are 2 pointers, slow & fast. Slow moves 1 step ahead, Fast moves 2 steps ahead.
+        // In case a loop exists, the fast pointer will definitely meet the slow pointer, and that's what we want to detect.
+        ListNode slowPtr = head;
+        ListNode fastPtr = head;
+        // fastPtr!=null: If fastPtr is in 2nd last position, it'll move to null.
+        // fastPtr.next!=null: If fastPtr is in last position, it's next element will be null, so fastPtr.next.next will return a null pointer exception.
+        while(fastPtr != null && fastPtr.next != null) {
+            slowPtr = slowPtr.next;
+            fastPtr = fastPtr.next.next;
+
+            if(slowPtr == fastPtr) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     public static void main(String[] args) {
         modifySinglyLinkedList listClass = new modifySinglyLinkedList();
@@ -223,6 +261,8 @@ class modifySinglyLinkedList {
         //removeDuplicates();
         //System.out.println("3rd node from last: "+findnthNodeFromEnd(3).data);
         //insertInSortedList(11);
+        //removeNode(6);
+        //System.out.println("Loop: "+detectLoop());
         System.out.print("Modified list: "); printList();
     }
 }
