@@ -9,6 +9,7 @@ git clone https://github.com/sayande717/code.git
 |0| Theory | [Markdown](./notes/Theory.md) | null | null | `In Progress` |
 |1| Languages/C++ | [Markdown](./notes/Languages.md#c++) | [FreeCodeCamp](https://youtu.be/8jLOx1hD3_o) | till 06:33:26 | `In Progress` |
 |2| Languages/Java | null | [FreeCodeCamp](https://www.youtube.com/watch?v=2ZLl8GAk1X4&pp=ygUeZnJlZSBjb2RlIGNhbXAgZnVsbCBkc2EgY291cnNl) | till 07:36:58 | `In Progress` |
+|3| Languages/Go | null | [TechWorld with Nana](https://youtu.be/yyUHQIec83I) | till 21:16 | `In Progress` |
 |3| Platform/LeetCode | [Markdown](./platform/LeetCode/README.md) | null | [link](#platform-leetcode)  |`In Progress` |
 |4| Platform/GeeksForGeeks | [Markdown](./platform/GeeksForGeeks/README.md) | null | [link](#platform-geeksforgeeks)  |`In Progress` |
 
@@ -104,6 +105,14 @@ git clone https://github.com/sayande717/code.git
     - Insert an element in a sorted linked list.
     - Delete an element from a linked list.
     - Detect a loop in a linked list.
+
+### Go
+<!-- > [Notes](./notes/Languages.md#go) -->
+1. [booking-app](./self/Go/booking-app/main.go)
+    - Initialize Go project with `go mod init booking-app`
+    - Main file: `main.go`
+
+
 
 > In case you can't access the link, the **Problem Description** has been provided in the respective **Intuition** part.
 

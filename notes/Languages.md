@@ -1,5 +1,5 @@
 # C++
-
+- Install: `pacman -S gcc clang`
 ## Notes
 - \<iostream\> components:
     - std::cout :- Print data to the Terminal/Console
@@ -179,3 +179,19 @@ Image taken from [here](https://youtu.be/8jLOx1hD3_o)
     - `std::fixed`: Show fixed numbers (don't use E+10,E-10, etc), *for following outputs*.
     - `std::scientific`: Show scientific notation (default), *for following outputs*.
     - `std::setprecision(10)`: Show 10 digits after decimel, *for following outputs*.
+
+# Go
+- Install: `pacman -S go`
+- Go was designed to run on multiple cores and built to support concurrency. It is cheap and easy.
+- We use Go to write performant applications.
+- Go compiles code into single binary (machine code), that can run cross-platform.
+- Get started:
+    - Create a new directory for the project, and cd to it.
+    - Initialize the Go project with `go mod init package-name`.
+    - Main file: `main.go`.
+    - Inside the main file, define the entry-point, the point where the execution starts: `func main() {}`.
+    - Run program with `go run main.go`.
+- Common pre-defined packages:
+    1. `fmt`:
+        - Print: Print the output.
+        - Println: Print the output, then move to a new line.

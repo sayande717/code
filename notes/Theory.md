@@ -12,7 +12,6 @@
 - Supports higher-order functions and encourages declarative programming style.
 - First-class functions: Using a function like a variable. Python implements First-class functions.
 
-
 ## Object-Oriented
 - Organizes code into objects, which encapsulate data and behavior.
 - Supports concepts such as inheritance, polymorphism, and encapsulation.
