@@ -183,7 +183,7 @@ Image taken from [here](https://youtu.be/8jLOx1hD3_o)
 # Go
 - Install: `pacman -S go`
 - Go was designed to run on multiple cores and built to support concurrency. It is cheap and easy.
-- We use Go to write performant applications.
+- We use Go to write performant back-end server-side applications.
 - Go compiles code into single binary (machine code), that can run cross-platform.
 - Get started:
     - Create a new directory for the project, and cd to it.
@@ -195,3 +195,22 @@ Image taken from [here](https://youtu.be/8jLOx1hD3_o)
     1. `fmt`:
         - Print: Print the output.
         - Println: Print the output, then move to a new line.
+        - Printf: Print the output in a specific format. All available [formats](https://pkg.go.dev/fmt).
+- When printing variables with a string, spaces will get added on both sides of the variable automatically.
+- Variable: `var temp = 20` or `var temp int = 20`, without value: `var temp int`
+- Constant: `const temp = "20"`, without value: `const temp string`
+- Minimal definition: `temp := 20`
+    - Define the variable, guess & define it's type.
+    - The variable type cannot be changed, but value can.
+    - Constants cannot be defined in this way.
+- Errors:
+    - To prevent dead code, we need to use every variable / method we have defined, otherwise it'll throw a compile error.
+    - Go detects errors at compile time what other programming languages would only detect at runtime.
+- Formatters:
+    - %v: value
+    - %T: data type
+- Data types:
+    - string: String
+    - int: Integers
+    - uint: Un-signed integer, only acccepts positive numbers and 0.
+    - float: Floating point numbers
