@@ -8,8 +8,8 @@ git clone https://github.com/sayande717/code.git
 |:--- | :---: | :---: | :---: | :---: | :---: |
 |0| Theory | [Markdown](./notes/Theory.md) | null | null | `In Progress` |
 |1| Languages/C++ | [Markdown](./notes/Languages.md#c++) | [FreeCodeCamp](https://youtu.be/8jLOx1hD3_o) | till 06:33:26 | `In Progress` |
-|2| Languages/Java | null | [FreeCodeCamp](https://www.youtube.com/watch?v=2ZLl8GAk1X4&pp=ygUeZnJlZSBjb2RlIGNhbXAgZnVsbCBkc2EgY291cnNl) | till 07:36:58 | `In Progress` |
-|3| Languages/Go | null | [TechWorld with Nana](https://youtu.be/yyUHQIec83I) | till 01:06:56 | `In Progress` |
+|2| Languages/Java | null | [FreeCodeCamp](https://www.youtube.com/watch?v=2ZLl8GAk1X4&pp=ygUeZnJlZSBjb2RlIGNhbXAgZnVsbCBkc2EgY291cnNl) | till 09:21:43 | `In Progress` |
+|3| Languages/Go | null | [TechWorld with Nana](https://youtu.be/yyUHQIec83I) | till 01:24:25 | `In Progress` |
 |4| Platform/LeetCode | [Markdown](./platform/LeetCode/README.md) | null | [link](#platform-leetcode)  |`In Progress` |
 |6| Platform/GeeksForGeeks | [Markdown](./platform/GeeksForGeeks/README.md) | null | [link](#platform-geeksforgeeks)  |`In Progress` |
 |-1| Platform/Internship/Pinnacle Labs | null | 1/3 | null |`In Progress` |
@@ -98,7 +98,7 @@ git clone https://github.com/sayande717/code.git
     - Create a singly linked list. 
     - Print the node values.
     - Add a node to beginning of the linked list.
-1. [modifySinglyLinkedList.java](./self/Java/modifySinglyLinkedList.java) | `Linked List`
+1. [modify2SinglyLinkedLists.java](./self/Java/modify2SinglyLinkedLists.java) | `Linked List`
     - Add to the beginning of a linked list.
     - Add to the end of a linked list.
     - Add to a particular position in a linked list.
@@ -112,6 +112,12 @@ git clone https://github.com/sayande717/code.git
     - Insert an element in a sorted linked list.
     - Delete an element from a linked list.
     - Detect a loop in a linked list.
+    - Detect the starting point of a loop.
+    - Break the loop.
+1. [modify2SinglyLinkedList.java](./self/Java/modify2SinglyLinkedList2.java) | `Linked List`
+    - Operations on 2 Singly Linked Lists
+    - Merge 2 sorted linked lists
+
 
 ### Go
 <!-- > [Notes](./notes/Languages.md#go) -->
@@ -126,8 +132,10 @@ git clone https://github.com/sayande717/code.git
         - %v: value
         - %T: data type 
     - Taking user input
-    - Initializing Array
-
+    - Initializing Arrays, Performing operations on them
+    - Using `len()` to find length
+    - Initializing Slices
+    - Using `strings.Fields(str)`
 
 
 > In case you can't access the link, the **Problem Description** has been provided in the respective **Intuition** part.

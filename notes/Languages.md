@@ -191,21 +191,39 @@ Image taken from [here](https://youtu.be/8jLOx1hD3_o)
     - Main file: `main.go`.
     - Inside the main file, define the entry-point, the point where the execution starts: `func main() {}`.
     - Run program with `go run main.go`.
+
+- Miscellaneous info:
+    - Put `_` in place of a variable you don't want to use.
+    - Errors:
+        - To prevent dead code, we need to use every variable / method we have defined, otherwise it'll throw a compile error.
+        - Go detects errors at compile time what other programming languages would only detect at runtime.
+
 - Common pre-defined packages:
     1. `fmt`:
-        - Print: Print the output.
-        - Println: Print the output, then move to a new line.
-        - Printf: Print the output in a specific format. All available [formats](https://pkg.go.dev/fmt).
+        - All available [formats](https://pkg.go.dev/fmt).
+        - `Print`: Print the output.
+        - `Println`: Print the output, then move to a new line.
+        - `Printf`: Print the output in a specific format.
+        - `Scan`: Take a value as input.
+    1. `strings`:
+        - Fields(str): Splits the string into a slice, with whitespace as the separator.
 - When printing variables with a string, spaces will get added on both sides of the variable automatically.
-- Variable: `var temp = 20` or `var temp int = 20`, without value: `var temp int`
-- Constant: `const temp = "20"`, without value: `const temp string`
+- Variable: 
+    ```go
+    var temp = 20
+    var temp int = 20
+    var temp int
+    ```
+- Constant: 
+    ```go
+    const temp = "20"
+    const temp string
+    ```
 - Minimal definition: `temp := 20`
     - Define the variable, guess & define it's type.
     - The variable type cannot be changed, but value can.
     - Constants cannot be defined in this way.
-- Errors:
-    - To prevent dead code, we need to use every variable / method we have defined, otherwise it'll throw a compile error.
-    - Go detects errors at compile time what other programming languages would only detect at runtime.
+
 - Formatters:
     - %v: value
     - %T: data type
@@ -214,3 +232,35 @@ Image taken from [here](https://youtu.be/8jLOx1hD3_o)
     - int: Integers
     - uint: Un-signed integer, only acccepts positive numbers and 0.
     - float: Floating point numbers
+- Data Structures:
+    - Arrays (lists with fixed size):
+        ```go
+        var test0 = [10]string{"AAA","BBB","CCC"}
+        var test [50]int
+        test[0] = 20
+        test[1] = 30
+        
+        fmt.Printf(test)      | [20,30,0,0,0,0,0...]
+        fmt.Printf(len(test)) | > 50
+        ```
+    - Slices (lists with dynamic size):
+        ```go
+        var test = []string
+        test = append(test, "AAA")
+        test = append(test, "BBB")
+        fmt.Printf(test)      | [AAA BBB]
+        fmt.Printf(len(test)) | > 2
+        ```
+- Pointers: A pointer is a special variable that points to the memory address of another variable.
+    ```go
+    fmt.Scan(&user)    // Takes the value for `user` as input, stores in in the memory address.
+    fmt.Println(&user) // Prints the memory address of `user`
+    ```
+- Loops:
+    - for:
+        - Infinite: `for { // statements }`
+    - for-each:
+        - `for index,element := range list { // statements }`
+        - `index`: The index (0,1,2,etc)
+        - `value`: The value at each index
+        - `range`: Iterate through all elements of the list.

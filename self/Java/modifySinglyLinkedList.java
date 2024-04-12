@@ -222,6 +222,23 @@ class modifySinglyLinkedList {
         }
     }
     
+    public static void createLoop() {
+        ListNode first = new ListNode(1);
+        ListNode second = new ListNode(2);
+        ListNode third = new ListNode(3);
+        ListNode fourth = new ListNode(4);
+        ListNode fifth = new ListNode(5);
+        ListNode sixth = new ListNode(6);
+
+        head = first;
+        first.next = second;
+        second.next = third;
+        third.next = fourth;
+        fourth.next = fifth;
+        fifth.next = sixth;
+        sixth.next = third;
+    }
+
     public static boolean detectLoop() {
         // Logic: There are 2 pointers, slow & fast. Slow moves 1 step ahead, Fast moves 2 steps ahead.
         // In case a loop exists, the fast pointer will definitely meet the slow pointer, and that's what we want to detect.
@@ -234,6 +251,8 @@ class modifySinglyLinkedList {
             fastPtr = fastPtr.next.next;
 
             if(slowPtr == fastPtr) {
+                // System.out.println(detectStartOfLoop(slowPtr).data);
+                // breakLoop(slowPtr);
                 return true;
             }
         }
@@ -241,14 +260,38 @@ class modifySinglyLinkedList {
         return false;
     }
 
+    // To detect start of the loop, we create a new pointer and traverse from the head of the loop. We also keep moving the slow pointer. The point where they meet is the starting point of the loop.
+    // This is called `Floyd's Cycle Detection Algorithm`.
+    public static ListNode detectStartOfLoop(ListNode slowPtr) {
+        ListNode Ptr = head;
+        while(Ptr != slowPtr) {
+            Ptr = Ptr.next;
+            slowPtr = slowPtr.next;
+        }
+        return Ptr;
+    }
+    
+    // We move till 1 step before Ptr & slowPtr meet. Then, we just break the link between slowPtr and the start of the loop.
+    public static void breakLoop(ListNode slowPtr) {
+        ListNode Ptr = head;
+        while(slowPtr.next != Ptr.next) {
+            Ptr = Ptr.next;
+            slowPtr = slowPtr.next;
+        }
+
+        slowPtr.next = null;
+    }
+
     public static void main(String[] args) {
-        modifySinglyLinkedList listClass = new modifySinglyLinkedList();
         
         addToBeginning(7);
         addToBeginning(6);
         addToBeginning(5);     
         // 7 -> 6 -> 5 -> null
         addToEnd(8);
+        addToEnd(9);
+        addToEnd(10);
+
         // 7 -> 6 -> 5 -> 10 -> null
         System.out.print("Original list: "); printList();
 
@@ -262,7 +305,9 @@ class modifySinglyLinkedList {
         //System.out.println("3rd node from last: "+findnthNodeFromEnd(3).data);
         //insertInSortedList(11);
         //removeNode(6);
-        //System.out.println("Loop: "+detectLoop());
+        
+        // createLoop(); // WARN: Deletes existing data.
+        System.out.println("Loop: "+detectLoop());
         System.out.print("Modified list: "); printList();
     }
 }
