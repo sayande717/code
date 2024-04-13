@@ -1,4 +1,4 @@
-class modifySinglyLinkedList2 {
+class modify2SinglyLinkedList {
     private static class Node {
         int value;
         Node next;
@@ -10,7 +10,6 @@ class modifySinglyLinkedList2 {
 
     Node head1;
     Node head2;
-    Node head3;
 
     private static void addToEnd(Node head, int data) {
         Node newNode = new Node(data);
@@ -39,44 +38,75 @@ class modifySinglyLinkedList2 {
         System.out.println();
     }
 
-    private static void mergeTwoLists() {
-        modifySinglyLinkedList2 ob = new modifySinglyLinkedList2();
-        Node current1 = ob.head1;
-        Node current2 = ob.head2;
+    private static Node mergeTwoLists(Node head1, Node head2) {
+        Node current1 = head1;
+        Node current2 = head2;
+
+        // We're creating a new list with the dummy node.
+        // The pointer is used to change what the current pointer points to.
+        // At the end, we will return mergedList.next, which effectively excludes the dummy node.
+        Node mergedList = new Node(0);
+        Node mergedListPointer = mergedList;
+
         while(current1!=null && current2!=null) {
             if(current1.value <= current2.value) {
-                addToEnd(ob.head3,current1.value);
+                mergedListPointer.next = current1;
                 current1 = current1.next;
             } else {
-                addToEnd(ob.head3,current2.value);
+                mergedListPointer.next = current2;
                 current2 = current2.next;
             }
+            mergedListPointer = mergedListPointer.next;
         }
+        
+        // If current1 still has nodes left, point the mergedList to the remaining elements.
+        if(current1!=null) {
+            mergedListPointer.next = current1;
+        }
+        // If current2 still has nodes left, point the mergedList to the remaining elements.
+        if(current2!=null) {
+            mergedListPointer.next = current2;
+        }
+        return mergedList.next;
+    }
 
-        while(current1!=null) {
-            addToEnd(ob.head3,current1.value);
+    private static Node add2Lists(Node head1,Node head2) {
+        Node current1 = head1;
+        Node current2 = head2;
+        Node resultList = new Node(0);
+        Node resultListPointer = resultList;
+        int carry = 0;
+
+        while(current1!=null && current2!=null) {
+            int sum = current1.value + current2.value;
+            if(sum>=10) {
+                sum = sum%10;
+            }
+
+            resultListPointer.value = current1.value+current2.value+carry;
+
             current1 = current1.next;
+            current2 = current2.next;
+            resultListPointer = resultListPointer.next;
         }
 
-        while(current2!=null) {
-            addToEnd(ob.head3,current2.value);
-            current2 = current2.next;
-        }
+        return resultList.next;
     }
 
     public static void main(String[] args) {
-        modifySinglyLinkedList2 ob = new modifySinglyLinkedList2();
-        ob.head1 = new Node(12);
-        ob.addToEnd(ob.head1,23);
-        ob.addToEnd(ob.head1,24);
+        modify2SinglyLinkedList ob = new modify2SinglyLinkedList();
+        ob.head1 = new Node(3);
+        ob.addToEnd(ob.head1,4);
+        ob.addToEnd(ob.head1,3);
         printList(ob.head1);
 
-        ob.head2 = new Node(10);
-        ob.addToEnd(ob.head2,13);
-        ob.addToEnd(ob.head2,14);
+        ob.head2 = new Node(5);
+        ob.addToEnd(ob.head2,6);
+        ob.addToEnd(ob.head2,4);
         ob.printList(ob.head2);
 
-        mergeTwoLists();
-        ob.printList(ob.head3);
+       ob.printList(ob.add2Lists(ob.head1,ob.head2));
+
+        //ob.printList(mergeTwoLists(ob.head1,ob.head2));
     }
 }
