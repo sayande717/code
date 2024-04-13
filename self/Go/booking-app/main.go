@@ -12,8 +12,12 @@ func main() {
     // Variables without value
     var firstName string
     var lastName string
-
+    var email string
     var userTickets uint
+
+    // Slice definition
+    var firstNames []string
+    var bookings []string
 
     // Minimal definition
     //temp := 20
@@ -22,54 +26,50 @@ func main() {
     // var bookings = [50]string{"AAA","BBB","CCC"}
     //var bookings [50]string
 
-    // Slice definition
-    var bookings []string
-
-    var temp = [50]string{"AAA","BBB"}
-
-    fmt.Printf("%v",temp)
-    
-    // Printing variables, spaces get added automatically
+        
+    // Welcome message
     fmt.Printf("Welcome to %v Booking Application\n",conferenceName) // f=format
     
     fmt.Println("Welcome to", conferenceName, "Booking Application. We have",remainingTickets,"tickets out of",conferenceTickets, "available.")
     fmt.Println("Get your tickets here!")
 
-    //for {
-        // statement
-    //}
+    for (remainingTickets > 0) {
+        // Taking user input 
+        fmt.Print("\nEnter your first name: ")
+        fmt.Scan(&firstName)
 
-    // Taking user input 
-    fmt.Print("Enter your first name: ")
-    fmt.Scan(&firstName) 
-
-    fmt.Print("Enter your last name: ")
-    fmt.Scan(&lastName)
+        fmt.Print("Enter your last name: ")
+        fmt.Scan(&lastName)
+        
+        fmt.Print("Enter the e-mail address you want the ticket to be sent: ")
+        fmt.Scan(&email)
     
-    // Insert in an array
-    // bookings[0] = firstName + " " + lastName
-
-    // Append to a slice
-    bookings = append(bookings,firstName + " " + lastName)
-
-    fmt.Print("Enter the number of tickets you need: ")
-    fmt.Scan(&userTickets)
-
-    remainingTickets = remainingTickets - userTickets
-
-    fmt.Printf("User %v %v booked %v tickets.\n",firstName,lastName,userTickets)
-    fmt.Printf("%v tickets remain at this point.",remainingTickets)
-    //fmt.Printf("username is of type %T.",userName)
+        fmt.Print("Enter the number of tickets you need: ")
+        fmt.Scan(&userTickets)
     
-    // Using for loop
-    //for index,element := range bookings { // statements }
 
-    var firstNames []string
-    for _,element := range bookings {
-        firstNames = append(firstNames,strings.Fields(element)[0])
+        var isValidName bool = (len(firstName)>=2) && (len(lastName)>=2)
+        var isValidEmail bool = strings.Contains(email,"@")
+        var isValidNoOfTickets bool = (userTickets>0) && (userTickets <= remainingTickets)
+
+        if(isValidName && isValidEmail && isValidNoOfTickets) {
+            remainingTickets = remainingTickets - userTickets
+
+            // Append to a slice
+            bookings = append(bookings,firstName + " " + lastName)
+            firstNames = append(firstNames,firstName)
+    
+                fmt.Printf("\nUser %v %v booked %v tickets.",firstName,lastName,userTickets)
+            fmt.Printf("\n%v tickets remain at this point.",remainingTickets)
+        } else {
+            fmt.Println("Input data is invalid. Please try again.")
+            continue;
+        }
+    
+        // Print an array/slice
+        fmt.Printf("\nThese are all the bookings: %v",bookings)
+        fmt.Printf("\nThese are the first names: %v",firstNames)
     }
 
-    // Print an array/slice
-    fmt.Printf("\nThese are all the bookings: %v",bookings)
-    fmt.Printf("\nThese are the first names: %v",firstNames)
+    fmt.Print("\n0 tickets remain.")
 }

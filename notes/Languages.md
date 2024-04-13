@@ -207,6 +207,7 @@ Image taken from [here](https://youtu.be/8jLOx1hD3_o)
         - `Scan`: Take a value as input.
     1. `strings`:
         - Fields(str): Splits the string into a slice, with whitespace as the separator.
+        - Contains(str,char): Checks if string str contains character char.
 - When printing variables with a string, spaces will get added on both sides of the variable automatically.
 - Variable: 
     ```go
@@ -223,7 +224,6 @@ Image taken from [here](https://youtu.be/8jLOx1hD3_o)
     - Define the variable, guess & define it's type.
     - The variable type cannot be changed, but value can.
     - Constants cannot be defined in this way.
-
 - Formatters:
     - %v: value
     - %T: data type
@@ -257,10 +257,19 @@ Image taken from [here](https://youtu.be/8jLOx1hD3_o)
     fmt.Println(&user) // Prints the memory address of `user`
     ```
 - Loops:
+    - `for` loop is used for checking the condition repeatedly, `if-else` is used for checking it once.
     - for:
-        - Infinite: `for { // statements }`
+        - Infinite: `for { // statements }` or `for (true) { // statements }`
     - for-each:
-        - `for index,element := range list { // statements }`
+        - `for index,value := range list { //statements }`
         - `index`: The index (0,1,2,etc)
         - `value`: The value at each index
-        - `range`: Iterate through all elements of the list.
+        - `list`: The list we intend to iterate through
+    - finite for:
+        - `for (condition) || (condition) { //statements }`
+    - if-else:
+        - `if(condition) { //statements } else { //statements }`
+        - `if(condition) { //statements } else if(condition) { //statements}`
+- Breaking a loop:
+    - `break`: End all the loops.
+    - `continue`: Ignore all remaining statements in the loop and continue with the next iteration.
