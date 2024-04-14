@@ -77,19 +77,34 @@ class modify2SinglyLinkedList {
         Node resultListPointer = resultList;
         int carry = 0;
 
-        while(current1!=null && current2!=null) {
-            int sum = current1.value + current2.value;
-            if(sum>=10) {
-                sum = sum%10;
+        // 943 + 465 = 1408. After 9 + 4+ (carry) 1 = 14 is done, 4 is going to be inserted in the while loop.
+        // But, the last carry bit (1) will not be inserted, so it is done manually after the loop ends.
+        while(current1!=null || current2!=null) {
+            // Take digits only when they are non-zero, otherwise assume 0.
+            int digit1 = (current1!=null)?current1.value:0;
+            int digit2 = (current2!=null)?current2.value:0;
+            // We have to recalculate sum (sum%10) afterwards, and then insert it, because we need the original value of sum for the intermediate calculations.
+            int sum = digit1 + digit2 + carry;
+            // If sum = 9 + 4 + (carry) 0 = 14, 4 is inserted, while 1 becomes carry.
+            // Carry: 14 / 10 = 1, and Sum: 14 % 10 = 4
+            carry = sum/10;
+
+            resultListPointer.next = new Node(sum%10);
+
+            if(current1!=null) {
+                current1 = current1.next;
             }
 
-            resultListPointer.value = current1.value+current2.value+carry;
+            if(current2!=null) {
+                current2 = current2.next;
+            }
 
-            current1 = current1.next;
-            current2 = current2.next;
             resultListPointer = resultListPointer.next;
         }
 
+        if(carry>0) {
+            resultListPointer.next = new Node(carry);
+        }
         return resultList.next;
     }
 
@@ -97,7 +112,7 @@ class modify2SinglyLinkedList {
         modify2SinglyLinkedList ob = new modify2SinglyLinkedList();
         ob.head1 = new Node(3);
         ob.addToEnd(ob.head1,4);
-        ob.addToEnd(ob.head1,3);
+        ob.addToEnd(ob.head1,9);
         printList(ob.head1);
 
         ob.head2 = new Node(5);
