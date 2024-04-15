@@ -191,6 +191,20 @@ Image taken from [here](https://youtu.be/8jLOx1hD3_o)
     - Main file: `main.go`.
     - Inside the main file, define the entry-point, the point where the execution starts: `func main() {}`.
     - Run program with `go run main.go`.
+- Functions:
+    - Functions aren't executed unless called.
+    - All user-defined functions must be written after `func main()`.
+    - `func something() { //code }`
+        - Call this function by: `something()`
+    - `func something(parameter1 string, parameter2 int) { // code}`
+        - Call this function by: `something(parameter1, parameter2)`
+    - `func something(parameter1 string) int { return 10 }`
+        - Call this function by: `const num = something(parameter1)`
+        - function takes string as input, returns an integer.
+
+    - Every program mandatorily has the main function: `func main() {}`
+    - `func validateUser(parameter1 string, parameter2 string, parameter3 uint) (bool,uint,int) { return parameter1,parameter2,parameter3}`
+        - Call this function by: `var1,var2,var3 := something(parameter1, parameter2, parameter3)` OR `var1 var2 var3 bool`, `var1,var2,var3 = something(parameter1, parameter2, parameter3)`
 
 - Miscellaneous info:
     - Put `_` in place of a variable you don't want to use.
@@ -270,6 +284,17 @@ Image taken from [here](https://youtu.be/8jLOx1hD3_o)
     - if-else:
         - `if(condition) { //statements } else { //statements }`
         - `if(condition) { //statements } else if(condition) { //statements}`
+    - switch:
+        ```go
+        switch (num) {
+            case 1:
+                // single match
+            case 2,3:
+                // multiple match
+            default:
+                // code run when none of the conditions match.
+        }
+        ```
 - Breaking a loop:
     - `break`: End all the loops.
     - `continue`: Ignore all remaining statements in the loop and continue with the next iteration.

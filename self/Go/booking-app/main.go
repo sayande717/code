@@ -19,6 +19,8 @@ func main() {
     var firstNames []string
     var bookings []string
 
+    var isValidName,isValidEmail,isValidNoOfTickets bool
+
     // Minimal definition
     //temp := 20
 
@@ -26,50 +28,76 @@ func main() {
     // var bookings = [50]string{"AAA","BBB","CCC"}
     //var bookings [50]string
 
-        
-    // Welcome message
-    fmt.Printf("Welcome to %v Booking Application\n",conferenceName) // f=format
-    
-    fmt.Println("Welcome to", conferenceName, "Booking Application. We have",remainingTickets,"tickets out of",conferenceTickets, "available.")
-    fmt.Println("Get your tickets here!")
-
+    greetUser(conferenceName,conferenceTickets,remainingTickets)
     for (remainingTickets > 0) {
-        // Taking user input 
-        fmt.Print("\nEnter your first name: ")
-        fmt.Scan(&firstName)
 
-        fmt.Print("Enter your last name: ")
-        fmt.Scan(&lastName)
-        
-        fmt.Print("Enter the e-mail address you want the ticket to be sent: ")
-        fmt.Scan(&email)
-    
-        fmt.Print("Enter the number of tickets you need: ")
-        fmt.Scan(&userTickets)
-    
+        // take input
+        firstName,lastName,email,userTickets = takeUserInput(remainingTickets)
 
-        var isValidName bool = (len(firstName)>=2) && (len(lastName)>=2)
-        var isValidEmail bool = strings.Contains(email,"@")
-        var isValidNoOfTickets bool = (userTickets>0) && (userTickets <= remainingTickets)
+        // validate
+        isValidName, isValidEmail, isValidNoOfTickets = validateUser(firstName,lastName,email,userTickets,remainingTickets)
 
         if(isValidName && isValidEmail && isValidNoOfTickets) {
             remainingTickets = remainingTickets - userTickets
 
-            // Append to a slice
+            // append to a slice
             bookings = append(bookings,firstName + " " + lastName)
             firstNames = append(firstNames,firstName)
     
                 fmt.Printf("\nUser %v %v booked %v tickets.",firstName,lastName,userTickets)
             fmt.Printf("\n%v tickets remain at this point.",remainingTickets)
         } else {
-            fmt.Println("Input data is invalid. Please try again.")
+            if(!isValidName) {
+                fmt.Println("Please enter a valid name")
+            }
+            if(!isValidEmail) {
+                fmt.Println("Please enter a valid e-mail address")
+            }
+            if(!isValidNoOfTickets) {
+                fmt.Println("Please enter a valid number of tickets.")
+            }   
+
             continue;
         }
-    
         // Print an array/slice
         fmt.Printf("\nThese are all the bookings: %v",bookings)
         fmt.Printf("\nThese are the first names: %v",firstNames)
     }
 
     fmt.Print("\n0 tickets remain.")
+}
+
+func greetUser(conferenceName string,conferenceTickets int,remainingTickets uint) {
+    fmt.Println("Welcome to", conferenceName, "Booking Application. We have",remainingTickets,"tickets out of",conferenceTickets, "available.")
+    fmt.Println("Get your tickets here!")
+}
+
+func takeUserInput(remainingTickets uint) (string,string,string,uint) {
+
+    var fname string
+    var lname string
+    var email string
+    var userTickets uint
+        
+    // Taking user input 
+    fmt.Print("\nEnter your first name: ")
+    fmt.Scan(&fname)
+
+    fmt.Print("Enter your last name: ")
+    fmt.Scan(&lname)
+        
+    fmt.Print("Enter the e-mail address you want the ticket to be sent: ")
+    fmt.Scan(&email)
+    
+    fmt.Print("Enter the number of tickets you need: ")
+    fmt.Scan(&userTickets)
+
+    return fname,lname,email,userTickets
+}
+
+func validateUser(fName string, lname string, email string, bookedTickets uint, remainingTickets uint) (bool,bool,bool) {
+    var isValidName bool = (len(fName)>=2) && (len(lname)>=2)
+    var isValidEmail bool = strings.Contains(email,"@")
+    var isValidNoOfTickets bool = (bookedTickets>0) && (bookedTickets <= remainingTickets)
+    return isValidName,isValidEmail,isValidNoOfTickets
 }
