@@ -1,3 +1,6 @@
+// A singly linked list contains nodes, where one node points to the next one.
+// [Node] -> [Node] -> [Node]
+// [Node|NextPtr] -> [Node|NextPtr] -> [Node|NextPtr]
 class initSinglyLinkedList {
     private static class ListNode {
         private int data;
