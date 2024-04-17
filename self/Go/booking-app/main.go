@@ -1,8 +1,14 @@
 package main
 import (
     "fmt"
-    "strings"
+    // Syntax to import the helper package
+    "booking-app/helper"
 )
+
+// Global variables
+// Slice definition
+var firstNames []string
+var bookings []string
 
 func main() {
     // Variables
@@ -14,11 +20,7 @@ func main() {
     var lastName string
     var email string
     var userTickets uint
-
-    // Slice definition
-    var firstNames []string
-    var bookings []string
-
+    
     var isValidName,isValidEmail,isValidNoOfTickets bool
 
     // Minimal definition
@@ -29,22 +31,20 @@ func main() {
     //var bookings [50]string
 
     greetUser(conferenceName,conferenceTickets,remainingTickets)
+
     for (remainingTickets > 0) {
 
         // take input
         firstName,lastName,email,userTickets = takeUserInput(remainingTickets)
 
         // validate
-        isValidName, isValidEmail, isValidNoOfTickets = validateUser(firstName,lastName,email,userTickets,remainingTickets)
+        isValidName, isValidEmail, isValidNoOfTickets = helper.ValidateUser(firstName,lastName,email,userTickets,remainingTickets)
 
         if(isValidName && isValidEmail && isValidNoOfTickets) {
             remainingTickets = remainingTickets - userTickets
 
-            // append to a slice
-            bookings = append(bookings,firstName + " " + lastName)
-            firstNames = append(firstNames,firstName)
-    
-                fmt.Printf("\nUser %v %v booked %v tickets.",firstName,lastName,userTickets)
+            bookTickets(firstName,lastName)
+            fmt.Printf("\nUser %v %v booked %v tickets.",firstName,lastName,userTickets)
             fmt.Printf("\n%v tickets remain at this point.",remainingTickets)
         } else {
             if(!isValidName) {
@@ -59,6 +59,7 @@ func main() {
 
             continue;
         }
+
         // Print an array/slice
         fmt.Printf("\nThese are all the bookings: %v",bookings)
         fmt.Printf("\nThese are the first names: %v",firstNames)
@@ -95,9 +96,9 @@ func takeUserInput(remainingTickets uint) (string,string,string,uint) {
     return fname,lname,email,userTickets
 }
 
-func validateUser(fName string, lname string, email string, bookedTickets uint, remainingTickets uint) (bool,bool,bool) {
-    var isValidName bool = (len(fName)>=2) && (len(lname)>=2)
-    var isValidEmail bool = strings.Contains(email,"@")
-    var isValidNoOfTickets bool = (bookedTickets>0) && (bookedTickets <= remainingTickets)
-    return isValidName,isValidEmail,isValidNoOfTickets
+
+func bookTickets(firstName string, lastName string) {
+    // append to a slice
+    bookings = append(bookings,firstName + " " + lastName)
+    firstNames = append(firstNames,firstName)
 }

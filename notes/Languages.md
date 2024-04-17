@@ -205,27 +205,48 @@ Image taken from [here](https://youtu.be/8jLOx1hD3_o)
     - Every program mandatorily has the main function: `func main() {}`
     - `func validateUser(parameter1 string, parameter2 string, parameter3 uint) (bool,uint,int) { return parameter1,parameter2,parameter3}`
         - Call this function by: `var1,var2,var3 := something(parameter1, parameter2, parameter3)` OR `var1 var2 var3 bool`, `var1,var2,var3 = something(parameter1, parameter2, parameter3)`
+    - If we want to use a function imported from another package, we have to explicitely export the function.
+        - Typical function: `func funcName() { }`
+        - Exported function: `func FuncName() { }`
+        - Capitalizing the first letter exports the function, and we can then use it from a different package.
 
 - Miscellaneous info:
     - Put `_` in place of a variable you don't want to use.
     - Errors:
         - To prevent dead code, we need to use every variable / method we have defined, otherwise it'll throw a compile error.
         - Go detects errors at compile time what other programming languages would only detect at runtime.
-
-- Common pre-defined packages:
-    1. `fmt`:
-        - All available [formats](https://pkg.go.dev/fmt).
-        - `Print`: Print the output.
-        - `Println`: Print the output, then move to a new line.
-        - `Printf`: Print the output in a specific format.
-        - `Scan`: Take a value as input.
-    1. `strings`:
-        - Fields(str): Splits the string into a slice, with whitespace as the separator.
-        - Contains(str,char): Checks if string str contains character char.
+- Packages:
+    - Files are organized in Go, into packages.
+    - Multiple files can belong to the same package.
+    - Multiple packages can be defined to organize the code further. The standard practice is to create folders for each user-defined package.
+        - But, in this case, we need to import this package in the main file, since Go does not know it's location.
+        - file1.go: `package temppkg`
+        - main.go: `import "project-name/temppkg"`
+    - If we want to use a function imported from another package, we have to explicitely export the function.
+        - Typical function: `func funcName() { }`
+        - Exported function: `func FuncName() { }`
+        - Capitalizing the first letter exports the function, and we can then use it from a different package.
+        - The same is true for variables.
+    - The default package is usually named `main`.
+    - Put the file in a package: `package name`
+    - Once we have multiple packages in our Go project, we need to tell go to execute all of them when running the main function.
+        - `go run main.go file1.go file2.go`: Run these particular files.
+        - `go run .`: Run all files in the project.
+    - Common pre-defined packages:
+        1. `fmt`:
+            - All available [formats](https://pkg.go.dev/fmt).
+            - `Print`: Print the output.
+            - `Println`: Print the output, then move to a new line.
+            - `Printf`: Print the output in a specific format.
+            - `Scan`: Take a value as input.
+        1. `strings`:
+            - Fields(str): Splits the string into a slice, with whitespace as the separator.
+            - Contains(str,char): Checks if string str contains character char.
 - When printing variables with a string, spaces will get added on both sides of the variable automatically.
 - Variable: 
     ```go
     var temp = 20
+    temp := 20
     var temp int = 20
     var temp int
     ```
@@ -234,10 +255,19 @@ Image taken from [here](https://youtu.be/8jLOx1hD3_o)
     const temp = "20"
     const temp string
     ```
+- Global variables cannot be defined like `temp := 20`
 - Minimal definition: `temp := 20`
     - Define the variable, guess & define it's type.
     - The variable type cannot be changed, but value can.
     - Constants cannot be defined in this way.
+- Variables have 3 scopes: `Local`, `Package` & `Global`.
+    - Local: 
+        - `var temp = 20`
+        - `temp := 20`
+    - Package: 
+        - `var temp = 20`
+    - Global: 
+        - `var Temp = 20` (notice the Capitalized letter)
 - Formatters:
     - %v: value
     - %T: data type
