@@ -276,6 +276,8 @@ Image taken from [here](https://youtu.be/8jLOx1hD3_o)
     - int: Integers
     - uint: Un-signed integer, only acccepts positive numbers and 0.
     - float: Floating point numbers
+    - `userData["userTickets"] = strconv.FormatUint(uint64(userTickets),10)` // Type: UInt64, Base 10 ie Decimel number.
+
 - Data Structures:
     - Arrays (lists with fixed size):
         ```go
@@ -294,6 +296,17 @@ Image taken from [here](https://youtu.be/8jLOx1hD3_o)
         test = append(test, "BBB")
         fmt.Printf(test)      | [AAA BBB]
         fmt.Printf(len(test)) | > 2
+        ```
+    - Maps:
+        ```go
+        var maps = make(map[int]string)
+        // Create a map with string:integer key:value pairs.
+        // Length will dynamically increase as we add more data to it.
+        // Inserting values
+        userData[10] = somestring
+        
+        // Create a list which contains maps. Initial length is 0, and it will dynamically increase (property of [] list) as data gets added.
+        var listWithMapInside = make([]map[string]int,0)
         ```
 - Pointers: A pointer is a special variable that points to the memory address of another variable.
     ```go

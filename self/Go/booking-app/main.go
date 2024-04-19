@@ -3,12 +3,13 @@ import (
     "fmt"
     // Syntax to import the helper package
     "booking-app/helper"
+    "strconv"
 )
 
 // Global variables
 // Slice definition
 var firstNames []string
-var bookings []string
+var bookings = make([]map[string]string,0)
 
 func main() {
     // Variables
@@ -43,7 +44,8 @@ func main() {
         if(isValidName && isValidEmail && isValidNoOfTickets) {
             remainingTickets = remainingTickets - userTickets
 
-            bookTickets(firstName,lastName)
+            bookTickets(firstName,lastName,email,userTickets)
+
             fmt.Printf("\nUser %v %v booked %v tickets.",firstName,lastName,userTickets)
             fmt.Printf("\n%v tickets remain at this point.",remainingTickets)
         } else {
@@ -97,8 +99,15 @@ func takeUserInput(remainingTickets uint) (string,string,string,uint) {
 }
 
 
-func bookTickets(firstName string, lastName string) {
-    // append to a slice
-    bookings = append(bookings,firstName + " " + lastName)
-    firstNames = append(firstNames,firstName)
+func bookTickets(firstName string, lastName string, email string, userTickets uint) {
+    // Putting data in a map
+    var userData = make(map[string]string)
+    userData["firstName"] = firstName
+    userData["lastName"] = lastName
+    userData["email"] = email
+    // format uint to string.
+    // Type: UInt64, Base 10 ie Decimel number.
+    userData["userTickets"] = strconv.FormatUint(uint64(userTickets),10)
+    // appending the map in a Slice
+    bookings = append(bookings,userData)
 }

@@ -9,7 +9,7 @@ git clone https://github.com/sayande717/code.git
 |0| Theory | [Markdown](./notes/Theory.md) | null | null | `In Progress` |
 |1| Languages/C++ | [Markdown](./notes/Languages.md#c++) | [FreeCodeCamp](https://youtu.be/8jLOx1hD3_o) | till 06:33:26 | `In Progress` |
 |2| Languages/Java | null | [FreeCodeCamp](https://www.youtube.com/watch?v=2ZLl8GAk1X4&pp=ygUeZnJlZSBjb2RlIGNhbXAgZnVsbCBkc2EgY291cnNl) | till 10:05:10 | `In Progress` |
-|3| Languages/Go | null | [TechWorld with Nana](https://youtu.be/yyUHQIec83I) | till 02:36:56 | `In Progress` |
+|3| Languages/Go | null | [TechWorld with Nana](https://youtu.be/yyUHQIec83I) | till 02:49:55 | `In Progress` |
 |4| Platform/LeetCode | [Markdown](./platform/LeetCode/README.md) | null | [link](#platform-leetcode)  |`In Progress` |
 |6| Platform/GeeksForGeeks | [Markdown](./platform/GeeksForGeeks/README.md) | null | [link](#platform-geeksforgeeks)  |`In Progress` |
 |-1| Platform/Internship/Pinnacle Labs | null | 1/3 | null |`In Progress` |
