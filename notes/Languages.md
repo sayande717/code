@@ -242,6 +242,8 @@ Image taken from [here](https://youtu.be/8jLOx1hD3_o)
         1. `strings`:
             - Fields(str): Splits the string into a slice, with whitespace as the separator.
             - Contains(str,char): Checks if string str contains character char.
+        1. `strconv`
+            - FormatUint(uint64(25),10): Format the Un-signed integer (10: Decimel type) to a string.
 - When printing variables with a string, spaces will get added on both sides of the variable automatically.
 - Variable: 
     ```go

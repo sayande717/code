@@ -9,6 +9,7 @@ import (
 // Global variables
 // Slice definition
 var firstNames []string
+// Init a list with map inside
 var bookings = make([]map[string]string,0)
 
 func main() {

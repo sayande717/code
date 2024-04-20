@@ -177,12 +177,20 @@ git clone https://github.com/sayande717/code.git
 ## Platform/Internship
 ### Pinnacle Labs
 1. [basic-calculator](./platform/Internship/Pinnacle Labs/basicCalculator.cpp)
+    - Headers: `iostream` `regex` `string` `vector`.
+    - Data Types: `character vector` `integer vector`.
+    - Insert value into vectors, after they match with an expression.
+    - Define a REGEX pattern, iterate over the REGEX pattern .
+    - Type convert to integer, using `static_cast`.
 
-
-
+1. [quiz](./platform/Internship/Pinnacle Labs/quiz.cpp)
+    - Headers: `iostream` `future` `string` `iterator` `chrono` `map` `ctdlib` `vector`.
+    - Data Types: `std::string array[]` `<std::string:std::string> map`.
+    - Define a `<std::string:std::string> map`, iterate over the map, return it's key and value.
+    - Return a `std::string array` from a function, using pointers.
+    - Use `rand()` to generate random integers.
 
 <center>
-
 
 | Question | Intuition | Difficulty | Solution | Time Taken [MM:SS] |
 | :---: | :---: | :---: | :---: | :---: |
