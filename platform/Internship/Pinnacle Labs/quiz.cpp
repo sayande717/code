@@ -1,13 +1,11 @@
 #include <iostream>
-#include <future>
-#include <iterator>
 #include <string>
 #include <chrono>
 #include <map>
 #include <cstdlib>
-#include <vector>
+#include <thread>
 
-std::string* returnQuestion() {
+std::string* returnQuestion(int inIndex) {
 
     static std::string outArr[2]; 
 
@@ -24,15 +22,13 @@ std::string* returnQuestion() {
         {"Who conceptualized the first digital programmable computer?","Charles Babbage"}
     };
     
-    // Select a random question.
-    srand(time(NULL));              // Seed
-    int randomPick = rand() % 10;   // Generate
+
 
     // Retrieve the question from the map.
     int index = 0;
     for(std::map<std::string,std::string>::iterator iter = questionList.begin(); iter != questionList.end();iter++) {
         
-        if(index==randomPick) {
+        if(index==inIndex) {
             outArr[0] = iter->first;
             outArr[1] = iter->second;
         }
@@ -43,9 +39,75 @@ std::string* returnQuestion() {
     return outArr;
 }
 
-int main() {
-
-    std::cout << returnQuestion()[0] << std::endl;
+void welcome() {
+    std::cout << "Welcome to the Quiz Session!" << std::endl;
+    std::cout << "Here, you will be asked 10 questions, with a timeout of 15 seconds per question. Try to answer as many as possible." << std::endl;
+    std::cout << std::endl;
     
+    std::cout << "Rules: " << std::endl;
+    std::cout << "> For each correct answer, you get 4 marks." << std::endl;
+    std::cout << "> For each wrong answer, 1 mark is deducted." << std::endl;
+
+    std::cout << std::endl;
+
+    //std::cout << "" << std::endl;
+}
+
+int main() {
+    int marks {0};
+
+    // Select a random question. [0]
+    srand(time(NULL));              // [0] Seed
+
+    welcome();
+
+    // Setup Timeout [1]
+    // [1] Set the timeout duration in seconds
+    constexpr int timeout = 15;
+    // [1] Get the Quiz Start Time 
+    auto startTime = std::chrono::steady_clock::now();
+
+    for(int i=0;i<10;i++) {
+
+        int randomPick = rand() % 10;   // [0] Generate
+        std::string* question = returnQuestion(randomPick);
+        std::string userInput;
+
+        std::cout << question[0] << std::endl << "> ";
+    
+        // [1] Get user input.
+        std::thread inputThread([&]() {
+        std::getline(std::cin, userInput);
+        });
+
+        while (true) {
+            // [1] Get current time, and amount of seconds elapsed.
+            auto currentTime = std::chrono::steady_clock::now();
+            auto elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(currentTime - startTime).count();
+            
+            // [1] Check if the timeout duration has elapsed
+            if (elapsedTime >= timeout) {
+                // Timeout occurred
+                std::cout << std::endl << "Timeout!" << std::endl;
+                break;
+            }
+
+            if (!userInput.empty()) {
+                // [1] User entered input before the timeout
+                //std::cout << "User input received: " << userInput << std::endl;
+                if(userInput==question[1]) {
+                    marks+=4;
+                } else {
+                    marks-=1;
+                }
+
+            continue;
+            }
+
+            // [1] Sleep for a short duration before checking again
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        }
+    inputThread.join();
+    }
     return 0;
 }
