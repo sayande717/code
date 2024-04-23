@@ -17,7 +17,7 @@ public class initDoublyLinkedList {
 
     private Node head;
     private Node tail;
-    private Node listLength;
+    private int listLength;
 
     public initDoublyLinkedList() {
         this.head = null;
@@ -57,7 +57,86 @@ public class initDoublyLinkedList {
         System.out.println();
     }
 
+    public void insertAtBeginning(int data) {
+        Node newNode = new Node(data);
+        Node current = head;
+
+        if(isEmpty()) {
+            head = newNode;
+            tail = newNode;
+            return;
+        }
+
+        newNode.next = current;
+        current.previous = newNode;
+        head = newNode;
+    }
+    
+    public void insertAtEnd(int data) {
+        Node newNode = new Node(data);
+
+        if(isEmpty()) {
+            head = newNode;
+            tail = newNode;
+            return;
+        }
+
+        Node current = tail;
+        newNode.previous = current;
+        current.next = newNode;
+        tail = newNode;
+    }
+
+    public void deleteFirst() {
+        if(head==null) {
+            return;
+        }
+
+        Node current = head;
+        if(head.next==null) {
+            head = null;
+            tail = null;
+            return;
+        }
+
+        // Break the pointers on both sides.
+        current.next.previous = null;
+        head = current.next;
+        current.next = null;
+    }
+
+    public void deleteLast() {
+
+        if(tail==null) {
+            return;
+        }
+        
+        Node current = tail;
+        
+        if(tail.previous==null) {
+            head = null;
+            tail = null;
+            return;
+        }
+
+        current.previous.next = null;
+        tail=current.previous;
+        current.previous = null;
+    }
+
+
     public static void main(String[] args) {
-            
+        initDoublyLinkedList ob = new initDoublyLinkedList();
+
+        for(int nodeData = 5;nodeData>=0;nodeData--) {
+            ob.insertAtBeginning(nodeData);
+            //ob.insertAtEnd(nodeData);
+        }
+
+        //ob.deleteFirst();
+        ob.deleteLast();
+
+        ob.printListForward();
+        ob.printListBackward();
     }
 }
