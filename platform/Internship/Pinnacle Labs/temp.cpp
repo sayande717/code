@@ -1,10 +1,9 @@
 #include <iostream>
 #include <chrono>
-#include <thread>
 
 int main() {
     const int MAX_TRIES = 10;
-    const int TIMEOUT_SECONDS = 15;
+    const int TIMEOUT_SECONDS = 2;
     
     for (int i = 0; i < MAX_TRIES; ++i) {
         std::cout << "Enter input #" << i+1 << ": ";
@@ -23,7 +22,7 @@ int main() {
         // Check if the timeout has been reached
         if (elapsed_seconds >= TIMEOUT_SECONDS) {
             std::cout << "Timeout reached. Exiting." << std::endl;
-            break;
+            continue;
         }
         
         // Process the input
