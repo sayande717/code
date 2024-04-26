@@ -22,6 +22,8 @@ public class initSearch {
             }
         }
         return -1;
+        // If element is not found, `start` points to the index where it would've been, if it was present in the array.
+        // return start;
     }
 
     public static void main(String[] args) {

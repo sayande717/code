@@ -8,7 +8,7 @@ git clone https://github.com/sayande717/code.git
 |:--- | :---: | :---: | :---: | :---: | :---: |
 |0| Theory | [Markdown](./notes/Theory.md) | null | null | `In Progress` |
 |1| Languages/C++ | [Markdown](./notes/Languages.md#c++) | [FreeCodeCamp](https://youtu.be/8jLOx1hD3_o) | till 06:33:26 | `In Progress` |5|2| Languages/Java | null | [FreeCodeCamp](https://www.youtube.com/watch?v=2ZLl8GAk1X4&pp=ygUeZnJlZSBjb2RlIGNhbXAgZnVsbCBkc2EgY291cnNl) | till 10:05:10 | `In Progress` |
-|2| Languages/Java | null | [FreeCodeCamp](https://www.youtube.com/watch?v=2ZLl8GAk1X4&pp=ygUeZnJlZSBjb2RlIGNhbXAgZnVsbCBkc2EgY291cnNl) | till 10:55:57, 23:26:00-23:51:38 | `In Progress` |
+|2| Languages/Java | null | [FreeCodeCamp](https://www.youtube.com/watch?v=2ZLl8GAk1X4&pp=ygUeZnJlZSBjb2RlIGNhbXAgZnVsbCBkc2EgY291cnNl) | till 10:55:57, 23:26:00-24:51:38 | `In Progress` |
 |4| Platform/LeetCode | [Markdown](./platform/LeetCode/README.md) | null | [link](#platform-leetcode)  |`In Progress` |
 |6| Platform/GeeksForGeeks | [Markdown](./platform/GeeksForGeeks/README.md) | null | [link](#platform-geeksforgeeks)  |`In Progress` |
 |-1| Platform/Internship/Pinnacle Labs | null | 1/3 | null |`In Progress` |
@@ -123,9 +123,11 @@ git clone https://github.com/sayande717/code.git
     - Print the list forwards, and backwards.
     - Insert a node at the beginning and end of the linked list.
     - Delete the first and last node of the linked list.
-1. [initSearch.java](./self/Java/initSearch.java)
+1. [initSearch.java](./self/java/initSearch.java)
     - Linear Search
     - Binary Search
+1. [initSort.java](./self/java/initSort.java)
+    - Bubble Sort
 
 ### Go
 <!-- > [Notes](./notes/Languages.md#go) -->
