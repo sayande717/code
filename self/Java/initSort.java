@@ -6,7 +6,9 @@ class initSort{
         // Consequently, we remember to exclude the part that is sorted.
         // IMPROVEMENT: Add a `isSwapped` variable to the mix. If no swaps have taken place in the current pass, it means the array is already sorted, so break out.
         int pass=1;
-
+        // for inArr.length=5:
+        // > outer loop runs from 0 to 3
+        // > inner loop runs from 4 to 1
         for(int i=0;i<(inArr.length-1);i++) {
             boolean isSwapped=false;
             for(int index=0;index<(inArr.length-1-i);index++) {
