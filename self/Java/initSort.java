@@ -1,5 +1,12 @@
 import java.util.Arrays;
 class initSort{
+
+    public void inPlaceSwap(int inArr, int index1,int index2) {
+            int temp = inArr[index1];
+            inArr[index1] = inArr[index2];
+            inArr[index2] = temp;
+    }
+
     public String bubbleSort(int[] inArr) {
         // Here, at every iteration, we check if the element in the current index is greater than the next one. If it is, we swap the two.
         // After every pass, the end part of the array gets sorted. After the first pass, the last element is sorted, after the 2nd pass, the last 2 elements are sorted, etc.
@@ -29,6 +36,31 @@ class initSort{
             }
         }
         return Arrays.toString(inArr);
+    }
+
+    public String quickSort(int[] inArr, int low, int high) {
+
+        int pivot = 0;
+        while(low <= high) {
+
+            while(arr[low] <= inArr[pivot]) {
+                low++;
+            }
+
+            while(arr[high] > pivot) {
+                high--;
+            }
+
+            inPlaceSwap(inArr,low,high);
+        }
+
+        inPlaceSwap(inArr,pivot,high);
+
+
+        quickSort(inArr,0,low-1);
+        quickSort(inArr,high+1,inArr.length-1);
+
+        return Arrays.toString
     }
 
     public static void main(String[] args) {
