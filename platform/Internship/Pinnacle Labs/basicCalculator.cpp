@@ -64,6 +64,7 @@ int main() {
     }
 
     for (int index=0 ; index<operators.size() ; index++) {
+        std::cout << operators[index] << " " << expressions[index] << std::endl;
         switch(operators[index]) {
             case '%':
                 result = findModulo(result,expressions[index]);
