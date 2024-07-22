@@ -6,7 +6,8 @@ subjectList=("Theory" \
     "Languages/Java" \
     "Languages/Go" \
     "Platform/LeetCode" \
-    "Platform/GeeksForGeeks")
+    "Platform/GeeksForGeeks" \
+    "Platform/College-1")
 
 subjectName=${subjectList[$((subjectID))]}
 
@@ -27,7 +28,7 @@ if [ "$subjectID" -eq 0 ]; then
     git add README.md ./notes/$targetFile
 elif [ "$subjectID" -ge 1 ] && [ "$subjectID" -le 3 ]; then
     git add README.md ./notes/$targetFile ./self/$targetCodeDir/
-elif [ "$subjectID" -ge 4 ] && [ "$subjectID" -le 5 ]; then
+elif [ "$subjectID" -ge 4 ] && [ "$subjectID" -le 6 ]; then
     git add README.md ./notes/$targetFile ./platform/$targetCodeDir/
 fi
 
