@@ -1,3 +1,6 @@
+# General Notes
+- $(\log_{10} 1234+1)$ gives us the number of digits in $1234$.
+
 # C++
 - Install: `pacman -S gcc clang`
 ## Notes
