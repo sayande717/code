@@ -63,6 +63,7 @@ int main() {
     // INPUT
     printf("Enter name: ");
     scanf("%29s",name.arr);
+
     
     init(&name);
     printf("\npush status: %b",push(&name,'a'));
