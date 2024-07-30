@@ -1,80 +1,86 @@
-/* Implementing a stack in C:
-    - A stack is implemented in the form of a structured array.
-    - First, initialize the structure with the array and top.
-*/
-
 #include<stdio.h>
 #include<stdbool.h>
-#include<string.h>
+#define charStackSize 5
 
 struct charStack {
-    char arr[30];
+    char arr[charStackSize];
     int top;
-} name;
+};
 
-// Variable `*stack` points to nameStack, which is of type `struct`, is created.
-void init(struct charStack *nameStack) { // (nameStack *stack)
-    nameStack->top = -1;
+// Stack is full when top is 1 less than stack size.
+bool isFull(struct charStack *stack) {
+    return (stack->top==(charStackSize-1));
 }
 
-bool isEmpty(struct charStack *nameStack) {
-    return (nameStack->top==-1);
+// Stack is empty when top is -1.
+bool isEmpty(struct charStack *stack) {
+    return (stack->top==-1);
 }
 
-bool isFull(struct charStack *nameStack) {
-    return (nameStack->top==sizeof(nameStack->arr)/sizeof(nameStack->arr[0])-1);
+void initStack(struct charStack *stack) {
+    stack->top=-1;
 }
 
-bool push(struct charStack *nameStack,char ch) {
-
-    if(isFull(nameStack)) {
-        printf("Stack overflow");
-        return false;
+void push(struct charStack *stack, char ch) {
+    if(isFull(stack)) {
+        printf("\nStack Overflow");
+        return;
     }
 
-    nameStack->top = nameStack->top + 1;
-    nameStack->arr[nameStack->top] = ch;
-    return true;
-}	 	  	 	   	      	 	    	   	      	    	 	
-
-bool pop(struct charStack *nameStack) {
-    if(isEmpty(nameStack)) {
-        printf("Stack underflow");
-        return false;
-    }
-    
-    nameStack->top = nameStack->top-1;
-    return true;
+    stack->top++;
+    stack->arr[stack->top]=ch;
+    printf("\nElement pushed: %c",ch);
 }
 
-bool display(struct charStack *nameStack) {
-    char *index = nameStack->arr;
-    
-    for(int iter=0;iter<nameStack->top;iter++) {
-        printf("%c",*index);
-        index++;
+void pop(struct charStack *stack) {
+ 
+    if(isEmpty(stack)) {
+        printf("\nStack Underflow");
+        return;
     }
-    return true;
+
+    printf("\nElement popped: %c",stack->arr[stack->top]);
+    stack->top--;
 }
 
+void peek(struct charStack *stack) {
+    if(isEmpty(stack)) {
+        printf("\nStack Underflow");
+        return;
+    }
+
+    printf("\nElement on top: %c",stack->arr[stack->top]);
+}
 
 int main() {
-    
-    // INPUT
+    // structure `name` is created and initialized.
+    struct charStack name;
+    initStack(&name);
+
+    // INPUT: `%5s` means only take 5 elements, reject the rest.
     printf("Enter name: ");
-    scanf("%29s",name.arr);
-
+    scanf("%5s",name.arr);
     
-    init(&name);
-    printf("\npush status: %b",push(&name,'a'));
-    //printf("\npop status: %b",pop(&name));
-    display(&name);
-    
-}	 	  	 	   	      	 	    	   	      	    	 	
+    // Pushing to stack, one character at a time.
+    for(int iter=0;iter<charStackSize;iter++) {
+        push(&name,name.arr[iter]);
+    }
 
-/*
-char a[] = "hello";
-char *index = a;
-printf("%c",*index);
-index++;
-*/
+    // Triggers Overflow
+    push(&name,'e');
+
+    printf("\n");
+
+    // Peeking at the topmost element.
+    peek(&name);
+
+    printf("\n");
+
+    // Popping from stack, one character at a time.
+    for(int iter=0;iter<charStackSize;iter++) {
+        pop(&name);
+    }
+
+    // Triggers Underflow
+    pop(&name);
+}
