@@ -36,6 +36,8 @@ int karatsuba(int n1, int n2) {
 int main() {
     int number1 = 1234;
     int number2 = 5678;
-    printf("Result: %d\n", karatsuba(number1, number2));
+    printf("\nNumber 1: %d",number2);
+    printf("\nNumber 2: %d",number1);
+    printf("\nResult: %d\n", karatsuba(number1, number2));
     return 0;
 }

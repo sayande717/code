@@ -24,7 +24,7 @@
                 </ul>
             <li> Set the number of threads to be executed. </li>
                 <ul>
-                    <li> `omp_set_num_threads(numberOfThreads) ` -> boolean: This routine sets the number of threads to be executed within the parallel scope of the program. </li>
+                    <li> `omp_set_num_threads(numberOfThreads)` -> boolean: This routine sets the number of threads to be executed within the parallel scope of the program. </li>
                 </ul>
             <li> Test `is_parallel` function. </li>
                 <ul>
