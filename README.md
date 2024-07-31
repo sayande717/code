@@ -23,6 +23,13 @@ git clone https://github.com/sayande717/code.git
 ### Data Structures
 > [Notes](https://github.com/sayande717/notes/blob/main/topics/Data-Structures.md) (in notes repository)
 
+### C
+1. [initSinglyLinkedList.c]
+    - Initialize a singly linked list.
+    - Add to the beginning, middle, and end of a linked list.
+    - Delete from the beginning, middle and end of a linked list.
+
+
 ### C++
 > [Notes](./notes/Languages.md#c++)
 
@@ -71,6 +78,8 @@ git clone https://github.com/sayande717/code.git
 1. [vector.cpp](./self/C++/vector.cpp)
     - Initialize vectors.
     - Data Types: Integer, String
+
+
 
 ### Java
 <!-- > [Notes](./notes/Languages.md#java) -->
