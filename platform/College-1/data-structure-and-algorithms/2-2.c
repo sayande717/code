@@ -5,9 +5,9 @@
 struct intStruct {
     int decimel[intStackSize];
     int top;
-}
+};
 
-initStack(struct intStruct *stack) {
+void initStack(struct intStruct *stack) {
     stack->top=-1;
 }
 
@@ -63,6 +63,7 @@ int main() {
 
     // Pop all elements, ie display the result.
     popAll(&convertor);
+    printf("\n");
 
     return 0;
 }
