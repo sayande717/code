@@ -6,7 +6,7 @@
             <li> 1-3.c: Accept your name and reverse it using a `recursive function` (without using a built-in function). Display the reversed name in the main module. </li>
         </ol>
     </li>
-    <li> Data Structure: <strong>stack</strong>:
+    <li> Data Structure: <strong>Stack</strong>:
         <ol type="a">
             <li> 2-1.c: Accept your name and perform stack operations on it. 
                 <ul>
@@ -17,6 +17,10 @@
             <li> 2-3.c: Accept any arithmetic expression and covert to postfix using stack. </li>
         </ol>
     </li>
+    <li> Data Structure: <strong>Queue</strong>
+        <ol type="a">
+            <li> 3-1.c: Perform linear queue operations on the height of N students. </li>
+            <li> 3-2.c: Accept N patients token no and perform queue operations in a circular fashion. </li>
+        </ol>
+    </li>
 </ol>
-
-
