@@ -20,7 +20,12 @@
     <li> Data Structure: <strong>Queue</strong>
         <ol type="a">
             <li> 3-1.c: Perform linear queue operations on the height of N students. </li>
-            <li> 3-2.c: Accept N patients token no and perform queue operations in a circular fashion. </li>
+            <li> 3-2.c: Accept N patients token no and perform circular queue operations.
+                <ul>
+                    <li> `(rear+1)%n` calculates the next position after rear. </li>
+                    <li> In a circular queue, rear can be at any position, due to which we cannot check for the condition `rear==(queue.length-1)`. </li>
+                </ul>
+            </li>
         </ol>
     </li>
 </ol>

@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdbool.h>
 // Update with the value of N
-#define N 20
+#define N 5 
 
 struct circularQueue {
     int arr[N];
@@ -14,6 +14,7 @@ void initQueue(struct circularQueue *queue) {
     queue->rear = -1;
 }
 
+// for isEmpty(), we simply check if both front & rear are -1.
 bool isEmpty(struct circularQueue *queue) {
     if (queue->front == -1 && queue->rear == -1) {
         return true;
@@ -21,7 +22,9 @@ bool isEmpty(struct circularQueue *queue) {
     return false;
 }
 
+// In a circular queue, rear can be at any position, due to which we cannot check for the condition rear==(queue.length-1). Instead, we check if front is right next to rear.
 bool isFull(struct circularQueue *queue) {
+    // (rear+1)%n calculates the next position after rear.
     if ((queue->rear + 1) % N == queue->front) {
         return true;
     }
@@ -54,10 +57,10 @@ void deQueue(struct circularQueue *queue) {
 
 // ERR: -1
 int peek(struct circularQueue *queue) {
-    if (!isEmpty(queue)) {
-        return queue->arr[queue->front];
+    if (isEmpty(queue)) {
+        return -1;
     }
-    return -1;
+    return queue->arr[queue->front];
 }
 
 void traverse(struct circularQueue *queue) {
