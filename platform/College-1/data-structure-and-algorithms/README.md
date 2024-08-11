@@ -23,6 +23,7 @@
             <li> 3-2.c: Accept N patients token no and perform circular queue operations.
                 <ul>
                     <li> `(rear+1)%n` calculates the next position after rear. </li>
+                    <li> `(rear+(n-1))%n` calculates the previous position before rear. </li>
                     <li> In a circular queue, rear can be at any position, due to which we cannot check for the condition `rear==(queue.length-1)`. </li>
                 </ul>
             </li>

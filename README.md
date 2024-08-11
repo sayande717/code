@@ -3,6 +3,40 @@ To clone this repository, run:
 ```bash
 git clone https://github.com/sayande717/code.git
 ```
+
+## TIL (Today I Learnt):
+- `(current + 1) % n` leads us to the next index, after current element.
+- `(current + (n-1)) % n` leads us to the previous index, before current element.
+- Language: `C`
+    - `rand()` i.e. generate random number within num: rand()%(num+1)
+    - `rand()` i.e. generate random number between low and high: rand()%(high-low-1)+low
+    - To calculate Execution time for a section of code:
+        ```c
+        #include<time.h>
+        int main() {
+            clock_t start, end;
+            double time_used;
+
+            start = clock();
+            // Code Section
+            end = clock();
+            
+            time_used = ((double)(end-start))/CLOCKS_PER_SEC;
+            printf("Time Taken: %f",time_used);
+        }
+        ```
+- To multiply 2 matrices:
+    ```text
+    for(iter0 = 0 to number of rows in Matrix 1, iter0++) {
+        for(iter1 = 0 to number of columns in Matrix 2, iter1++) {
+            for(iter2 = 0 to number of rows in Matrix 2, iter2++) {
+                // outArr[i][k] += inArr[i][k] * inArr[k][j]
+                outArr[iter0][iter1] = outArr[iter0][iter1] + (inArr1[iter0][iter2] * inArr2[iter2][iter1]);
+            }
+        }
+    }
+    ```
+
 ## Notes
 |ID| **Name** | **Notes** | **References** | **Progress** | **Status** |
 |:--- | :---: | :---: | :---: | :---: | :---: |
@@ -28,7 +62,6 @@ git clone https://github.com/sayande717/code.git
     - Initialize a singly linked list.
     - Add to the beginning, middle, and end of a linked list.
     - Delete from the beginning, middle and end of a linked list.
-
 
 ### C++
 > [Notes](./notes/Languages.md#c++)
@@ -78,8 +111,6 @@ git clone https://github.com/sayande717/code.git
 1. [vector.cpp](./self/C++/vector.cpp)
     - Initialize vectors.
     - Data Types: Integer, String
-
-
 
 ### Java
 <!-- > [Notes](./notes/Languages.md#java) -->

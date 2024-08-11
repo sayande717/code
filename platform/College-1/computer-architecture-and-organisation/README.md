@@ -36,4 +36,14 @@
                 </ul>          
         </ol>
     </li>
+    <li> Write an OpenMP Program to:
+        <ol type="a">
+            <li> To perform the transpose of the matrix using parallel constructs and compare parallel and serial time. </li>
+                <ul>
+                    <li> If input matrix is m x n, the resultant matrix becomes n x m. </li>
+                </ul> 
+            <li> To perform the addition of two matrix using parallel constructs and compare parallel and serial time. </li>
+            <li> To perform the multiplication of two matrix using parallel constructs and compare parallel and serial time. </li>
+        </ol>
+    </li>
 </ol>
