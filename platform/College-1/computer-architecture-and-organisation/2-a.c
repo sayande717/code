@@ -20,7 +20,7 @@ int **initArr(int rows, int cols) {
     return newArr;
 }
 
-// for freeing memory, we need the array itself, and free all arrays created accross it's rows.
+//  For freeing memory, we need the array itself, and free all arrays created accross it's rows.
 void freeArrMEM(int **inArr, int rows) {
     for(int iter=0;iter<rows;iter++) {
         free(inArr[iter]);
@@ -80,6 +80,8 @@ int main() {
     outArr = transposeArr(inArr,outArr,outRows,outCols,1); // 1: Parallel
     end = omp_get_wtime();
     printf("\nParallel Execution time: %f", (end-start));
+
+    printf("\n");
 
     freeArrMEM(inArr,inRows);
     freeArrMEM(outArr,outRows);

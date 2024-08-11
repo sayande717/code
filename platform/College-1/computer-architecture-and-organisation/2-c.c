@@ -89,6 +89,8 @@ int main() {
     end = omp_get_wtime();
     printf("\nParallel Execution time: %f", (end-start));
 
+    printf("\n");
+
     freeArrMEM(inArr0,inRows0);
     freeArrMEM(inArr1,inRows1);
     freeArrMEM(outArr,outRows);
