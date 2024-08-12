@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdbool.h>
 // Update with the value of N
-#define N 20
+#define N 5
 
 struct linearQueue {
     int arr[N];
@@ -87,5 +87,6 @@ int main() {
    deQueue(&heightQueue);
    printf("\n After dequeueing 2 times, heights in queue: ");
    traverse(&heightQueue);
+   printf("\n");
    return 0;
 }

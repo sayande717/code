@@ -32,5 +32,6 @@
     <li> Data Structure: <strong> Linked List </strong>
     <ol type="a">
             <li> 3-1.c: Create a linked list to accept n students name and reg.no. Display the details  of all students </li>
+            <li> 3-2.c: Perform the stack operations on a single linked list of n employees such as employee no and salary. If salary is >3000 then pop from the linked stack. </li>
 
 </ol>

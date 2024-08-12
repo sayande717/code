@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdbool.h>
 // Update with the value of N
-#define N 5 
+#define N 20
 
 struct circularQueue {
     int arr[N];
@@ -99,5 +99,6 @@ int main() {
    deQueue(&patientQueue);
    printf("\n After dequeueing 2 times, Patient IDs: ");
    traverse(&patientQueue);
+   printf("\n");
    return 0;
 }
