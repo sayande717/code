@@ -1,5 +1,5 @@
 <ol type="1">
-    <li> Data Structure: <strong>array</strong>:
+    <li> Data Structure: <strong> Array </strong>:
         <ol type="a">
             <li> 1-1.c: Accept the age of `n` employees and search for a particular age using `Sentinel search`. </li>
             <li> 1-2.c: In an array, accept age of `n` students. Only display those numbers that are perfect. A perfect number is equal to the sum of its proper divisors. </li>
@@ -19,8 +19,8 @@
     </li>
     <li> Data Structure: <strong>Queue</strong>
         <ol type="a">
-            <li> 3-1.c: Perform linear queue operations on the height of N students. </li>
-            <li> 3-2.c: Accept N patients token no and perform circular queue operations.
+            <li> 2-4.c: Perform linear queue operations on the height of N students. </li>
+            <li> 2-5.c: Accept N patients token no and perform circular queue operations.
                 <ul>
                     <li> `(rear+1)%n` calculates the next position after rear. </li>
                     <li> `(rear+(n-1))%n` calculates the previous position before rear. </li>
@@ -29,4 +29,8 @@
             </li>
         </ol>
     </li>
+    <li> Data Structure: <strong> Linked List </strong>
+    <ol type="a">
+            <li> 3-1.c: Create a linked list to accept n students name and reg.no. Display the details  of all students </li>
+
 </ol>
