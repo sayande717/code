@@ -1,86 +1,85 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 struct stackNode {
-    char *name;
-    int sal;
-    struct Node *next;
+    int empno;
+    int salary;
+    int top;
+    struct stackNode *next;
 };
 
-void input(char *inName, int inSal) {
-    printf("\nEnter Name: "); scanf("%s",inName);
-    printf("Enter Registration No: "); scanf("%d",inSal);
+void push(struct stackNode **head, int inEmpno, int inSalary) {
+    struct stackNode *newNode = (struct stackNode *)malloc(sizeof(struct stackNode));
+    newNode->empno=inEmpno;
+    newNode->salary=inSalary;
+    newNode->next=NULL;
+    if(*head==NULL) {
+        *head = newNode;
+        (*head)->top=0;
+        return;
+    }
+    newNode->top=(*head)->top+1;
+    struct stackNode *currentNode = *head;
+    while(currentNode->next!=NULL) {
+        currentNode=currentNode->next;
+    }
+    currentNode->next=newNode;
 }
 
-void push(struct stackNode **head, char *inName, int inSal) {
-    if(inSal > 3000) {
+void checkAndPop(struct stackNode **head) {
+    if(*head==NULL) {
+        printf("Stack underflow.");
+        return;
+    } else if((*head)->next==NULL) {
+        if((*head)->salary > 3000) {
+            free(*head);
+            *head = NULL;
+        }
         return;
     }
-    
-    struct stackNode *currentNode = head;
-    struct stackNode *newNode = (struct Node *)malloc(sizeof(struct Node));
-    newNode->name=inName;
-    newNode->reg=inSal;
-    newNode->next=NULL;
-    
-    
-    if(currentNode==NULL) {
-        currentNode = newNode;
-        return;
-    }
-    
-    while(currentNode->next!=NULL) {
-        currentNode = currentNode->next;
-    }
-    
-    currentNode->next = newNode;
-}	 	  	 	   	      	 	    	   	      	    	 	
 
-void traverse(struct Node *head) {
-    struct Node *currentNode = head;
-    
+    struct stackNode *prevNode = *head;
+    struct stackNode *currentNode = (*head)->next;
     while(currentNode!=NULL) {
-        printf("Name: %s, Reg: %s || ",currentNode->name,currentNode->reg);
-        currentNode = currentNode->next;
+        if(currentNode->salary>3000) {
+            struct stackNode *temp = currentNode;
+            prevNode->next = currentNode->next;
+            currentNode = currentNode->next;
+            free(temp);
+        } else {
+            prevNode=currentNode;
+            currentNode=currentNode->next;
+        }
+    }
+}
+
+void traverse(struct stackNode *head) {
+    if(head==NULL) {
+        printf("Stack underflow.");
+        return;
+    }
+    struct stackNode *currentNode = head;
+    while(currentNode!=NULL) {
+        printf("\nEmployee No: %d, Salary: %d",currentNode->empno,currentNode->salary);
+        currentNode=currentNode->next;
     }
     printf("\n");
 }
 
-void pop(struct stackNode *head) {
-    struct Node *prevNode = *head;
-    if(*prevNode->next==NULL) {
-        prevNode==NULL;
-        return;
-    }
-    struct stackNode *currentNode = prevNode->next;
-
-    while(currentNode->next!=null) {
-        previousNode = currentNode;
-        currentNode = currentNode->next;
-    }
-    previousNode->next = NULL;
-}
-
 int main() {
-    int n;
-    char *name = (char *)malloc(sizeof(char));
-    int sal;
-    struct stackNode *head;
-    printf("Enter n: "); scanf("%d",&n);
-    
-    // INPUT
-    for(int iter=0;iter<n;iter++) {
-        input(name,sal);
-        // Salary is checked while pushing to stack.
-        push(&head,name,sal);
-    }	 	  	 	   	      	 	    	   	      	    	 	
+    char choice='y';
+    int inEmpno;
+    int inSalary;
+    struct stackNode *head = NULL;
+    while(choice=='y') {
+        printf("Enter Employee No: "); scanf("%d",&inEmpno);
+        printf("Enter salary: "); scanf("%d",&inSalary);
+        push(&head,inEmpno,inSalary);
+        printf("Enter 'y' to enter more values: "); scanf(" %c",&choice);
+    }
 
-    
-    // OUTPUT
-    traverse(head);
-    
-    // Demonstrating pop
-    pop(&head);
-    
-    free(name);
+    printf("Original stack: "); traverse(head);
+    checkAndPop(&head);
+    printf("Stack after popping invalid elements: "); traverse(head);
+    return 0;
 }

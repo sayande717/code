@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 
 struct Node {
     char *name;
@@ -15,12 +16,15 @@ void input(char *inName, char *inReg) {
 void addToEnd(struct Node **head, char *inName, char *inReg) {
     struct Node *currentNode = *head;
     struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
-    newNode->name=inName;
-    newNode->reg=inReg;
-    newNode->next=NULL;
+    // To copy a string into another, first create a memory space for the new variable, then copy the string to it.
+    newNode->name = (char *)malloc(strlen(inName) + 1);
+    strcpy(newNode->name, inName);
     
+    newNode->reg = (char *)malloc(strlen(inReg) + 1);
+    strcpy(newNode->reg, inReg);
+    newNode->next=NULL;
     if(currentNode==NULL) {
-        currentNode = newNode;
+        *head = newNode;
         return;
     }
     
@@ -33,8 +37,7 @@ void addToEnd(struct Node **head, char *inName, char *inReg) {
 
 void traverse(struct Node *head) {
     struct Node *currentNode = head;
-    
-    while(currentNode!=NULL) {	 	  	 	   	      	 	    	   	      	    	 	
+    while(currentNode!=NULL) {
         printf("Name: %s, Reg: %s || ",currentNode->name,currentNode->reg);
         currentNode = currentNode->next;
     }
@@ -42,14 +45,14 @@ void traverse(struct Node *head) {
 }
 
 int main() {
-    int n;
+    char choice='y';
     char *name = (char *)malloc(sizeof(char));; 
     char *reg = (char *)malloc(sizeof(char));;
     struct Node *head;
-    printf("Enter n: "); scanf("%d",&n);
-    for(int iter=0;iter<n;iter++) {
+    while(choice=='y') {
         input(name,reg);
         addToEnd(&head,name,reg);
+        printf("Enter 'y' to enter more data: "); scanf(" %c",&choice);
     }
     
     traverse(head);
