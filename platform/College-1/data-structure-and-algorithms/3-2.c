@@ -4,7 +4,6 @@
 struct stackNode {
     int empno;
     int salary;
-    int top;
     struct stackNode *next;
 };
 
@@ -15,10 +14,8 @@ void push(struct stackNode **head, int inEmpno, int inSalary) {
     newNode->next=NULL;
     if(*head==NULL) {
         *head = newNode;
-        (*head)->top=0;
         return;
     }
-    newNode->top=(*head)->top+1;
     struct stackNode *currentNode = *head;
     while(currentNode->next!=NULL) {
         currentNode=currentNode->next;

@@ -36,9 +36,10 @@ void addToEnd(struct Node **head, char *inName, char *inReg) {
 }
 
 void traverse(struct Node *head) {
+    printf("\nTraversing: \n");
     struct Node *currentNode = head;
     while(currentNode!=NULL) {
-        printf("Name: %s, Reg: %s || ",currentNode->name,currentNode->reg);
+        printf("Name: %s, Reg: %s \n",currentNode->name,currentNode->reg);
         currentNode = currentNode->next;
     }
     printf("\n");
