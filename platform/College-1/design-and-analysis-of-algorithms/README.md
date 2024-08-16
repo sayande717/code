@@ -42,12 +42,13 @@
                 <td>80</td>
             </tr>
         </table>
-    <li> 2-1.c: Program for Karatsuba Multiplication Algorithm.
+    <li> 2-1.c: Develop a Python program that use the divide and conquer technique to address the Domino Tiling Problem. Outline the process used in the divide and conquer approach for this particular problem. </li>
+    <li> 2-2.c: Program for Karatsuba Multiplication Algorithm.
         <ol type="a">
             <li> Use the `-lm` flag for compiling code having mathematical operations like pow(), log10(), etc. </li>
             <li> If either of the numbers is single-digit, perform a simple multiplication. Otherwise, use the algorithm.
             <li> $(\log_{10} 1234+1)$ gives us the number of digits in $1234$. </li>
         </ol>
     </li>
-    <li> 2-2.c: Program for Strassen's Multiplication Algorithm.
+    <li> 2-3.c: Program for Strassen's Multiplication Algorithm. </li>
 </ol>
