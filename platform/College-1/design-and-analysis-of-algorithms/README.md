@@ -42,7 +42,7 @@
             </tr>
         </table>
     <li> 2-1.py: Develop a Python program that use the divide and conquer technique to address the Domino Tiling Problem. Outline the process used in the divide and conquer approach for this particular problem. </li>
-    <li> 2-2.py: Program for Karatsuba Multiplication Algorithm.
+    <li> 2-2.py: Write a Python program to multiply two large integers using Karatsuba's fast multiplication method. Your implementation should demonstrate the efficiency of Karatsuba's algorithm compared to the standard multiplication method for large numbers.
         <ol type="a">
             <li> Use the `-lm` flag for compiling code having mathematical operations like pow(), log10(), etc. </li>
             <li> If either of the numbers is single-digit, perform a simple multiplication. Otherwise, use the algorithm.

@@ -13,4 +13,4 @@ rows = int(input("Enter the number of rows: "))
 result = dominoTiling(rows)
 
 # OUTPUT
-print(f"Number of ways to tile {rows} is {result}.")
+print(f"Number of ways to tile {rows} rows is {result}.")
