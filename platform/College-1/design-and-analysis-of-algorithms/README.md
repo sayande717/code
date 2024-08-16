@@ -1,4 +1,3 @@
-
 <ol type="1">
     <li> 1-1.c: You are given an undirected graph. The task is to assign colors to each vertex of the graph such that no two adjacent vertices share the same color, using the minimum number of colors. Implement the greedy coloring algorithm to solve this problem.
         <br><img src="./media/q1-1-1.png" alt="Graph" height="400px" />
@@ -42,13 +41,20 @@
                 <td>80</td>
             </tr>
         </table>
-    <li> 2-1.c: Develop a Python program that use the divide and conquer technique to address the Domino Tiling Problem. Outline the process used in the divide and conquer approach for this particular problem. </li>
-    <li> 2-2.c: Program for Karatsuba Multiplication Algorithm.
+    <li> 2-1.py: Develop a Python program that use the divide and conquer technique to address the Domino Tiling Problem. Outline the process used in the divide and conquer approach for this particular problem. </li>
+    <li> 2-2.py: Program for Karatsuba Multiplication Algorithm.
         <ol type="a">
             <li> Use the `-lm` flag for compiling code having mathematical operations like pow(), log10(), etc. </li>
             <li> If either of the numbers is single-digit, perform a simple multiplication. Otherwise, use the algorithm.
             <li> $(\log_{10} 1234+1)$ gives us the number of digits in $1234$. </li>
         </ol>
     </li>
-    <li> 2-3.c: Program for Strassen's Multiplication Algorithm. </li>
+    <li> 2-3.py: Write a Python program to multiply two 4×4 matrices using Strassen's algorithm. Your program should be efficient and demonstrate the recursive nature of the algorithm. </li>
+    <li> 2-4.py: You are given a sequence of matrices, and you need to determine the most efficient way to multiply these matrices together. Write a Python program that computes the minimum number of scalar multiplications needed to multiply the given chain of matrices using dynamic Programming. </li>
+    <li> 2-5.py: You are given two sequences, and your task is to find the length of the longest subsequence that appears in both sequences. Write a Python program to compute the LCS and also to retrieve the actual subsequence.
+        <ul>
+            <li> Sequence names1 = ["Sachin","Virat","Dhoni","Rohit","Jadeja"] </li>
+            <li> Sequence names2 = ["Virat","Sachin","Jadeja","Dhoni","Rohit"] </li>
+        </ul>
+    </li>
 </ol>
