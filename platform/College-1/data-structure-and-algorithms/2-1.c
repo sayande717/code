@@ -1,7 +1,6 @@
 #include<stdio.h>
 #include<stdbool.h>
 #define charStackSize 5
-
 struct charStack {
     char arr[charStackSize];
     int top;
