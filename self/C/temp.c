@@ -1,36 +1,12 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-void swapByValue(int inVar1, int inVar2) {
-    int temp = inVar1;
-    inVar1 = inVar2;
-    inVar2 = temp;
-}
-
-void swapByReference(int *inVar1, int *inVar2) {
-    int temp = *inVar1;
-    *inVar1 = *inVar2;
-    *inVar2 = temp;
-}
+#include<stdio.h>
 
 int main() {
-    int num1 = 5;
-    int num2 = 20;
+    int a[3][4] = {{10,2,3,4},
+                   {5,6,7,8},
+                   {9,10,11,12}
+                  };
 
-    int *x = &num1;
-    int *y = &num2;
-    
-    // int *x = &num1;
-    // printf("Memory address of num1: %p\n", &num1);
-    // printf("Memory address of x: %p\n", x);
-    
-    printf("Before swapping: num1 = %d, num2 = %d\n", num1, num2);
-
-    swapByValue(num1, num2);
-    printf("After swapping by value: num1 = %d, num2 = %d\n", num1, num2);
-
-    swapByReference(&num1,&num2);
-    printf("After swapping by reference: num1 = %d, num2 = %d\n", num1, num2);
-
+    printf("%p \n %u \n %u \n %u",a[0],a[0]+1,*(a[1]),*(a[0]+1)+1);
+     // is a and a[0] pointing to same thing?
     return 0;
 }

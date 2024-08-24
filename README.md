@@ -58,10 +58,24 @@ git clone https://github.com/sayande717/code.git
 > [Notes](https://github.com/sayande717/notes/blob/main/topics/Data-Structures.md) (in notes repository)
 
 ### C
-1. [initSinglyLinkedList.c]
+1. [initSinglyLinkedList.c](./self/C/initSinglyLinkedList.c)
     - Initialize a singly linked list.
     - Add to the beginning, middle, and end of a linked list.
     - Delete from the beginning, middle and end of a linked list.
+1. [linearSentinelSearch.c](./self/C/linearSentinelSearch.c)
+    - Perform a Linear Sentinel Search on 10 elements.
+    - In traditional Linear Search, we have to reach if we've reached the end of the array after each iteration. This is an optimised version of Linear Search, where we don't have to make that check after every iteration.
+    - Sentinel search is an optimized version of linear search where a sentinel element is added at the end of the array, eliminating the need for an explicit check for the end of the array after each iteration.
+2. [interpolationSearch.c](./self/C/interpolationSearch.c)
+    - Perform a Interpolation Search on 10 elements.
+        - Formula: 
+            $$ \text{index} = \text{lo} + \left( \frac{(x - \text{arr[lo]}) \times (\text{hi} - \text{lo})}{\text{arr[hi]} - \text{arr[lo]}} \right) $$
+        - We use the formula to estimate the position of the target value.
+        - If `array[index]<x`, we set pointer `low` to `pos+1`.
+        - If `array[index]>x`, we set pointer `high` to `pos-1`.
+        - If `array[index]=x`, we return `pos`.
+3. [exponentialSearch.c](./self/C/exponentialSearch.c)
+    - Perform Exponential Search on 10 elements.
 
 ### C++
 > [Notes](./notes/Languages.md#c++)
