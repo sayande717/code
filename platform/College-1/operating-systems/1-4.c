@@ -215,8 +215,8 @@ int main() {
 
         // SRTF / SJF 
         case 2:
-            printf("\n SRTF (Preemptive): "); SRTFNP(procArr,maxProcesses);
-            printf("\n SJF (Non-Preemptive: "); SJFP(procArr,maxProcesses);
+            printf("\n SRTF (Non-Preemptive): "); SRTFNP(procArr,maxProcesses);
+            printf("\n SJF (Preemptive: )"); SJFP(procArr,maxProcesses);
             break;
 
         // Priority
