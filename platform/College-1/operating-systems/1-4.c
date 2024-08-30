@@ -30,13 +30,9 @@ void fillProcessInfo(struct process *stack, int iter) {
 }
 
 void printProcDetails(struct process *proc, int maxProcesses) {
-    printf("\nProcess ID\tBurst Time\tArrival Time");
-    for (int i = 0; i < maxProcesses; i++) {
-        printf("\n%d\t\t%d\t\t%d", proc[i].PID, proc[i].burstTime, proc[i].arrivalTime);
-    }
-
     printf("\nAverage Turnaround Time: %.2f",proc[maxProcesses-1].avgTurnaroundTime);
     printf("\nAverage Waiting Time: %.2f",proc[maxProcesses-1].avgWaitingTime);
+    printf("\n");
 }
 
 void FCFSNP(struct process *proc, int maxProcesses) {
@@ -57,10 +53,9 @@ void FCFSNP(struct process *proc, int maxProcesses) {
     printProcDetails(proc, maxProcesses);
 }
 
-void SJFNP(struct process *proc, int maxProcesses) {
+void SRTFNP(struct process *proc, int maxProcesses) {
     sort(proc, maxProcesses);
 
-    // Calculate completion time, turnaround time, and waiting time
     int completionTime = proc[0].arrivalTime + proc[0].burstTime;
     proc[0].avgTurnaroundTime = completionTime - proc[0].arrivalTime;
     proc[0].avgWaitingTime = proc[0].avgTurnaroundTime - proc[0].burstTime;
@@ -115,7 +110,6 @@ void SJFP(struct process *proc, int maxProcesses) {
 void PriorityNP(struct process *proc, int maxProcesses) {
     sort(proc, maxProcesses);
 
-    // Calculate completion time, turnaround time, and waiting time
     int completionTime = proc[0].arrivalTime + proc[0].burstTime;
     proc[0].avgTurnaroundTime = completionTime - proc[0].arrivalTime;
     proc[0].avgWaitingTime = proc[0].avgTurnaroundTime - proc[0].burstTime;
@@ -192,11 +186,10 @@ void RoundRobinP(struct process *proc, int maxProcesses, int timeQuantum) {
 }
 
 int main() {
-    int maxProcesses;
+    int maxProcesses, timeQuantum;
     printf("Enter the number of processes: ");
     scanf("%d",&maxProcesses);
 
-    // Structure array of processes
     struct process procArr[maxProcesses];
 
     // INPUT: Process info
@@ -211,54 +204,57 @@ int main() {
     // INPUT: Algorithm Selection
     // choice0 = {FCFS,SJF,Priority,Round Robin}
     // choice1 = {1: Non-Preemptive, 2: Preemptive}, only for SJF, Priority.
-    int choice0,choice1;
-    printf("\nOptions: ");
-    printf("\n1. FCFS (First Come First Serve): ");
-    printf("\n2. SJF (Shortest Job First): ");
-    printf("\n3. Priority: ");
-    printf("\n4. Round Robin: ");
-    printf("\nEnter an Input: ");
-    scanf("%d",&choice0);
+    char choice0 = 'y';
+    int choice1,choice2;
 
-    switch(choice0) {
-        // FCFS (First Come First Serve)
-        case 1:
-            choice1=1;
-            FCFSNP(procArr,maxProcesses);
-            break;
+    while(choice0 == 'y') {
+        printf("\nOptions: ");
+        printf("\n1. FCFS (First Come First Serve): ");
+        printf("\n2. SRTF (Shortest Remaining Time First) / SJF (Shortest Job First): ");
+        printf("\n3. Priority: ");
+        printf("\n4. Round Robin: ");
+        printf("\nEnter an Input: "); scanf("%d",&choice1);
 
-        // SJF (Shortest Job First)
-        case 2:
-            // INPUT: choice 1
-            printf("Input 1 for Preemptive, 2 for Non-Preemptive: ");
-            scanf("%d",&choice1);
-            if(choice1==1) {
-                SJFP(procArr,maxProcesses);
-            } else {
-                SJFNP(procArr,maxProcesses);
+        switch(choice1) {
+            // FCFS
+            case 1:
+                choice2=1;
+                FCFSNP(procArr,maxProcesses);
+                break;
+
+            // SRTF / SJF 
+            case 2:
+                // INPUT: choice 2
+                printf("Input 1 for Preemptive, 2 for Non-Preemptive: ");
+                scanf("%d",&choice2);
+                if(choice2==1) {
+                    SRTFNP(procArr,maxProcesses);
+                } else {
+                    SJFP(procArr,maxProcesses);
+                }
+                break;
+
+            // Priority
+            case 3:
+                // INPUT: choice 2
+                printf("Input 1 for Preemptive, 2 for Non-Preemptive: ");
+                scanf("%d",&choice2);
+                if(choice2==1) {
+                    PriorityP(procArr,maxProcesses);
+                } else {
+                    PriorityNP(procArr,maxProcesses);
+                }
+                break;
+
+            // Round Robin
+            case 4:
+                printf("Enter the time quantum: ");
+                scanf("%d",&timeQuantum);
+                choice2=1;
+                RoundRobinP(procArr,maxProcesses,timeQuantum);
+                break;
             }
-            break;
-
-        // Priority
-        case 3:
-            // INPUT: choice 1
-            printf("Input 1 for Preemptive, 2 for Non-Preemptive: ");
-            scanf("%d",&choice1);
-            if(choice1==1) {
-                PriorityP(procArr,maxProcesses);
-            } else {
-                PriorityNP(procArr,maxProcesses);
-            }
-            break;
-
-        // Round Robin
-        case 4:
-            int timeQuantum;
-            printf("Enter the time quantum: ");
-            scanf("%d",&timeQuantum);
-            choice1=1;
-            RoundRobinP(procArr,maxProcesses,timeQuantum);
-            break;
-    }
+        printf("Enter 'y' to run more algorithms: "); scanf(" %c",&choice0);
+        }
     return 0;
 }

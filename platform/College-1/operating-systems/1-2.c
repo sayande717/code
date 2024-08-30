@@ -37,6 +37,7 @@ void createChildProcess() {
     } else {
         printf("\n Child process, PID: %d",forkOutput);
     }
+    printf("\n");
 }
 
 void memoryManagement() {
@@ -60,6 +61,7 @@ void memoryManagement() {
     // De-allocate memory
     free(intArr);
     printf("\n Memory deallocated successfully.");
+    printf("\n");
     exit(EXIT_SUCCESS);
 }
 

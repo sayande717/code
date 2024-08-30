@@ -5,11 +5,17 @@
             <li> `fork()` returns Child process ID in the forked process, and `0` in the parent process. </li>
         </ol>
     </li>
-    <li> 1-3.c: File system calls in C. </li>
+    <li> 1-3.c: Write a program to:
+        <ol type="a">
+            <li> Create parent & child process and print their id. </li>
+            <li> Create a zombie process. </li>
+            <li> Create an orphan process. </li>
+        </ol>
+    </li>
     <li> 1-4.c: CPU Scheduling Algorithms:
         <ol type="a">
             <li> FCFS (First Come First Serve) | Non-Preemptive </li>
-            <li> SJF (Shortest Job First) | Preemptive & Non-Preemptive </li>
+            <li> SJF (Shortest Job First) & SRTF (Shortest Remaining Time First) | Preemptive & Non-Preemptive </li>
             <li> Priority | Preemptive & Non-Preemptive </li>
             <li> Round Robin | Non-Preemptive </li>
         </ol>

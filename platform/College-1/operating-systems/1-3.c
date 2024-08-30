@@ -14,6 +14,7 @@ void createNormalProcess() {
         fprintf(stderr, "fork() failed.");
         exit(EXIT_FAILURE);
     }
+    printf("\n");
 }
 
 void createZombieProcess() {
@@ -34,6 +35,7 @@ void createZombieProcess() {
         perror("fork");
         exit(EXIT_FAILURE);
     }
+    printf("\n");
 }
 
 void createOrphanProcess() {
@@ -44,7 +46,7 @@ void createOrphanProcess() {
         printf("\n Parent process PID: %d", getpid());
         printf("\n Child process PID: %d", pid);
         sleep(2); // Sleep to allow the child to run
-        printf("\n Parent process exiting...");
+        printf("\n Parent process exiting...\n");
         exit(0); // Parent exits, making the child an orphan
     } else if (pid == 0) {
         // Child process
@@ -55,6 +57,7 @@ void createOrphanProcess() {
         perror("fork");
         exit(EXIT_FAILURE);
     }
+    printf("\n");
 }
 
 int main() {
