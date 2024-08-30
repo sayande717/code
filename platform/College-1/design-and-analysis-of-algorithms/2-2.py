@@ -28,7 +28,7 @@ def karatsuba(n1, n2):
     z2 = karatsuba(a + b, c + d) - z1 - z0
 
     # Calculating result
-    return z1 * 10 ** (2 * size2) + z2 * 10 ** size2 + z0
+    return z1 * 10 ** size1 + z2 * 10 ** size2 + z0
 
 def multiply(n1,n2):
     return (n1*n2)

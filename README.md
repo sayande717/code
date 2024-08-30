@@ -7,7 +7,11 @@ git clone https://github.com/sayande717/code.git
 ## TIL (Today I Learnt):
 - `(current + 1) % n` leads us to the next index, after current element.
 - `(current + (n-1)) % n` leads us to the previous index, before current element.
-- Language: `C`
+- Language: `C`:
+    - `EXIT_SUCCESS` means 0 and `EXIT_FAILURE` means 1 in general context, in a program. They are a part of `<stdlib.h>`.
+    - `exit(EXIT_FAILURE)` and `exit(EXIT_SUCCESS)` is used to indicate failed and succesful program termination.
+    - `return EXIT_SUCCESS` and `return EXIT_FAILURE` can also be used in int main() { ... } or even in other programs.
+    - `srand(time(NULL))`: Seeds the random number generator with the current time in seconds since EPOCH.
     - `rand()` i.e. generate random number within num: rand()%(num+1)
     - `rand()` i.e. generate random number between low and high: rand()%(high-low-1)+low
     - To calculate Execution time for a section of code:
