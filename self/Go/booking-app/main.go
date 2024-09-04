@@ -99,7 +99,6 @@ func takeUserInput(remainingTickets uint) (string,string,string,uint) {
     return fname,lname,email,userTickets
 }
 
-
 func bookTickets(firstName string, lastName string, email string, userTickets uint) {
     // Putting data in a map
     var userData = make(map[string]string)

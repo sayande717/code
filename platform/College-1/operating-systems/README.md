@@ -19,4 +19,13 @@
             <li> Priority | Preemptive & Non-Preemptive </li>
             <li> Round Robin | Non-Preemptive </li>
         </ol>
+    </li>
+    <li> 2-1.c: Process Synchronisation:
+        <ol type="a">
+            <li> Producer Consumer problem using Semaphore </li>
+            <li> Reader Writer problem using Semaphore </li>
+            <li> Dining Philosopher problem using Monitor </li>
+        </ol>
+    </li>
+    <li> 2-2.c: Implement the Banker's Algorithm for Deadlock Avoidance. </li>
 </ol>

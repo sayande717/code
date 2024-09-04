@@ -44,6 +44,7 @@
                 </ul> 
             <li> To perform the addition of two matrix using parallel constructs and compare parallel and serial time. </li>
             <li> To perform the multiplication of two matrix using parallel constructs and compare parallel and serial time. </li>
+            <li> Parallelize the Jacobi Method. Analyze the speedup and efficiency of the parallelized code. Vary the size of your A matrix and measure the runtime with one thread. For each matrix size, change the number of threads from 2,4,8, ... and plot the speedup versus the number of threads. Compute the efficiency. Explain whether or not the scaling behavior is as expected. </li>
         </ol>
     </li>
 </ol>

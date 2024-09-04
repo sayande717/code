@@ -11,6 +11,11 @@ git clone https://github.com/sayande717/code.git
     - `EXIT_SUCCESS` means 0 and `EXIT_FAILURE` means 1 in general context, in a program. They are a part of `<stdlib.h>`.
     - `exit(EXIT_FAILURE)` and `exit(EXIT_SUCCESS)` is used to indicate failed and succesful program termination.
     - `return EXIT_SUCCESS` and `return EXIT_FAILURE` can also be used in int main() { ... } or even in other programs.
+    - `printf("%.Nf"): Print N characters after the decimel point`.
+    - `string` operations
+        - `atoi()`: Converts a string to an integer.
+            - `"123456" -> 123456
+            - `"123abc123" -> 123 (converts till 1st non-number character is encountered).
     - `srand(time(NULL))`: Seeds the random number generator with the current time in seconds since EPOCH.
     - `rand()` i.e. generate random number within num: rand()%(num+1)
     - `rand()` i.e. generate random number between low and high: rand()%(high-low-1)+low
@@ -73,11 +78,11 @@ git clone https://github.com/sayande717/code.git
 2. [interpolationSearch.c](./self/C/interpolationSearch.c)
     - Perform a Interpolation Search on 10 elements.
         - Formula: 
-            $$ \text{index} = \text{lo} + \left( \frac{(x - \text{arr[lo]}) \times (\text{hi} - \text{lo})}{\text{arr[hi]} - \text{arr[lo]}} \right) $$
+            $$ \text{index} = \text{lo} + \left( \frac{(target - \text{arr[lo]}) \times (\text{hi} - \text{lo})}{\text{arr[hi]} - \text{arr[lo]}} \right) $$
         - We use the formula to estimate the position of the target value.
-        - If `array[index]<x`, we set pointer `low` to `pos+1`.
-        - If `array[index]>x`, we set pointer `high` to `pos-1`.
-        - If `array[index]=x`, we return `pos`.
+        - If `array[index]<target`, we set pointer `low` to `index+1`.
+        - If `array[index]>target`, we set pointer `high` to `index-1`.
+        - If `array[index]=target`, we return `pos`.
 3. [exponentialSearch.c](./self/C/exponentialSearch.c)
     - Perform Exponential Search on 10 elements.
 
