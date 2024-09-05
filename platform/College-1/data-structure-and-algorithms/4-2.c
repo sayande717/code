@@ -36,12 +36,8 @@ void addToLast(linkedList **head, int inBase, int inExponent) {
     currentNode->next = newNode;
 }
 
-int findMax(int inNum1, int inNum2) {
-    return (inNum1>=inNum2)?inNum1:inNum2;
-}
-
 // fill the linked list with data, return the max exponent value
-int fillList(linkedList **inList, char *inStr) {
+int fillExpList(linkedList **inList, char *inStr) {
     float base = 0.0;
     int exponent = 0;
     char *token = strtok(inStr, "+-");
@@ -58,14 +54,24 @@ int fillList(linkedList **inList, char *inStr) {
     }
 }
 
+int fillResultList(linkedList *inHead1, linkedList *inHead2, linkedList **inHeadResult) {
+    linkedList *currNode1 = inHead1;
+    linkedList *currNode2 = inHead2;
+    while(currNode1!=NULL && currNode2!=NULL) {
+        // Perform the polynomial addition, add to the result list.
+        addToLast(inHeadResult,(currNode1->base+currNode2->base),currNode1->exponent);
+        currNode1=currNode1->next;
+        currNode2=currNode2->next;
+    }
+}
+
 void printList(linkedList *inList) {
     if(inList==NULL) {
         return;
     }
-
     linkedList *currentNode = inList;
     while (currentNode != NULL) {
-        printf("%.2fx^%d ", currentNode->base, currentNode->exponent);
+        printf("%.2fx^%d+", currentNode->base, currentNode->exponent);
         currentNode = currentNode->next;
     }
 }
@@ -73,17 +79,22 @@ void printList(linkedList *inList) {
 int main() {
     char *exp1 = (char *)malloc(sizeof(char)*maxExpLen);
     char *exp2 = (char *)malloc(sizeof(char)*maxExpLen);
+    if(exp1==NULL || exp2==NULL) {
+        fprintf(stderr,"Memory allocation failed.");
+        exit(EXIT_FAILURE);
+    }
+
     linkedList *expList1 = NULL;
     linkedList *expList2 = NULL;
+    linkedList *resultList = NULL;
 
     printf("Enter expression 1: "); scanf("%s", exp1);
     printf("Enter expression 2: "); scanf("%s", exp2);
-    fillList(&expList1,exp1);
-    fillList(&expList2,exp2);
 
-    printList(expList1);
-    printf("\n");
-    printList(expList2);
-    
+    fillExpList(&expList1,exp1);
+    fillExpList(&expList2,exp2);
+    fillResultList(expList1,expList2,&resultList);
+    printf("Result: "); printList(resultList);
+
     return EXIT_SUCCESS;
 }
