@@ -57,4 +57,6 @@
             <li> Sequence names2 = ["Virat","Sachin","Jadeja","Dhoni","Rohit"] </li>
         </ul>
     </li>
+    <li> 3-1.py: Implement the Rabin-Karp algorithm to search for a given pattern in a large text string. Given a large string T of length n and a pattern P of length m, find all the starting indices where P appears as a substring in T using the Rabin-Karp algorithm. Assume that both the pattern P and the text T contain only lowercase English letters ('a' to 'z'). </li>
+    <li> 3-2.py: 
 </ol>
