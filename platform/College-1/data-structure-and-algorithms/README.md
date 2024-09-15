@@ -38,12 +38,19 @@
             <li> 3-5.c: Accept any arithmetic expression in infix form. Using stack convert to its prefix notation and display the same. </li>
             <li> 3-6.c: Perform the operations of a queue in a circular fashion for customers who are visiting the gym. </li>
             <li> 3-7.c: Accept two polynomials of various degrees. Find the sum of these polynomials using linked list and display the result in polynomial form. </li>
+            <li> 3-8.c: Create a circular linked list to accept student information such as register number, name and age. Add new student information at the last and remove nth student information from the circular list. Display the circular list after performing each operation. </li>
+            <li> 3-9.c: Build a single linked list to accept any two polynomials of various degree. Find the difference between those two polynomials and display the result in a polynomial representation. </li>
         </ol>
     </li>
     <li> Algorithm: <strong> Searching </strong>
         <ol type="a">
             <li> 4-1.c: Exponential & Interpolation Search </li>
             <li> 4-2.c: Accept any two polynomials of various degrees. Find the sum of those two polynomials using linked list and display the result in polynomial form. </li>
+        </ol>
+    </li>
+    <li> Algorithm: <strong> Sorting </strong>
+        <ol type="a">
+            <li> 5-1.c: Merge Sort: Accept your name and sort your name using mergesort. Display your name and the sorted order of your name. </li>
         </ol>
     </li>
 </ol>

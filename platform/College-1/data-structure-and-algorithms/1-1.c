@@ -5,7 +5,7 @@ int main() {
     int n;
     printf ("Enter the number of employees: ");
     scanf ("%d",&n);
-    
+
     int age[n];
     int len = sizeof(age) / sizeof(age[0]);
     printf("Age: %d",len);

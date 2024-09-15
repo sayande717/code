@@ -45,6 +45,17 @@ git clone https://github.com/sayande717/code.git
         }
     }
     ```
+- Data Structures:
+    - `Array`:
+        - 1-Dimensional: [code]()
+        - 2-Dimensional: [code](./platform/College-1/computer-architecture-and-organisation/2-d.c) 
+    - `Stack`: [code]() 
+    - `Queue`: [code]()
+        - `Linear`: [code]()
+        - `Circular`: [code]()
+    - `Linked List` 
+        - `Linear`: [code]()
+        - `Circular`: [code](./platform/College-1/data-structure-and-algorithms/3-8.c) 
 
 ## Notes
 |ID| **Name** | **Notes** | **References** | **Progress** | **Status** |
@@ -75,7 +86,7 @@ git clone https://github.com/sayande717/code.git
     - Perform a Linear Sentinel Search on 10 elements.
     - In traditional Linear Search, we have to reach if we've reached the end of the array after each iteration. This is an optimised version of Linear Search, where we don't have to make that check after every iteration.
     - Sentinel search is an optimized version of linear search where a sentinel element is added at the end of the array, eliminating the need for an explicit check for the end of the array after each iteration.
-2. [interpolationSearch.c](./self/C/interpolationSearch.c)
+1. [interpolationSearch.c](./self/C/interpolationSearch.c)
     - Perform a Interpolation Search on 10 elements.
         - Formula: 
             $$ \text{index} = \text{lo} + \left( \frac{(target - \text{arr[lo]}) \times (\text{hi} - \text{lo})}{\text{arr[hi]} - \text{arr[lo]}} \right) $$
@@ -83,8 +94,23 @@ git clone https://github.com/sayande717/code.git
         - If `array[index]<target`, we set pointer `low` to `index+1`.
         - If `array[index]>target`, we set pointer `high` to `index-1`.
         - If `array[index]=target`, we return `pos`.
-3. [exponentialSearch.c](./self/C/exponentialSearch.c)
+1. [exponentialSearch.c](./self/C/exponentialSearch.c)
     - Perform Exponential Search on 10 elements.
+1. [mergeSort.c](./self/C/mergeSort.c)
+    - Perform Merge sort on a character array.
+    - Merge sort follows the Divide & Conquer approach
+        - First, we (hypothetically) divide the array. We do it till it turns into n arrays, of 1 elements each.
+        - Then, we compare 2 arrays each, and merge both back.
+        - Further explanation has been provided in the code.
+        - Diagrams:
+            <br><img src="./self/assets/C/0.png" height="600px">
+            <br><img src="./self/assets/C/0.png" height="600px">
+1. [initBinaryTree.c](./self/C/initBinaryTree.c)
+    - Initialize a Binary Tree.
+    - Perform the following types of traversals on it (Recursive & Iterative):
+        - Preorder
+        - Inorder
+        - Postorder
 
 ### C++
 > [Notes](./notes/Languages.md#c++)
