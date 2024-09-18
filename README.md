@@ -288,6 +288,235 @@ git clone https://github.com/sayande717/code.git
 
 ## Platform/College-1
 ### Computer Architecture and Organisation
-### Data Structures and Algorithms
+<ol type="1">
+    <li> Write an OpenMP Program to:
+        <ol type="a">
+            <li> Print "Hello World" in multiple threads.
+                <ul>
+                    <li> `#pragma omp parallel { ... }`: This fundamental construct starts parallel execution. </li>
+                </ul>
+            </li>
+            <li> Find number of threads running currently. </li>
+                <ul>
+                    <li> `omp_get_num_threads()` -> int: This routine returns the number of threads in the current team. </li>
+                </ul>
+            <li> Find maximum number of threads. </li>
+                <ul>
+                    <li> `omp_get_max_threads()` -> int: This routine returns the maximum number of threads available in the system. </li>
+                </ul>
+            <li> Find the Thread ID. </li>
+                <ul>
+                    <li> `omp_get_thread_num()` -> int: This routine returns the thread number (ID) of the currently running thread. </li>
+                </ul>            
+            <li> Find the number of processor cores in the system. </li>
+                <ul>
+                    <li> `omp_get_num_procs()` -> int: This routine returns the number of processor cores available to the program. </li>
+                </ul>
+            <li> Set the number of threads to be executed. </li>
+                <ul>
+                    <li> `omp_set_num_threads(numberOfThreads)` -> boolean: This routine sets the number of threads to be executed within the parallel scope of the program. </li>
+                </ul>
+            <li> Test `is_parallel` function. </li>
+                <ul>
+                    <li> `omp_in_parallel()` -> boolean: This routine returns `true` if the call to the routine is enclosed by an active parallel region; otherwise, it returns `false`. </li>
+                </ul>
+            <li> Parallelize a simple `for` loop. </li>
+                <ul>
+                    <li> `#pragma omp parallel for`: The parallel loop construct is a shortcut for specifying a parallel construct containing one or more associated loops and no other statements. </li>
+                </ul>          
+        </ol>
+    </li>
+    <li> Write an OpenMP Program to:
+        <ol type="a">
+            <li> To perform the transpose of the matrix using parallel constructs and compare parallel and serial time. </li>
+                <ul>
+                    <li> If input matrix is m x n, the resultant matrix becomes n x m. </li>
+                </ul> 
+            <li> To perform the addition of two matrix using parallel constructs and compare parallel and serial time. </li>
+            <li> To perform the multiplication of two matrix using parallel constructs and compare parallel and serial time. </li>
+            <li> Parallelize the Jacobi Method. Analyze the speedup and efficiency of the parallelized code. Vary the size of your A matrix and measure the runtime with one thread. For each matrix size, change the number of threads from 2,4,8, ... and plot the speedup versus the number of threads. Compute the efficiency. Explain whether or not the scaling behavior is as expected. </li>
+        </ol>
+    </li>
+</ol>
+
+### Data Structures and Algorithms 
+<ol type="1">
+    <li> Data Structure: <strong> Array </strong>:
+        <ol type="a">
+            <li> 1-1.c: Accept the age of `n` employees and search for a particular age using `Sentinel search`. </li>
+            <li> 1-2.c: In an array, accept age of `n` students. Only display those numbers that are perfect. A perfect number is equal to the sum of its proper divisors. </li>
+            <li> 1-3.c: Accept your name and reverse it using a `recursive function` (without using a built-in function). Display the reversed name in the main module. </li>
+        </ol>
+    </li>
+    <li> Data Structure: <strong>Stack</strong>:
+        <ol type="a">
+            <li> 2-1.c: Accept your name and perform stack operations on it. 
+                <ul>
+                    <li> To take limited number of strings as input in C (example 5), `scanf("%5s",&inStr);`. </li>
+                </ul>
+            </li>
+            <li> 2-2.c: Accept any decimel number and convert to binary using stack. </li>
+            <li> 2-3.c: Accept any arithmetic expression and covert to postfix using stack. </li>
+        </ol>
+    </li>
+    <li> Data Structure: <strong>Queue</strong>
+        <ol type="a">
+            <li> 2-4.c: Perform linear queue operations on the height of N students. </li>
+            <li> 2-5.c: Accept N patients token no and perform circular queue operations.
+                <ul>
+                    <li> `(rear+1)%n` calculates the next position after rear. </li>
+                    <li> `(rear+(n-1))%n` calculates the previous position before rear. </li>
+                    <li> In a circular queue, rear can be at any position, due to which we cannot check for the condition `rear==(queue.length-1)`. </li>
+                </ul>
+            </li>
+        </ol>
+    </li>
+    <li> Data Structure: <strong> Linked List </strong>
+        <ol type="a">
+            <li> 3-1.c: Create a linked list to accept n students name and reg.no. Display the details  of all students </li>
+            <li> 3-2.c: Perform the stack operations on a single linked list of n employees such as employee no and salary. If salary is >3000 then pop from the linked stack. </li>
+            <li> 3-3.c: Perform Queue operations on a single linked list of in-patient records such as patient name, hospital no and date of admission. Assume patient is allowed to stay for 3 days only. After that patient to be discharged. In other words the patient details to be removed from the queue. </li>
+            <li> 3-4.c: Create a single linked list to accept cricket players details such as name, age,  run score with overs completed. After creating a players  list check if a player scored runs 50 and above in 8 overs then remove that player and add it in the middle. If a player scored 80 runs between 15 and 20 overs, then remove that player and add at the beginning. If a player scored zero runs irrespective of overs then add at the last. Display the players list after each operation. <\li>
+            <li> 3-5.c: Accept any arithmetic expression in infix form. Using stack convert to its prefix notation and display the same. </li>
+            <li> 3-6.c: Perform the operations of a queue in a circular fashion for customers who are visiting the gym. </li>
+            <li> 3-7.c: Accept two polynomials of various degrees. Find the sum of these polynomials using linked list and display the result in polynomial form. </li>
+            <li> 3-8.c: Create a circular linked list to accept student information such as register number, name and age. Add new student information at the last and remove nth student information from the circular list. Display the circular list after performing each operation. </li>
+            <li> 3-9.c: Build a single linked list to accept any two polynomials of various degree. Find the difference between those two polynomials and display the result in a polynomial representation. </li>
+        </ol>
+    </li>
+    <li> Algorithm: <strong> Searching </strong>
+        <ol type="a">
+            <li> 4-1.c: Exponential & Interpolation Search </li>
+            <li> 4-2.c: Accept any two polynomials of various degrees. Find the sum of those two polynomials using linked list and display the result in polynomial form. </li>
+        </ol>
+    </li>
+    <li> Algorithm: <strong> Sorting </strong>
+        <ol type="a">
+            <li> 5-1.c: Merge Sort: Accept your name and sort your name using mergesort. Display your name and the sorted order of your name. </li>
+        </ol>
+    </li>
+</ol>
+
 ### Design and Analysis of Algorithms
+<ol type="1">
+    <li> 1-1.c: You are given an undirected graph. The task is to assign colors to each vertex of the graph such that no two adjacent vertices share the same color, using the minimum number of colors. Implement the greedy coloring algorithm to solve this problem.
+        <br><img src="./media/q1-1-1.png" alt="Graph" height="400px" />
+    </li>
+    <li> 1-2.c: You are given n jobs. Each job $J_i$ has a deadline $d_i$ and a profit $p_i$. Only one job can be scheduled at a time. The task is to find the sequence of jobs that maximizes the total profit while ensuring that no job is scheduled after its deadline.
+        <table>
+            <tr>
+                <th>S. No.</th>
+                <th>Jobs</th>
+                <th>Deadlines</th>
+                <th>Profits</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>J1</td>
+                <td>2</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>J2</td>
+                <td>2</td>
+                <td>70</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>J3</td>
+                <td>1</td>
+                <td>40</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>J4</td>
+                <td>4</td>
+                <td>110</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>J5</td>
+                <td>5</td>
+                <td>80</td>
+            </tr>
+        </table>
+    <li> 2-1.py: Develop a Python program that use the divide and conquer technique to address the Domino Tiling Problem. Outline the process used in the divide and conquer approach for this particular problem. </li>
+    <li> 2-2.py: Write a Python program to multiply two large integers using Karatsuba's fast multiplication method. Your implementation should demonstrate the efficiency of Karatsuba's algorithm compared to the standard multiplication method for large numbers.
+        <ol type="a">
+            <li> Use the `-lm` flag for compiling code having mathematical operations like pow(), log10(), etc. </li>
+            <li> If either of the numbers is single-digit, perform a simple multiplication. Otherwise, use the algorithm.
+            <li> $(\log_{10} 1234+1)$ gives us the number of digits in $1234$. </li>
+        </ol>
+    </li>
+    <li> 2-3.py: Write a Python program to multiply two 4×4 matrices using Strassen's algorithm. Your program should be efficient and demonstrate the recursive nature of the algorithm. </li>
+    <li> 2-4.py: You are given a sequence of matrices, and you need to determine the most efficient way to multiply these matrices together. Write a Python program that computes the minimum number of scalar multiplications needed to multiply the given chain of matrices using dynamic Programming. </li>
+    <li> 2-5.py: You are given two sequences, and your task is to find the length of the longest subsequence that appears in both sequences. Write a Python program to compute the LCS and also to retrieve the actual subsequence.
+        <ul>
+            <li> Sequence names1 = ["Sachin","Virat","Dhoni","Rohit","Jadeja"] </li>
+            <li> Sequence names2 = ["Virat","Sachin","Jadeja","Dhoni","Rohit"] </li>
+        </ul>
+    </li>
+    <li> 3-1.py: Implement the Rabin-Karp algorithm to search for a given pattern in a large text string. Given a large string T of length n and a pattern P of length m, find all the starting indices where P appears as a substring in T using the Rabin-Karp algorithm. Assume that both the pattern P and the text T contain only lowercase English letters ('a' to 'z'). </li>
+    <li> 3-2.py: You are given two strings: text and pattern. Your task is to find all occurrences of the pattern in the text using the Knuth-Morris-Pratt (KMP) algorithm and return the starting indices of these occurrences. </li>
+    <li> 3-3.py: You are given an N×N chessboard. The objective is to place N queens on the board such that no two queens threaten each other. That is, no two queens should share the same row, column, or diagonal. </li>
+    <li> 3-4.py: Given a set of integers and a target sum, determine if there is a subset of the given integers that adds up to the target sum. The solution must use backtracking to explore all possible subsets. </li>
+</ol>
+
 ### Operating Systems
+<ol type="1">
+    <li> 1-1.md: Write 15 Linux commands and their purpose: man, --help, ls, cat, grep, mkdir, rmdir, rm, shred, cp, mv, chmod, chown, sudo, cal, date, timedatectl, dd, wc </li>
+    <li> 1-2.c: OS system calls in C.
+        <ol type="a">
+            <li> `fork()` returns Child process ID in the forked process, and `0` in the parent process. </li>
+        </ol>
+    </li>
+    <li> 1-3.c: Write a program to:
+        <ol type="a">
+            <li> Create parent & child process and print their id. </li>
+            <li> Create a zombie process. </li>
+            <li> Create an orphan process. </li>
+        </ol>
+    </li>
+    <li> 1-4.c: CPU Scheduling Algorithms:
+        <ol type="a">
+            <li> FCFS (First Come First Serve) | Non-Preemptive </li>
+            <li> SJF (Shortest Job First) & SRTF (Shortest Remaining Time First) | Preemptive & Non-Preemptive </li>
+            <li> Priority | Preemptive & Non-Preemptive </li>
+            <li> Round Robin | Non-Preemptive </li>
+        </ol>
+    </li>
+    <li> 2-1.c: Process Synchronisation:
+        <ol type="a">
+            <li> Producer Consumer problem using Semaphore </li>
+            <li> Reader Writer problem using Semaphore </li>
+            <li> Dining Philosopher problem using Monitor </li>
+        </ol>
+    </li>
+    <li> 2-2.c: Implement the Banker's Algorithm for Deadlock Avoidance. </li>
+</ol>
+
+## Platform/College-1/Litcoder
+### Week 1
+- Handbook: [Code Maturity](./platform/Litcoder/Week 1/Handbook.pdf)
+- Case References:
+    1. [Maintainability](./platform/Litcoder/Week 1/Case References/Maintainability.pdf)
+    1. [Reliability](./platform/Litcoder/Week 1/Case References/Reliability.pdf)
+    1. [Security](./platform/Litcoder/Week 1/Case References/Security.pdf)
+    1. [Vulnerabilities](./platform/Litcoder/Week 1/Case References/Vulnerabilities.pdf)
+
+1. Lab 1
+    1. [lab1.java](./platform/Litcoder/Week 1/Code/lab1.java)
+    1. [lab1.py](./platform/Litcoder/Week 1/Code/lab1.py)
+    - Count the number of positive and negative numbers: You have ben provided with an array of integers. Your task is to calculate the ratios of three types of elements within the array: positive numbers, negative numbers, and zeros. For each category, determine the fraction of elements in relation to the total number of elements in the array.
+    - Input:
+        ```text
+        6
+        -4 3 -9 0 4 1
+        ```
+    - Output:
+        ```text
+        - 0.500
+        - 0.333
+        - 0.167
+        ```
