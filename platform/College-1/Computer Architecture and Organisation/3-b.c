@@ -3,6 +3,7 @@
 #include<omp.h>
 
 int main() {
+    // Master Thread
     long sumFirst = 0;
     long sumSecond = 0;
     long sumFinal = 0;
@@ -20,8 +21,10 @@ int main() {
             }
         }
     }
+    // Master Thread
     sumFinal = sumFirst+sumSecond;
     printf("\nSum: %ld",sumFinal);
 
+    printf("\n");
     return EXIT_SUCCESS;
 }

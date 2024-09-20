@@ -1,10 +1,10 @@
 #include<omp.h>
 #include<stdio.h>
 #include<stdlib.h>
-#include<stdbool.h>
 #include<string.h>
+#include<stdbool.h>
 
-void addMatrix(int **matrix1, int **matrix2, int **matrixResult, int rows, int cols, char *scheduleType, int chunkSize) {
+void transposeArr(int **arr,int rows, int cols, char *scheduleType, int chunkSize) {
     bool runParallel = true;
     if(strcmp(scheduleType,"serial")==0) {
         runParallel = false;
@@ -23,8 +23,10 @@ void addMatrix(int **matrix1, int **matrix2, int **matrixResult, int rows, int c
 
     # pragma omp parallel for schedule(runtime) if(runParallel)
     for(int row=0;row<rows;row++) {
-        for(int col=0;col<cols;col++) {
-            matrixResult[row][col] = matrix1[row][col] + matrix2[row][col];
+        for(int col=(row+1);col<cols;col++) {
+            int temp = arr[row][col];
+            arr[row][col] = arr[col][row];
+            arr[col][row] = temp;
         }
     }
 }
@@ -34,105 +36,67 @@ void printOutput(char *schedulingClause, double executionTime) {
     printf("Execution Time: %lf",executionTime);
 }
 
-void readMatrix(char *filename, int **matrix, int rows, int cols) {
-    FILE *file = fopen(filename, "r");
-    if (file == NULL) {
-        perror("Error opening file");
-        exit(EXIT_FAILURE);
-    }
-
-    for (int row = 0; row < rows; row++) {
-        for (int col = 0; col < cols; col++) {
-            fscanf(file, "%d", &matrix[row][col]);
-        }
-    }
-
-    fclose(file);
-}
-
-void writeMatrix(char *filename, int **matrix, int rows, int cols) {
-    FILE *file = fopen(filename, "w");
-    if (file == NULL) {
-        perror("Error opening file");
-        exit(EXIT_FAILURE);
-    }
-
-    for (int row = 0; row < rows; row++) {
-        for (int col = 0; col < cols; col++) {
-            fprintf(file, "%d ", matrix[row][col]);
-        }
-        fprintf(file, "\n");
-    }
-
-    fclose(file);
-}
-
 int main() {
     int rows,cols,chunkSize;
-    // Matrix-1 & Matrix-2 are already defined as a static file.
-    rows = 5000; cols = 5000;
+    printf("Enter the number of rows: "); scanf("%d",&rows);
+    printf("Enter the number of columns: "); scanf("%d",&cols);
     printf("Enter the chunk size: "); scanf("%d",&chunkSize);
-
-    int **matrix1   = (int **)malloc(sizeof(int *)*cols);
-    int **matrix2   = (int **)malloc(sizeof(int *)*cols);
-    int **matrixSum = (int **)malloc(sizeof(int *)*cols);
-    if(matrix1==NULL || matrix2==NULL || matrixSum==NULL) {
+    
+    int **arr = (int **)malloc(sizeof(int *)*cols);
+    if(arr==NULL) {
         fprintf(stderr,"Memory allocation failed.");
         return EXIT_FAILURE;
     }
     for(int col=0;col<cols;col++) {
-        matrix1[col] = (int *)malloc(sizeof(int)*rows);
-        matrix2[col] = (int *)malloc(sizeof(int)*rows);
-        matrixSum[col] = (int *)malloc(sizeof(int)*rows);
-        if(matrix1[col]==NULL || matrix2[col]==NULL || matrixSum[col]==NULL) {
+        arr[col] = (int *)calloc(rows,sizeof(int));
+        if(arr[col]==NULL) {
             fprintf(stderr,"Memory allocation failed.");
             return EXIT_FAILURE;
         }
     }
-
-    // Read matrices from files
-    readMatrix("3-f-initMatrix1.txt", matrix1, rows, cols);
-    readMatrix("3-f-initMatrix2.txt", matrix2, rows, cols);
-
     double start,end;
     char *schedulingClause = (char *)malloc(sizeof(char)*8);
     if(schedulingClause==NULL) {
         fprintf(stderr,"Memory allocation failed.");
         return EXIT_FAILURE;
     }
-    
+
     // Execution: serial
     strcpy(schedulingClause,"serial\0");
     start = omp_get_wtime();
-    addMatrix(matrix1,matrix2,matrixSum,rows,cols,schedulingClause,chunkSize);
-    writeMatrix("3-f-finalMatrixSerial.txt", matrixSum, rows, cols);
+    transposeArr(arr,rows,cols,schedulingClause,chunkSize);
     end = omp_get_wtime();
     printOutput(schedulingClause,(end-start));
 
     // Execution: parallel / static
     strcpy(schedulingClause,"static\0");
     start = omp_get_wtime();
-    addMatrix(matrix1,matrix2,matrixSum,rows,cols,schedulingClause,chunkSize);
-    writeMatrix("3-f-finalMatrixParallelStatic.txt", matrixSum, rows, cols);
+    transposeArr(arr,rows,cols,schedulingClause,chunkSize);
     end = omp_get_wtime();
     printOutput(schedulingClause,(end-start));
 
     // Execution: parallel / dynamic 
     strcpy(schedulingClause,"dynamic\0");
     start = omp_get_wtime();
-    addMatrix(matrix1,matrix2,matrixSum,rows,cols,schedulingClause,chunkSize);
-    writeMatrix("3-f-finalMatrixParallelDynamic.txt", matrixSum, rows, cols);
+    transposeArr(arr,rows,cols,schedulingClause,chunkSize);
     end = omp_get_wtime();
     printOutput(schedulingClause,(end-start));
 
     // Execution: parallel / auto  
     strcpy(schedulingClause,"auto\0");
     start = omp_get_wtime();
-    addMatrix(matrix1,matrix2,matrixSum,rows,cols,schedulingClause,chunkSize);
-    writeMatrix("3-f-finalMatrixParallelAuto.txt", matrixSum, rows, cols);
+    transposeArr(arr,rows,cols,schedulingClause,chunkSize);
     end = omp_get_wtime();
     printOutput(schedulingClause,(end-start));
 
-    return 0;
-}
 
+    // Free Memory
+    free(schedulingClause);
+    for(int col=0;col<cols;col++) {
+        free(arr[cols]);
+    }
+    free(arr);
+
+    printf("\n");
+    return EXIT_SUCCESS;
+}

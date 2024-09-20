@@ -3,14 +3,15 @@
 #include<stdlib.h>
 
 int main() {
+    // Master Thread
+    int num1,num2,num3;
+    int smallest, largest;
+    printf("Enter first number: ");  scanf("%d",&num1);
+    printf("Enter second number: "); scanf("%d",&num2);
+    printf("Enter third number: ");  scanf("%d",&num3);
     # pragma omp parallel sections
     {
-        int num1,num2,num3;
-        int smallest, largest;
-        printf("Enter first number: ");  scanf("%d",&num1);
-        printf("Enter second number: "); scanf("%d",&num2);
-        printf("Enter third number: ");  scanf("%d",&num3);
-        # pragma omp parallel section // Smallest number
+        # pragma omp section 
         {
             if(num1<=num2 && num1<num3) {
                 smallest = num1;
@@ -20,9 +21,8 @@ int main() {
                 smallest = num3;
             }
         }
-        printf("Smallest number: %d",smallest);
 
-        # pragma omp parallel section // Largest number
+        # pragma omp section 
         {
             if(num1>=num2 && num1>=num3) {
                 largest = num1;
@@ -32,7 +32,10 @@ int main() {
                 largest = num3;
             }
         }
-        printf("\nLargest number: %d",largest);
     }
+    // Master Thread
+    printf("Smallest number: %d",smallest);
+    printf("\nLargest number: %d",largest);
+    printf("\n");
     return EXIT_SUCCESS;
 }

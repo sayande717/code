@@ -4,17 +4,19 @@
 #include<stdbool.h>
 
 int findSum(int *arr, int size, bool parallelize) {
-    int sum = 0;
+    long sum = 0;
     # pragma omp parallel for reduction(+:sum) if (parallelize)
     for(int index=0;index<size;index++) {
         arr[index] = 999;
         sum = sum + arr[index];
     }
+    return sum;
 }
 
 int main() {
     int maxRows;
-    double sum, start, end, serialExecTime, parallelExecTime;
+    long sum;
+    double start, end, serialExecTime, parallelExecTime;
     printf("Enter number of elements: "); scanf("%d",&maxRows);
     int *arr = (int *)malloc(sizeof(int)*maxRows);
 
@@ -35,7 +37,7 @@ int main() {
     printf("\nParallel Execution Time: %lf",parallelExecTime);
 
     printf("\nDifference: %lf",(serialExecTime-parallelExecTime));
-    printf("\n");
 
+    printf("\n");
     return EXIT_SUCCESS;
 }
