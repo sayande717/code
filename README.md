@@ -5,9 +5,12 @@ git clone https://github.com/sayande717/code.git
 ```
 
 ## TIL (Today I Learnt):
+- `char *arr = (char *)malloc(sizeof(char)*cols)`: Dynamically allocate memory for a 1D array of size `cols`.
+- `int **arr = (int **)malloc(sizeof(int *)*cols)`: Dynamically allocate memory for a 1D pointer array of size `cols`.
+- `int *arr = (int *)calloc(cols,sizeof(int))`: Dynamically allocate memory for a 1D array of size `cols`, then fill all spaces with `0`.
 - `(current + 1) % n` leads us to the next index, after current element.
 - `(current + (n-1)) % n` leads us to the previous index, before current element.
-- Language: `C`:
+- Language: `c`:
     - `EXIT_SUCCESS` means 0 and `EXIT_FAILURE` means 1 in general context, in a program. They are a part of `<stdlib.h>`.
     - `exit(EXIT_FAILURE)` and `exit(EXIT_SUCCESS)` is used to indicate failed and succesful program termination.
     - `return EXIT_SUCCESS` and `return EXIT_FAILURE` can also be used in int main() { ... } or even in other programs.
@@ -35,7 +38,7 @@ git clone https://github.com/sayande717/code.git
         }
         ```
 - To multiply 2 matrices:
-    ```text
+    ```c
     for(iter0 = 0 to number of rows in Matrix 1, iter0++) {
         for(iter1 = 0 to number of columns in Matrix 2, iter1++) {
             for(iter2 = 0 to number of rows in Matrix 2, iter2++) {
@@ -45,6 +48,84 @@ git clone https://github.com/sayande717/code.git
         }
     }
     ```
+- To read from a file, which contains a `rows x cols` matrix:
+```c
+    void readText(char *filename, int **matrix, int rows, int cols) {
+        FILE *file = fopen(filename, "r");
+        if (file == NULL) {
+            perror("Error opening file");
+            exit(EXIT_FAILURE);
+        }
+    
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+                fscanf(file, "%d", &matrix[row][col]);
+            }
+        }
+
+        fclose(file);
+    }
+```
+- To write to a file, which contains a `rows x cols` matrix:
+```c
+    void writeText(char *filename, int **matrix, int rows, int cols) {
+        FILE *file = fopen(filename, "w"); 
+        if (file == NULL) {
+            perror("Error opening file");
+            exit(EXIT_FAILURE);
+        }
+    
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+                fprintf(file, "%d ", matrix[row][col]);
+            }
+            fprintf(file, "\n");
+        }
+
+        fclose(file);
+    }
+```
+- File Opening modes:
+    - “r”: Open a file for reading. The file must exist.
+    - “w”: Open a file for writing. Creates a new file or truncates an existing file.
+    - “a”: Open a file for appending. Writes data at the end of the file. Creates the file if it does not exist.
+    - “r+”: Open a file for both reading and writing. The file must exist.
+    - “w+”: Open a file for both reading and writing. Creates a new file or truncates an existing file.
+    - “a+”: Open a file for both reading and appending. Creates the file if it does not exist.
+- Language: `java`:
+    - If input = `4 -2 3 1 6` & we're supposed to find the array length, and iterate over the integers:
+        ```java
+        String inputStr = "4 -2 3 1 6";
+        String[] stringArr = inputStr.split(" "); // Split the string tokens into a character array, with " " as delimiter.
+        stringArrLen = stringArr.length; // Length of the resultant string array.
+        for(int index = 0;index++) {
+            int temp = Integer.parseInt(stringArr[index]); // Convert from character to integer.
+        }
+        ```
+    - This is how you catch the exception `NumberFormatException` when parsing a character to an integer:
+        ```java
+        String[] array = {'1','2','-1','a','z'};
+        try {
+            for(int index=0;index<array.length;index++) {
+                int element = Integer.parseInt(array[index]);
+            }
+        } catch(Exception e) {
+            System.out.print("Type of exception: "+e.getMessage);
+        }
+        ```
+- Language: `python`:
+    - This is how you catch the exception `NumberFormatException` when parsing a character to an integer:
+    ```python
+    arr = ['1','2','3','4','a','3','b']
+    try:
+        for index in range(len(arr)):
+            int element = int(arr[index])
+            print(f"Element at index ${index}: ${element} ")
+    except ValueError: # `except ValueError as e:`, if you want to print the exception `e`
+        print("Exception: ",e)
+    # Rest of the code 
+    ```
+
 - Data Structures:
     - `Array`:
         - 1-Dimensional: [code]()
@@ -337,6 +418,32 @@ git clone https://github.com/sayande717/code.git
             <li> Parallelize the Jacobi Method. Analyze the speedup and efficiency of the parallelized code. Vary the size of your A matrix and measure the runtime with one thread. For each matrix size, change the number of threads from 2,4,8, ... and plot the speedup versus the number of threads. Compute the efficiency. Explain whether or not the scaling behavior is as expected. </li>
         </ol>
     </li>
+    <li> Write an OpenMP Program:
+        <ol type="a">
+            <li> Using dynamic memory allocation, to print the sum of elements of an array using reduction clause.
+                <ul>
+                    <li> # pragma omp parallel for reduction(+:sum) if (parallelize): Perform reduction on the variable `sum` only if (parallelize) is 1/true. </li>
+                </ul>
+            <li> Find sum of squares of first hundred natural numbers see that half computation is done by one core and another half is computed by another core. Finally, results of computations are added and the final result is to be printed in master thread. </li>
+            <li> Find the largest of a three numbers and smallest of three numbers using sections directive. </li>
+            <li> Show data environmental clauses variable scope using one dimensional array addition (private, first private, Last private and Shared).
+                <ul>
+                    <li> Shared: `arr`, the array itself. </li>
+                    <li> Private: `index`, to prevent data race when incrementing it's value. </li>
+                    <li> FirstPrivate: `sum` & `size`, so we can get their initial values. </li>
+                    <li> LastPrivate: `sum`, so we can get the final sum of all elements. </li>
+                </ul>
+            </li>
+            <li> Perform the transpose of the matrix using parallel for loop constructs with different scheduling clause and compare parallel and serial execution time. </li>
+            <li> Perform matrix addition and subtractions of above 1024 x 1024 size.
+                <ul>
+                    <li> Use files concept for input and output. </li>
+                    <li> Test for various scheduling clauses. </li>
+                    <li> Compute serial program execution time and parallel program execution time. </li>
+                </ul>
+            </li>
+        </ol>
+    </li>
 </ol>
 
 ### Data Structures and Algorithms 
@@ -511,12 +618,61 @@ git clone https://github.com/sayande717/code.git
     - Count the number of positive and negative numbers: You have ben provided with an array of integers. Your task is to calculate the ratios of three types of elements within the array: positive numbers, negative numbers, and zeros. For each category, determine the fraction of elements in relation to the total number of elements in the array.
     - Input:
         ```text
-        6
-        -4 3 -9 0 4 1
+        6               (Size of array)
+        -4 3 -9 0 4 1   (Elements in array)
         ```
     - Output:
         ```text
-        - 0.500
-        - 0.333
-        - 0.167
+        - 0.500         (Ratio of positive integers)
+        - 0.333         (Ratio of negative integers)
+        - 0.167         (Ratio of zeroes)
+        ```
+1. Lab 2
+    1. [lab2.java](./platform/College-1/Litcoder/Week 1/Code/lab2.java)
+    1. [lab2.py](./platform/College-1/Litcoder/Week 1/Code/lab2.py)
+    - Devices Count: A device manufacturer tests its devices through an operation that lasts approximately 4 hours for each device. Now, calculate the number of devices that can be tested in the given amount of time and display the remaining number of devices to be tested. If the given time is less than the operation period of 4 print “Invalid Input”.
+    - Input:
+        ```text
+        12              (Number of hours available)
+        70              (Number of devices to be tested)
+        ```
+    - Output:
+        ```text
+        3               (Number of devices that could be tested)
+        67              (Remaining number of devices left to be tested)
+        ```
+    - Input:
+        ```text
+        3
+        10
+        ```
+    - Output:
+        ```text
+        Invalid Input   (Number of hours available < 4)
+        ```
+1. Lab 3
+    1. [lab3.java](./platform/College-1/Litcoder/Week 1/Code/lab3.java)
+    1. [lab3.py](./platform/College-1/Litcoder/Week 1/Code/lab3.py)
+    - Given an array of positive and negative integers, write a program to determine if there exists a subarray with a sum equal to zero. If a subarray with a sum equal to zero is found, print "True," otherwise print "False."
+    - Constraints:
+        - The size of the array (N) is between 1 and 10. If it does NOT meet this condition, print “Array size must be between 1 and 10”.
+        - Each element in the array is between -10 and 10. If it does NOT meet this condition, print "Array elements must be from -10 to 10".
+        - The array can contain only both positive and negative integers. If it does NOT meet this condition, print “Array elements must be integers”.
+        - The elements of the array are integers.
+    - Input:
+        ```text
+        4 -2 3 1 6     (Elements in array)
+        ```
+    - Output:
+        ```text
+        False          (Subarray doesn't exist)
+        5              (Number of elements in array)
+        ```
+    - Input:
+        ```text
+        1 -2 3 4 -5 6 7 -8 9 -10 11 -12 13 -14 15 
+        ```
+    - Output:
+        ```text
+        Array size must be between 1 and 10
         ```
