@@ -111,8 +111,17 @@ git clone https://github.com/sayande717/code.git
             }
         } catch(Exception e) {
             System.out.print("Type of exception: "+e.getMessage);
+            // return; if you don't want the code to continue to the next part.
         }
         ```
+    - Functions:
+        - `String str="abcdefgh`;
+            - `str.substring(1)`: "bcdefgh";
+            - `str.substring(1,4)`: "bcd";
+        - `Integer.parseInt("1234")`: This function only accepts & converts strings, not characters.
+        - `Character.getNumericValue('1')` -> (int), 1
+    - A `HashSet` is a collection that does not allow duplicate elements. It only stores unique elements, and rejects everything else.
+
 - Language: `python`:
     - This is how you catch the exception `NumberFormatException` when parsing a character to an integer:
     ```python
@@ -123,8 +132,15 @@ git clone https://github.com/sayande717/code.git
             print(f"Element at index ${index}: ${element} ")
     except ValueError: # `except ValueError as e:`, if you want to print the exception `e`
         print("Exception: ",e)
+        # return, if you don't want the code to continue to the next part.
+
     # Rest of the code 
     ```
+    - [Code](./platform/College-1/Litcoder/Week 1/Code/pre-contest1.py)
+        - Purpose: Job Scheduling (Greedy approach)
+        - (line 26) List comprehension: remove empty elements and return the list.
+        - (line 1,34) Define a class as data type, input elements in it.
+    - `for _ in range(10)`: You can put `_` if you don't need the iterator.
 
 - Data Structures:
     - `Array`:
@@ -148,7 +164,6 @@ git clone https://github.com/sayande717/code.git
 |4| Platform/LeetCode | [Markdown](./platform/LeetCode/README.md) | null | [link](#platform-leetcode)  |`In Progress` |
 |5| Platform/GeeksForGeeks | [Markdown](./platform/GeeksForGeeks/README.md) | null | [link](#platform-geeksforgeeks)  |`In Progress` |
 |-1| Platform/Internship/Pinnacle Labs | null | 1/3 | null |`In Progress` |
-|6| Platform/College-1 | [Computer Architecture and Organisation](./platform/College-1/computer-architecture-and-organisation/README.md) <hr> [Data Structures and Algorithms](./platform/College-1/data-structure-and-algorithms/README.md) <hr> [Design and Analysis of Algorithms](./platform/College-1/design-and-analysis-of-algorithms/README.md) <hr> [Operating Systems](./platform/College-1/operating-systems/README.md) | null | [link]()  |`In Progress` |
 
 ## Self
 ### \[Syntax\] Name of programming language:
@@ -426,6 +441,7 @@ git clone https://github.com/sayande717/code.git
                 </ul>
             <li> Find sum of squares of first hundred natural numbers see that half computation is done by one core and another half is computed by another core. Finally, results of computations are added and the final result is to be printed in master thread. </li>
             <li> Find the largest of a three numbers and smallest of three numbers using sections directive. </li>
+            <li> Find the largest of a three numbers and smallest of three numbers using explicit thread identification. </li>
             <li> Show data environmental clauses variable scope using one dimensional array addition (private, first private, Last private and Shared).
                 <ul>
                     <li> Shared: `arr`, the array itself. </li>
@@ -506,86 +522,123 @@ git clone https://github.com/sayande717/code.git
 
 ### Design and Analysis of Algorithms
 <ol type="1">
-    <li> 1-1.c: You are given an undirected graph. The task is to assign colors to each vertex of the graph such that no two adjacent vertices share the same color, using the minimum number of colors. Implement the greedy coloring algorithm to solve this problem.
-        <br><img src="./media/q1-1-1.png" alt="Graph" height="400px" />
-    </li>
-    <li> 1-2.c: You are given n jobs. Each job $J_i$ has a deadline $d_i$ and a profit $p_i$. Only one job can be scheduled at a time. The task is to find the sequence of jobs that maximizes the total profit while ensuring that no job is scheduled after its deadline.
-        <table>
-            <tr>
-                <th>S. No.</th>
-                <th>Jobs</th>
-                <th>Deadlines</th>
-                <th>Profits</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>J1</td>
-                <td>2</td>
-                <td>20</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>J2</td>
-                <td>2</td>
-                <td>70</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>J3</td>
-                <td>1</td>
-                <td>40</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>J4</td>
-                <td>4</td>
-                <td>110</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>J5</td>
-                <td>5</td>
-                <td>80</td>
-            </tr>
-        </table>
-    <li> 2-1.py: Develop a Python program that use the divide and conquer technique to address the Domino Tiling Problem. Outline the process used in the divide and conquer approach for this particular problem. </li>
-    <li> 2-2.py: Write a Python program to multiply two large integers using Karatsuba's fast multiplication method. Your implementation should demonstrate the efficiency of Karatsuba's algorithm compared to the standard multiplication method for large numbers.
-        <ol type="a">
-            <li> Use the `-lm` flag for compiling code having mathematical operations like pow(), log10(), etc. </li>
-            <li> If either of the numbers is single-digit, perform a simple multiplication. Otherwise, use the algorithm.
-            <li> $(\log_{10} 1234+1)$ gives us the number of digits in $1234$. </li>
+    <li>
+        <ol type="1">
+            <li> You are given an undirected graph. The task is to assign colors to each vertex of the graph such that no two adjacent vertices share the same color, using the minimum number of colors. Implement the greedy coloring algorithm to solve this problem.
+        <br><img src="./media/q1-1-1.png" alt="Graph" />
+            </li>
+            <li> You are given n jobs. Each job $J_i$ has a deadline $d_i$ and a profit $p_i$. Only one job can be scheduled at a time. The task is to find the sequence of jobs that maximizes the total profit while ensuring that no job is scheduled after its deadline.
+                <table>
+                    <tr>
+                        <th>S. No.</th>
+                        <th>Jobs</th>
+                        <th>Deadlines</th>
+                        <th>Profits</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>J1</td>
+                        <td>2</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>J2</td>
+                        <td>2</td>
+                        <td>70</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>J3</td>
+                        <td>1</td>
+                        <td>40</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>J4</td>
+                        <td>4</td>
+                        <td>110</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>J5</td>
+                        <td>5</td>
+                        <td>80</td>
+                    </tr>
+                </table>
+            </li>
         </ol>
     </li>
-    <li> 2-3.py: Write a Python program to multiply two 4×4 matrices using Strassen's algorithm. Your program should be efficient and demonstrate the recursive nature of the algorithm. </li>
-    <li> 2-4.py: You are given a sequence of matrices, and you need to determine the most efficient way to multiply these matrices together. Write a Python program that computes the minimum number of scalar multiplications needed to multiply the given chain of matrices using dynamic Programming. </li>
-    <li> 2-5.py: You are given two sequences, and your task is to find the length of the longest subsequence that appears in both sequences. Write a Python program to compute the LCS and also to retrieve the actual subsequence.
-        <ul>
-            <li> Sequence names1 = ["Sachin","Virat","Dhoni","Rohit","Jadeja"] </li>
-            <li> Sequence names2 = ["Virat","Sachin","Jadeja","Dhoni","Rohit"] </li>
-        </ul>
+    <li>
+        <ol type="i">
+            <li> Develop a Python program that use the divide and conquer technique to address the Domino Tiling Problem. Outline the process used in the divide and conquer approach for this particular problem. </li>
+            <li> Write a Python program to multiply two large integers using Karatsuba's fast multiplication method. Your implementation should demonstrate the efficiency of Karatsuba's algorithm compared to the standard multiplication method for large numbers.
+                <ol type="a">
+                    <li> Use the `-lm` flag for compiling code having mathematical operations like pow(), log10(), etc. </li>
+                    <li> If either of the numbers is single-digit, perform a simple multiplication. Otherwise, use the algorithm.
+                    <li> $(\log_{10} 1234+1)$ gives us the number of digits in $1234$. </li>
+                </ol>
+            </li>
+            <li> Write a Python program to multiply two 4×4 matrices using Strassen's algorithm. Your program should be efficient and demonstrate the recursive nature of the algorithm. </li>
+            <li> You are given a sequence of matrices, and you need to determine the most efficient way to multiply these matrices together. Write a Python program that computes the minimum number of scalar multiplications needed to multiply the given chain of matrices using dynamic Programming. </li>
+            <li> You are given two sequences, and your task is to find the length of the longest subsequence that appears in both sequences. Write a Python program to compute the LCS and also to retrieve the actual subsequence.
+                <ul>
+                    <li> Sequence names1 = ["Sachin","Virat","Dhoni","Rohit","Jadeja"] </li>
+                    <li> Sequence names2 = ["Virat","Sachin","Jadeja","Dhoni","Rohit"] </li>
+               </ul>
+            </li>
+        </ol>
     </li>
-    <li> 3-1.py: Implement the Rabin-Karp algorithm to search for a given pattern in a large text string. Given a large string T of length n and a pattern P of length m, find all the starting indices where P appears as a substring in T using the Rabin-Karp algorithm. Assume that both the pattern P and the text T contain only lowercase English letters ('a' to 'z'). </li>
-    <li> 3-2.py: You are given two strings: text and pattern. Your task is to find all occurrences of the pattern in the text using the Knuth-Morris-Pratt (KMP) algorithm and return the starting indices of these occurrences. </li>
-    <li> 3-3.py: You are given an N×N chessboard. The objective is to place N queens on the board such that no two queens threaten each other. That is, no two queens should share the same row, column, or diagonal. </li>
-    <li> 3-4.py: Given a set of integers and a target sum, determine if there is a subset of the given integers that adds up to the target sum. The solution must use backtracking to explore all possible subsets. </li>
-</ol>
-
+    <li>
+        <ol type="i">
+            <li> Implement the Rabin-Karp algorithm to search for a given pattern in a large text string. Given a large string T of length n and a pattern P of length m, find all the starting indices where P appears as a substring in T using the Rabin-Karp algorithm. Assume that both the pattern P and the text T contain only lowercase English letters ('a' to 'z'). </li>
+            <li> You are given two strings: text and pattern. Your task is to find all occurrences of the pattern in the text using the Knuth-Morris-Pratt (KMP) algorithm and return the starting indices of these occurrences. </li>
+            <li> You are given an N×N chessboard. The objective is to place N queens on the board such that no two queens threaten each other. That is, no two queens should share the same row, column, or diagonal. </li>
+            <li> Given a set of integers and a target sum, determine if there is a subset of the given integers that adds up to the target sum. The solution must use backtracking to explore all possible subsets. </li>
+        </ol>
+    </li>
+    <li>
+        <ol type="i">
+            <li> Write a program to solve the Job Assignment Problem using the Branch and Bound method. The program should efficiently explore the solution space to find the minimum cost assignment.
+                <ol type="1">
+                    <li> Input 1: <br><img src="./platform/College-1/Design and Analysis of Algorithms/media/q4-1-1.png" alt="Job Assignment 1" /> </li>
+                    <li> Input 2: <br><img src="./platform/College-1/Design and Analysis of Algorithms/media/q4-1-2.png" alt="Job Assignment 2" /> </li>
+                </ol>
+            </li>
+            <li> Given a text $T$ of length $n$ and a pattern $P$ of length $m$, use the Rabin-Karp algorithm to find all occurrences of $P$ in $T$. The algorithm should utilize hashing to achieve efficient pattern matching, especially for large texts and patterns. </li>
+            <li> Write a program to implement the Knuth-Morris-Pratt algorithm for string matching. The algorithm should efficiently find all occurrences of a given pattern in a text using the (Longest Prefix Suffix - LPS array).
+                <ul>
+                    <li> Input 1: Text T: "ababcabcabababd", Pattern P: "ababd" | Output: [10] </li>
+                    <li> Input 2: Text T: "abcdabcabcdabcdab", Pattern P: "abcdab" | Output: [0,4,8,12] </li>
+                    <li> Input 3: Text T: "aaaaab", Pattern P: "aaab" | Output: [0,2] </li>
+                </ul>
+            </li>
+            <li> Implement the Ford-Fulkerson algorithm to find the maximum flow in a flow network from a source node to a sink node. </li>
+            <li> Implement the Edmonds-Karp algorithm using Breath-First-Search (BFS) to find the maximum flow in the network.
+                <br><img src="./platform/College-1/Design and Analysis of Algorithms/media/q4-5-1.png" alt="Edmonds-Karp" />
+            </li>
+            <li>  Given a directed graph $G=(V,E)$ where each $edge(u,v)$ has a capacity $c(u,v)$ and a cost $cost(u,v)$ for sending flow from $u$ to $v$, implement the Cycle Cancelling algorithm to
+compute the maximum flow with the minimum possible cost from a source node $s$ to a sink node $t$. </li>
+        </ol>
+    </li>
+</li>
+        
 ### Operating Systems
 <ol type="1">
-    <li> 1-1.md: Write 15 Linux commands and their purpose: man, --help, ls, cat, grep, mkdir, rmdir, rm, shred, cp, mv, chmod, chown, sudo, cal, date, timedatectl, dd, wc </li>
-    <li> 1-2.c: OS system calls in C.
+    <li> Write 15 Linux commands and their purpose: man, --help, ls, cat, grep, mkdir, rmdir, rm, shred, cp, mv, chmod, chown, sudo, cal, date, timedatectl, dd, wc </li>
+    <li> OS system calls in C.
         <ol type="a">
             <li> `fork()` returns Child process ID in the forked process, and `0` in the parent process. </li>
         </ol>
     </li>
-    <li> 1-3.c: Write a program to:
+    <li> Write a program to:
         <ol type="a">
             <li> Create parent & child process and print their id. </li>
             <li> Create a zombie process. </li>
             <li> Create an orphan process. </li>
         </ol>
     </li>
-    <li> 1-4.c: CPU Scheduling Algorithms:
+    <li> CPU Scheduling Algorithms:
         <ol type="a">
             <li> FCFS (First Come First Serve) | Non-Preemptive </li>
             <li> SJF (Shortest Job First) & SRTF (Shortest Remaining Time First) | Preemptive & Non-Preemptive </li>
@@ -593,14 +646,19 @@ git clone https://github.com/sayande717/code.git
             <li> Round Robin | Non-Preemptive </li>
         </ol>
     </li>
-    <li> 2-1.c: Process Synchronisation:
+    <li> Solve the following Process synchronization problems:
         <ol type="a">
             <li> Producer Consumer problem using Semaphore </li>
             <li> Reader Writer problem using Semaphore </li>
             <li> Dining Philosopher problem using Monitor </li>
         </ol>
     </li>
-    <li> 2-2.c: Implement the Banker's Algorithm for Deadlock Avoidance. </li>
+    <li> Implement the following Banker’s algorithm to avoid deadlock in a system:
+        <ol type="a">
+            <li> Safety Sequence algorithm </li>
+            <li> Additional Resource Request algorithm </li>
+        </ol>
+    </li>
 </ol>
 
 ## Platform/College-1/Litcoder
@@ -623,9 +681,9 @@ git clone https://github.com/sayande717/code.git
         ```
     - Output:
         ```text
-        - 0.500         (Ratio of positive integers)
-        - 0.333         (Ratio of negative integers)
-        - 0.167         (Ratio of zeroes)
+        0.500         (Ratio of positive integers)
+        0.333         (Ratio of negative integers)
+        0.167         (Ratio of zeroes)
         ```
 1. Lab 2
     1. [lab2.java](./platform/College-1/Litcoder/Week 1/Code/lab2.java)
@@ -675,4 +733,266 @@ git clone https://github.com/sayande717/code.git
     - Output:
         ```text
         Array size must be between 1 and 10
+        ```
+1. Lab 4
+    1. [lab4.java](./platform/College-1/Litcoder/Week 1/Code/lab4.java)
+    1. [lab4.py](./platform/College-1/Litcoder/Week 1/Code/lab4.py)
+    - A company aims to enhance the security of its transmitted data over the telephone. You are tasked with developing a program that encrypts four-digit integers according to specific rules. The encryption process involves adding 5 to each digit, taking the remainder after dividing the result by 10, swapping the first digit with the third, and swapping the second digit with the fourth. Output should print the encrypted integer value.
+    - Constraints:
+        - The input must be 4-digit integer. If it is LESS then four , print "Provided input is less than 4, enter four digit integers".
+        - The input must be 4-digit integer. If it is GREATER than four, print "Provided input is more than 4, enter four digit integers".
+        - The input must be a positive integer. if it is NOT satisfied this condition, print "Enter positive 4-digit integer".
+        - The input value must not contain any string if it is NOT satified this condition, print "Enter only integer value".
+    - Input:
+        ```text
+        3662 (Input integer)
+        ```
+    - Output:
+        ```text
+        1781 (Encrpyted integer)
+        ```
+    - Input:
+        ```text
+        4537 
+        ```
+    - Output:
+        ```text
+        8290
+        ```
+    - Input:
+        ```text
+        3672
+        ```
+    - Output:
+        ```text
+        2781
+        ```
+
+1. Pre-Program Contest 1 (Java)
+    1. [pre-contest1.java](./platform/College-1/Litcoder/Week 1/Code/pre-contest1.java)
+    1. [pre-contest1.py](./platform/College-1/Litcoder/Week 1/Code/pre-contest1.py)
+    - Given a sentence, S, consisting of words separated by spaces, we want to convert it into "Goat Latin," which is a fictional language similar to Pig Latin. Write a program that takes the sentence S as input and returns the final sentence representing its conversion into Goat Latin.
+    - The rules for Goat Latin conversion are as follows:
+        - If a word begins with a vowel (a, e, i, o, or u), append "ma" to the end of the word. For example, the word 'apple' becomes 'applema'.
+        - If a word begins with a consonant (a letter that is not a vowel), remove the first letter, append it to the end of the word, and then add "ma". For example, the word "goat" becomes "oatgma".
+        - Add one letter 'a' to the end of each word based on its word index in the sentence, starting with 1. For example, the first word gets "a" added to the end, the second word gets "aa" added to the end, and so on.
+    - Input:
+        ```text
+        apple
+        ```
+    - Output:
+        ```text
+        applema
+        ```
+    - Input:
+        ```text
+        goat
+        ```
+    - Output:
+        ```text
+        oatgma
+        ```
+    - Input:
+        ```text
+        aasssdd apple goat
+        ```
+    - Output:
+        ```text
+        aasssddmaa applemaaa oatgmaaaa
+        ```
+
+1. Pre-program Contest 2 (Java)
+    1. [pre-contest2.java](./platform/College-1/Litcoder/Week 1/Code/pre-contest2.java)
+    1. [pre-contest2.py](./platform/College-1/Litcoder/Week 1/Code/pre-contest2.py)
+    - You are tasked with designing a **Time Travelers Archive** system that allows travelers to store and retrieve valuable information from different time periods. The system should support storing key-value pairs associated with specific timestamps and efficiently retrieving the latest value for a given key based on a timestamp.
+    - Design a "TimeTravelersArchive" class to implement the required functionality:
+        1. Store(string key, string value, int timestamp): This method should store the key "key" with the value "value" at the given "timestamp".
+        1. Retrieve(string key, int timestamp): This method should return the latest value associated with the key "key" that has a timestamp less than or equal to the given "timestamp". If there is no such value found, it should return the output as empty . When you retrieve the data, if call wrong method it should print "Wrong method called, please call Store or Retrieve method".
+    - Input:
+        ```text
+        Store language Latin 10
+        Store language Old_English 50
+        Store language Middle_English 90
+        Store language2 Middle_English 90
+        Store language1 Latin 190
+        Store language3 Latin 5
+        Store language1 Middle_English 20
+        Retrieve language 2
+        Retrieve language1 200
+        Retrieve language3 60
+        Retrieve language 90
+        ```
+    - Output:
+        ```text
+        empty
+        Middle_English
+        Latin
+        Middle_English
+        ```
+
+1. Pre-program Contest 2 (Python)
+    1. [pre-contest2.py](./platform/College-1/Litcoder/Week 1/Code/pre-contest1.py)
+    - The problem at hand involves a set of jobs, each with a deadline and an associated profit. These jobs are subject to the constraint that only one job can be scheduled at a time, and each job takes exactly one unit of time to complete. The minimum deadline for a job is 1. Input: The input consists of an array of jobs with their respective deadlines and profits. The order in which the jobs are listed in the input does not necessarily represent the optimal order.
+    - Example Table: Job - Deadline - Profit
+        | Job | Deadline | Profit |
+        |-----|----------|--------|
+        | A   | 2        | 100    |
+        | C   | 2        | 27     |
+        | D   | 1        | 25     |
+        | E   | 3        | 15     |
+        | B   | 1        | 19     |
+
+    - The goal is to find a sequence of jobs that maximizes the total profit, subject to the constraint that each job must be completed before its deadline.
+    - Input:
+        ```text
+        5                   (Number of jobs)
+        a b c d e           (Job IDs)
+        2 1 2 1 3           (Deadlines)
+        100 19 27 25 15     (Profit)
+        ```
+    - Output
+        ```text
+        c a e               (Sequence for maximum profits)
+        ```
+    - Input:
+        ```text
+        5
+        p q r s t
+        2 1 3 1 3
+        99 190 27 25 15
+        ```
+    - Output:
+        ```text
+        q p r
+        ```
+1. Contest 1
+    1. [contest1.java](./platform/College-1/Litcoder/Week 1/Code/contest1.java)
+    1. [contest1.py](./platform/College-1/Litcoder/Week 1/Code/contest1.py)
+    - You are given a collection of tiles, where each tile has a single letter printed on it. The objective is to find out how many different non-empty sequences of letters can be formed using the given tiles. A sequence is considered non-empty if it contains at least one letter.
+    - Example: `AAB`
+        - In this scenario, we have three tiles with letters "A," "A," and "B" printed on them.
+        - Now, we need to find all possible distinct non-empty sequences of letters that can be formed using these tiles.
+        - Possible sequences:
+            ```text
+            "A"
+            "AA"
+            "AAB"
+            "AB"
+            "BA"
+            "B"
+            "AA"
+            "ABA"
+            ```
+        - There are 8 different non-empty sequences that can be formed using the given tiles "AAB".
+    - Input:
+        ```text
+        FFG (Sequence)
+        ```
+    - Output:
+        ```text
+        8 (Number of combinations)
+        ```
+    - Input:
+        ```text
+        FFGHJ
+        ```
+    - Output:
+        ```text
+        170
+        ```
+- Contest 2
+    1. [contest2.java](./platform/College-1/Litcoder/Week 1/Code/contest2.java)
+    1. [contest2.py](./platform/College-1/Litcoder/Week 1/Code/contest2.py)
+    - A palindrome is a string that reads the same from left to right and right to left, like 'civic' or '1001'. You are given a string representing an integer and a maximum number of changes you can make. Your goal is to modify the string, one digit at a time, to create the highest possible integer while adhering to the constraint on the number of changes. The length of the string must remain unchanged, and you must consider the position of zeros to the left of all higher digits. For example, '1001' is a valid representation, while '0011' is not.
+    - Example:
+        - Input:
+            ```text
+            3
+            12321
+            ```
+        - **Step 1**:
+            - Index 0 and 4 are equal.
+            - Index 1 and 3 are equal.
+            - Index 2 is in the middle.
+            - Total changes allowed: 3
+            - Mismatches count: 0
+            - Since total changes - 2 >= mismatches count, we replace index 0 and 4 with the maximum value of 9. Two changes are completed, and one remaining change is available.
+            - The intermediate output is `92329`.
+        - **Step 2**:
+            - Now we can go to index 1 and 3.
+            - Total changes - 2 >= mismatches count is not satisfied because the remaining changes available is 1. So, we need to find the maximum value at index 1 and 3. Here, both are equal.
+            - The  intermediate output is `92329`.
+        - **Step 3**:
+            - Index 2 is in the middle, so we can do one change. Here, one change is available, so we replace it with 9. (Note: If no change is available, we need to retain the same value.)
+            - The output is `92929`.
+         - Output:
+            ```text
+            92929
+            ```
+    - Input:
+        ```text
+        1       (Number of changes allowed)
+        12321   (Integer (as string))
+        ```
+    - Output:
+        ```text
+        12921   (Maximum palindrome integer, within the constraints)
+        ```
+    - Input:
+        ```text
+        3        
+        1231
+        ```
+    - Output:
+        ```text
+        9339
+        ```
+
+### Week 2
+1. Lab 5
+    1. [lab5.java](./platform/Litcoder/Week 1/Code/lab5.java)
+    1. [lab5.py](./platform/Litcoder/Week 1/Code/lab5.py)
+    - PIN Generator: A personal identification number (PIN) is a numeric or alphanumeric password or code used in the process of authenticating or identifying a user. The PIN numbers of the customers of FB Bank are encoded in an array. Your task is to decode the array and generate the six-digit PIN number based on the following rules:
+        - Find the cumulative sum of all the digits until you get a single digit.
+        - Replace all the odd numbers with their respective alphabets in lowercase i.e. 1=a, 2=b...9=i, etc.
+    - Input:
+        ```text
+        145 875 695 214 12 1 (all numbers separated by spaces)
+        ```
+    - Output:
+        ```text
+        a22gca (Decoded)
+        ```
+    - Input:
+        ```text
+        10 20 30 40 50 60
+        ```
+    - Output:
+        ```text
+        a2c4e6
+        ```
+- Lab 6:
+    1. [lab6.java](./platform/Litcoder/Week 1/Code/lab6.java)
+    1. [lab6.py](./platform/Litcoder/Week 1/Code/lab6.py)
+    - The problem at hand involves finding the largest special prime number that is smaller than a given input number. A special prime number is a unique type of prime number that can be constructed by concatenating its individual digits in a particular order. The resulting numbers, obtained by considering all possible combinations of concatenation, must also be prime.
+    - To illustrate this concept, let's take an example with an input number of 100. We need to find the largest special prime number that is less than 100.
+        1. Starting the process, we examine different digit combinations by concatenating the digits together. In this case, we search for a combination that results in a prime number.
+        1. Considering the available digits, we attempt to concatenate them. If a resulting number is prime, we continue by adding more digits until we reach the desired special prime number or find no more primes.
+        1. For the given input of 100, we search for a special prime number less than 100. In this case, the largest special prime number that satisfies the given conditions is 79.
+        1. To obtain 79, we concatenate the digits 7 and 9. Both 7 and 79 are prime numbers, fulfilling the requirement of a special prime. Moreover, 79 is smaller than the given number, 100. Thus, the output for the given input of 100 is 79.
+    - Input:
+        ```text
+        400 
+        ```
+    - Output:
+        ```text
+        379
+        ```
+    - Input:
+        ```text
+        100 
+        ```
+    - Output:
+        ```text
+        79
         ```
