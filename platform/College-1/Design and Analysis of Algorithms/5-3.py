@@ -18,6 +18,8 @@ def computeLPS(pattern):
     return LPS
 
 def KMPSearch(text, pattern):
+    print(f"\nText: {text}")
+    print(f"Pattern: {pattern}")
     n = len(text)
     m = len(pattern)
     LPS = computeLPS(pattern)
@@ -40,9 +42,6 @@ def KMPSearch(text, pattern):
                 i += 1
     return indexList
 
-def main():
-    T = str(input("Enter string: "))
-    P = str(input("Enter pattern: "))
-    print(KMPSearch(T,P))    
-
-main()
+print(f"Occurences: {KMPSearch("ababcabcabababd","ababd")}")
+print(f"Occurences: {KMPSearch("abcdabcabcdabcdab","abcdab")}")
+print(f"Occurences: {KMPSearch("aaaaab","aaab")}")

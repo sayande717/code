@@ -1,6 +1,5 @@
 from collections import deque
 
-# Function to perform BFS and find if there is a path from source to sink
 def bfs(residual_graph, source, sink, parent):
     visited = [False] * len(residual_graph)
     queue = deque([source])
@@ -43,7 +42,6 @@ def edmonds_karp(graph, source, sink):
 
     return max_flow
 
-# Example
 graph = [
     [0, 16, 13, 0, 0, 0],
     [0, 0, 10, 12, 0, 0],

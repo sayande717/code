@@ -1,5 +1,4 @@
-from collections import deque, defaultdict
-import sys
+from collections import deque
 
 def bfs(residual_graph, source, sink, parent):
     visited = [False] * len(residual_graph)
@@ -32,7 +31,6 @@ def bellman_ford(graph, source):
                     distance[v] = distance[u] + cost
                     parent[v] = u
 
-    # Check for negative weight cycles
     for u in range(len(graph)):
         for v, (capacity, cost) in enumerate(graph[u]):
             if capacity > 0 and distance[u] + cost < distance[v]:
@@ -45,7 +43,6 @@ def cycle_cancelling(graph, source, sink):
     max_flow = 0
     min_cost = 0
 
-    # Step 1: Find the maximum flow using Edmonds-Karp algorithm
     parent = [-1] * len(graph)
     while bfs(residual_graph, source, sink, parent):
         path_flow = float('Inf')
@@ -64,13 +61,11 @@ def cycle_cancelling(graph, source, sink):
 
         max_flow += path_flow
 
-    # Step 2: Cancel negative cost cycles
     while True:
         parent, cycle_start = bellman_ford(residual_graph, source)
         if cycle_start is None:
             break
 
-        # Find the cycle
         cycle = []
         v = cycle_start
         while True:
@@ -79,14 +74,12 @@ def cycle_cancelling(graph, source, sink):
             if v == cycle_start and len(cycle) > 1:
                 break
 
-        # Find the minimum capacity in the cycle
         cycle_flow = float('Inf')
         for i in range(len(cycle)):
             u = cycle[i]
             v = cycle[(i + 1) % len(cycle)]
             cycle_flow = min(cycle_flow, residual_graph[u][v][0])
 
-        # Cancel the cycle
         for i in range(len(cycle)):
             u = cycle[i]
             v = cycle[(i + 1) % len(cycle)]
@@ -96,7 +89,6 @@ def cycle_cancelling(graph, source, sink):
 
     return max_flow, min_cost
 
-# Example 
 graph = [
     [(0, 0), (16, 2), (13, 1), (0, 0), (0, 0), (0, 0)],
     [(0, 0), (0, 0), (10, 2), (12, 1), (0, 0), (0, 0)],
