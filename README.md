@@ -592,7 +592,12 @@ git clone https://github.com/sayande717/code.git
         <ol type="a">
             <li> 4-1.c: Exponential & Interpolation Search </li>
             <li> 4-2.c: Accept any two polynomials of various degrees. Find the sum of those two polynomials using linked list and display the result in polynomial form. </li>
-            <li> 4-3.c: Apply interpolation search on the heights of students in a class. Search for particular student height, if found delete it from the list. </li>
+            <li> 4-3.c: Apply interpolation search on the heights of students in a class. Search for particular student height, if found delete it from the list.
+                <ol type="i">
+                    <li> The logic here is to run Interpolation Search again and again till there are no such elements (target height) left. </li>
+                    <li> Here, we make the target elements `-1` because a height of `-1` is invalid. </li>
+                </ol>
+            </li>
         </ol>
     </li>
     <li> Algorithm: <strong> Sorting </strong>
