@@ -11,6 +11,16 @@ git clone https://github.com/sayande717/code.git
 - `(current + 1) % n` leads us to the next index, after current element.
 - `(current + (n-1)) % n` leads us to the previous index, before current element.
 - Language: `c`:
+    - A string always ends with null character '\0'. So you can use this character to identify the end of a string.
+        ```c 
+        int strSize=0;
+        for(int index=0;str[index]!='\0';index++) {
+            printf("%c ",str[index]);
+            strSize++;
+        }
+
+        printf("\nString length: %d",strSize);
+        ```
     - `EXIT_SUCCESS` means 0 and `EXIT_FAILURE` means 1 in general context, in a program. They are a part of `<stdlib.h>`.
     - `exit(EXIT_FAILURE)` and `exit(EXIT_SUCCESS)` is used to indicate failed and succesful program termination.
     - `return EXIT_SUCCESS` and `return EXIT_FAILURE` can also be used in int main() { ... } or even in other programs.
@@ -582,16 +592,20 @@ git clone https://github.com/sayande717/code.git
         <ol type="a">
             <li> 4-1.c: Exponential & Interpolation Search </li>
             <li> 4-2.c: Accept any two polynomials of various degrees. Find the sum of those two polynomials using linked list and display the result in polynomial form. </li>
+            <li> 4-3.c: Apply interpolation search on the heights of students in a class. Search for particular student height, if found delete it from the list. </li>
         </ol>
     </li>
     <li> Algorithm: <strong> Sorting </strong>
         <ol type="a">
             <li> 5-1.c: Merge Sort: Accept your name and sort your name using mergesort. Display your name and the sorted order of your name. </li>
+            <li> 5-2.c: Accept your city name with minimum 8 characters length and perform merge sort to display. </li>
+the original string and sorted string
         </ol>
     </li>
     <li> Data Structure: <strong> Binary Search Tree </strong>
         <ol type="a">
-            <li> 6-1.c: Perform level order traversal on your name by accepting as a string. Display the level order of it. </li>
+            <li> 6-1.c: Create a Binary Search Tree (BST) by accepting characters of your name. Perform any two tree traversals (from preorder, inorder, or postorder). </li>
+            <li> 6-2.c: Perform level order traversal on your name by accepting as a string. Display the level order of it. </li>
         </ol>
     </li>
 </ol>

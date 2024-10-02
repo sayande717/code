@@ -1,66 +1,77 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#define MAX_SIZE 20
 
-struct Node {
-    char data;
-    struct Node* left;
-    struct Node* right;
-};
+void merge(char* arr, int low, int mid, int high) {
+    int left = low;
+    int right = mid+1;
+    char* temp = (char*)malloc(sizeof(char)*(high-low+1));
+    int tempIndex = 0;
 
-struct Node* createNode(char data) {
-    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-    newNode->data = data;
-    newNode->left = newNode->right = NULL;
-    return newNode;
+    while(left<=mid && right<=high) {
+        if(arr[left]<=arr[right]) {
+            temp[tempIndex] = arr[left];
+            left++;
+        } else {
+            temp[tempIndex] = arr[right];
+            right++;
+        }
+        tempIndex++;
+    }
+
+    while(left<=mid) {
+        temp[tempIndex] = arr[left];
+        left++;
+        tempIndex++;
+    }
+
+    while(right<=high) {
+        temp[tempIndex] = arr[right];
+        right++;
+        tempIndex++;
+    }
+
+    for(int index=low;index<=high;index++) {
+        arr[index] = temp[index-low];
+    }
+    free(temp);
 }
 
-struct Node* insertNode(struct Node* root, char data) {
-    if (root == NULL) {
-        return createNode(data);
+void mergeSort(char* arr, int low, int high) {
+    // Base case
+    if(low==high) {
+        return;
     }
-    if (data <= root->data) {
-        root->left = insertNode(root->left, data);
-    } else if (data > root->data) {
-        root->right = insertNode(root->right, data);
-    }
-    return root;
+
+    int mid = low+(high-low)/2;
+    mergeSort(arr,low,mid);
+    mergeSort(arr,mid+1,high);
+
+    merge(arr,low,mid,high);
 }
 
-void inorder(struct Node* root) {
-    if (root != NULL) {
-        inorder(root->left);
-        printf("%c ", root->data);
-        inorder(root->right);
+void printArr(char* arr, int size) {
+    for(int index=0;index<size;index++) {
+        printf("%c ",arr[index]);
     }
-}
-
-void preorder(struct Node* root) {	 	  	 	   	      	 	    	   	      	    	 	
-    if (root != NULL) {
-        printf("%c ", root->data);
-        preorder(root->left);
-        preorder(root->right);
-    }
-}
+}   
 
 int main() {
-    struct Node* root = NULL;
-    // String size = 20 characters + '\0'
-    char* name = (char*)malloc(sizeof(char)*21);
-    printf("Enter name: "); scanf("%s",name);
-    int index = 0;
-    while(name[index]!='\0') {
-        root = insertNode(root, name[index]);
-        index++;
+    char* city = (char*)malloc(sizeof(char)*MAX_SIZE);
+    printf("Enter city name (atleast 8 characters): "); scanf("%s",city);
+
+    // Find string length (not using strlen())
+    int size=0;
+    while(city[size]!='\0') {
+        size++;
     }
 
-    printf("Inorder traversal: ");
-    inorder(root);
-    printf("\n");
+    printf("Original array: "); printArr(city,size);
+    mergeSort(city, 0, size-1);
+    printf("\nSorted array: "); printArr(city,size);
 
-    printf("Preorder traversal: ");
-    preorder(root);
-    
     printf("\n");
-
+    free(city);
     return EXIT_SUCCESS;
-}	 	  	 	   	      	 	    	   	      	    	 	
+}

@@ -1,65 +1,66 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct node {
+struct Node {
     char data;
-    struct node *left, *right;
+    struct Node* left;
+    struct Node* right;
 };
 
-// initializing a new node and returning it to the caller
-struct node* newNode(char data) {
-    struct node *node = (struct node *)malloc(sizeof(struct node));
-    node->data = data;
-    node->left = NULL;
-    node->right = NULL;
-    return (node);
+struct Node* createNode(char data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->left = newNode->right = NULL;
+    return newNode;
 }
 
-int height(struct node* node) {
-    if (node == NULL) {
-        return EXIT_FAILURE;
-    }
-    else {
-        int leftHeight = height(node->left);
-        int rightHeight = height(node->right);
-        if (leftHeight > rightHeight) {
-            return (leftHeight + 1);
-        } else {
-            return (rightHeight + 1);
-        }
-    }
-    return -1;
-}
-
-void printCurrentLevel(struct node* root, int level) {
+struct Node* insertNode(struct Node* root, char data) {
     if (root == NULL) {
-        return;
+        return createNode(data);
     }
-    if (level == 1) {
+    if (data <= root->data) {
+        root->left = insertNode(root->left, data);
+    } else if (data > root->data) {
+        root->right = insertNode(root->right, data);
+    }
+    return root;
+}
+
+void inorder(struct Node* root) {
+    if (root != NULL) {
+        inorder(root->left);
         printf("%c ", root->data);
-    } else if (level > 1) {
-        printCurrentLevel(root->left, level - 1);
-        printCurrentLevel(root->right, level - 1);
+        inorder(root->right);
     }
 }
 
-void printLevelOrder(struct node* root) {
-    int h = height(root);
-    for (int iter = 1; iter <= h; iter++) {
-        printCurrentLevel(root, iter);
+void preorder(struct Node* root) {	 	  	 	   	      	 	    	   	      	    	 	
+    if (root != NULL) {
+        printf("%c ", root->data);
+        preorder(root->left);
+        preorder(root->right);
     }
 }
 
 int main() {
-    char* name = (char*)malloc(sizeof(7));
+    struct Node* root = NULL;
+    // String size = 20 characters + '\0'
+    char* name = (char*)malloc(sizeof(char)*21);
     printf("Enter name: "); scanf("%s",name);
-    struct node *root = newNode(name[0]);
-    root->left = newNode(name[1]);
-    root->right = newNode(name[2]);
-    root->left->left = newNode(name[3]);
-    root->left->right = newNode(name[4]);
-    root->left->left->left = newNode(name[5]);
-    root->left->left->right= newNode(name[6]);
-    printLevelOrder(root);
+    int index = 0;
+    while(name[index]!='\0') {
+        root = insertNode(root, name[index]);
+        index++;
+    }
+
+    printf("Inorder traversal: ");
+    inorder(root);
+    printf("\n");
+
+    printf("Preorder traversal: ");
+    preorder(root);
+    
+    printf("\n");
+
     return EXIT_SUCCESS;
-}
+}	 	  	 	   	      	 	    	   	      	    	 	
