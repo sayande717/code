@@ -121,6 +121,50 @@ git clone https://github.com/sayande717/code.git
         - `Integer.parseInt("1234")`: This function only accepts & converts strings, not characters.
         - `Character.getNumericValue('1')` -> (int), 1
     - A `HashSet` is a collection that does not allow duplicate elements. It only stores unique elements, and rejects everything else.
+    - If the input: an integer in the line 1, a string in line 2
+    - Input:
+        ```text
+        10
+        str1 str2 str3 str4
+        ```
+    - ... and you take the inputs like:
+        ```java
+        Scanner in = new Scanner(System.in);
+
+        int n = in.nextInt();
+        String str = in.nextLine();
+
+        in.close();
+        ```
+    - ... then, after reading the target integer with `nextInt()`, str's `nextLine()` call will consume the newline character (\n). This will result in the `newline()` not getting any input.
+    - The solution to this is to use a dummy `in.nextLine()` to consume the newline character, so str's `nextLine()` starts accepting strings from the proper line.
+    - Solution:
+        ```java
+        Scanner in = new Scanner(System.in);
+
+        int n = in.nextInt();
+        in.nextLine(); // Dummy call to consume newline (\n).
+        String str = in.nextLine();
+
+        in.close();
+        ```
+    - `HashMap`: A HashMap stores key:value pairs.
+        ```java
+        HashMap<Integer,Integer> freqMap = new HashMap<Integer,Integer>(); // Initialize a HashMap
+        // Here, the key is the integer, and the value is it's frequency.
+        freqMap.put(2,1);                                                  // Insert values
+        freqMap.remove(2,1);                                               // Remove values
+        // freqMap.getOrDefault() gets the value of a key 2 and returns it. If not found, it will return 0.
+        freqMap.put(2, freqMap.getOrDefault(2, 0) + 1);
+        
+        // Iterate over keys in the HashMap
+        for(int key : freqMap.keySet()) {
+            int value =  freqMap.get(key);
+        }
+
+        // freqMap.values() returns all values in the HashMap, which can then be stored in an ArrayList.
+        ArrayList<Integer> values = new ArrayList<Integer>(freqMap.values());
+        ```
 
 - Language: `python`:
     - This is how you catch the exception `NumberFormatException` when parsing a character to an integer:
@@ -141,6 +185,33 @@ git clone https://github.com/sayande717/code.git
         - (line 26) List comprehension: remove empty elements and return the list.
         - (line 1,34) Define a class as data type, input elements in it.
     - `for _ in range(10)`: You can put `_` if you don't need the iterator.
+    - TODO Explain code:
+        ```python
+        arr = list(map(int, input().split()))
+        ```
+    - Functions:
+        - `sort(arr)`: Sort list in-place.
+        - `arr2 = sorted(arr)`: Create a new sorted list and return it.
+    - `Dictionary`: A Dictionary, equivalent of a HashMap in Java, stores key:value pairs.
+        ```python
+        freq_dict = {}                        # Initialize an empty dict
+        my_dict = {"a": 1, "b": 2, "c": 3}    # Initialize a dict with key:value pairs.
+        freq_dict[key] = value                # Insert a value in a corresponding key. The key is created if it doesn't exist.
+        freq_dict.pop(key)                    # Remove a value
+        freq_dict[key] = freq_dict.get(key,0)+1 # freq_dict.get(key,0) returns the value of the key if it exists, otherwise returns 0.
+
+        # Iterate over keys
+        for key in freq_dict.keys():
+            print(freq_dict.get(key,0));
+
+        # Iterate over values
+        for value in my_dict.values():
+            print(value)
+        
+        # Iterate over both keys & values
+        for key, value in my_dict.items():
+            print(f"{value}:{key}")
+        ```
 
 - Data Structures:
     - `Array`:
@@ -518,6 +589,11 @@ git clone https://github.com/sayande717/code.git
             <li> 5-1.c: Merge Sort: Accept your name and sort your name using mergesort. Display your name and the sorted order of your name. </li>
         </ol>
     </li>
+    <li> Data Structure: <strong> Binary Search Tree </strong>
+        <ol type="a">
+            <li> 6-1.c: Perform level order traversal on your name by accepting as a string. Display the level order of it. </li>
+        </ol>
+    </li>
 </ol>
 
 ### Design and Analysis of Algorithms
@@ -525,7 +601,7 @@ git clone https://github.com/sayande717/code.git
     <li>
         <ol type="1">
             <li> You are given an undirected graph. The task is to assign colors to each vertex of the graph such that no two adjacent vertices share the same color, using the minimum number of colors. Implement the greedy coloring algorithm to solve this problem.
-        <br><img src="./media/q1-1-1.png" alt="Graph" />
+        <br><img src="./platform/College-1/Design and Analysis of Algorithms/media/q1-1-1.png" alt="Graph" />
             </li>
             <li> You are given n jobs. Each job $J_i$ has a deadline $d_i$ and a profit $p_i$. Only one job can be scheduled at a time. The task is to find the sequence of jobs that maximizes the total profit while ensuring that no job is scheduled after its deadline.
                 <table>
@@ -995,4 +1071,80 @@ compute the maximum flow with the minimum possible cost from a source node $s$ t
     - Output:
         ```text
         79
+        ```
+- Lab 7:
+    1. [lab7.java](./platform/Litcoder/Week 1/Code/lab7.java)
+    1. [lab7.py](./platform/Litcoder/Week 1/Code/lab7.py)
+    - You are a teacher who is giving a math test to your students. The test consists of a question that asks students to find the number of pairs of integers in an array whose sum is divisible by a given number. You want to make sure that the question is challenging, but not too difficult.You decide to use the following array as an example: 
+        - Exmple array $arr = [1, 2, 3, 4, 5, 6]$
+        - The question asks students to find the number of pairs of integers in the array whose sum is divisible by 5. The three pairs that meet this criteria are: $[1, 4]$, $[2, 3]$ and $[4, 6]$.
+        - Therefore, the answer to the question is $3$.
+    - Input:
+        ```text
+        3               (Divisor)
+        1 2 3 4 5 6     (Array elements)
+        ```
+    - Output:
+        ```text
+        5               (Number of pairs)
+        ```
+    - Input:
+        ```text
+        4 
+        1 2 3 4 5 6
+        ```
+    - Output:
+        ```text
+        3
+        ```
+- Lab 8:
+    1. [lab8.java](./platform/Litcoder/Week 1/Code/lab8.java)
+    1. [lab8.py](./platform/Litcoder/Week 1/Code/lab8.py)
+    - You have been asked to assist in studying the distribution of plants in a particular region. Each type of plant is identified by a unique integer value. Whenever a botanist spots a plant, its ID number is added to an array of sightings. Your task is to determine which type of plant is the most common, considering the list of sightings. You should print the ID number of the most common plant. If multiple types of plants are equally common, choose the plant with the smallest ID number.
+    - For example, assume the plant sightings are represented by the array sightings = [2, 3, 3, 1,1, 2, 2, 3, 4, 4, 4]. There are two plants with ID 1, three plants with ID 2, three plants with ID 3, and three plants with ID 4. Since the plant with ID 2 is the most common among them, you should print 2 as the answer.
+    - Input:
+        ```text
+        3 1 3 7 2 1 2       (Array elements)
+        ```
+    - Output:
+        ```text
+        1                   (Target frequency)
+        ```
+     - Input:
+        ```text
+        3 2 3 4 2 1 7
+        ```
+    - Output:
+        ```text
+        2
+        ```   
+- Contest 2
+    1. [contest3.java](./platform/College-1/Litcoder/Week 1/Code/contest3.java)
+    1. [contest3.py](./platform/College-1/Litcoder/Week 1/Code/contest3.py)
+    - You are given a list of activities with their start and finish times. Each activity is represented as a pair of integers (start, finish), where start represents the start time of the activity and finish represents the finish time.
+Your task is to implement a function maxActivities(arr) that takes in an array of activity pairs and returns a new array containing the maximum number of non-overlapping activities that can be performed.
+    - Example 1: arr = [(1, 3), (2, 4), (3, 6), (5, 7), (8, 9)]. The maximum number of non-overlapping activities that can be performed is 3, represented by the activity pairs (1, 3), (5, 7), and (8, 9).
+     - Input:
+        ```text
+        6
+        1 3 0 5 5 8
+        2 4 6 7 9 9
+        ```
+    - Output:
+        ```text
+        1 2
+        3 4
+        5 7
+        8 9
+        ```
+     - Input:
+        ```text
+        4
+        1020 1110 1330 1200
+        1300 1200 1430 1400
+        ```
+    - Output:
+        ```text
+        1020 1300
+        1330 1430
         ```
