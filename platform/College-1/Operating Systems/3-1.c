@@ -161,6 +161,7 @@ int main() {
             \n3. Worst Fit \
             \nEnter choice: "); scanf("%d",&choice);
     runner(choice);
+    printf("\n");
 
     return EXIT_SUCCESS;
 }

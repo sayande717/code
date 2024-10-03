@@ -42,6 +42,6 @@ def KMPSearch(text, pattern):
                 i += 1
     return indexList
 
-print(f"Occurences: {KMPSearch("ababcabcabababd","ababd")}")
-print(f"Occurences: {KMPSearch("abcdabcabcdabcdab","abcdab")}")
-print(f"Occurences: {KMPSearch("aaaaab","aaab")}")
+print(f'Occurences: {KMPSearch("ababcabcabababd","ababd")}')
+print(f'Occurences: {KMPSearch("abcdabcabcdabcdab","abcdab")}')
+print(f'Occurences: {KMPSearch("aaaaab","aaab")}')
