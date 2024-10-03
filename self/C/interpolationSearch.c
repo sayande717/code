@@ -12,7 +12,7 @@ int interpolationSearch(int *arr, int target) {
         int index = low+((target-arr[low])*(high-low)/(arr[high]-arr[low]));
         if (arr[low] == arr[high]) {
             // All elements within the array are same.
-            if (arr[low] == target) {
+            if (arr[low] == target) {  // OR (arr[end]==target)
                 // All elements in the array:
                 // - are same.
                 // - are equal to the target.

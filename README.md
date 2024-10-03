@@ -30,8 +30,15 @@ git clone https://github.com/sayande717/code.git
             - `"123456" -> 123456
             - `"123abc123" -> 123 (converts till 1st non-number character is encountered).
     - `srand(time(NULL))`: Seeds the random number generator with the current time in seconds since EPOCH.
-    - `rand()` i.e. generate random number within num: rand()%(num+1)
-    - `rand()` i.e. generate random number between low and high: rand()%(high-low-1)+low
+    - `rand()` i.e. generate random number within num: `rand()%(num+1)`
+    - `rand()` i.e. generate random number between low and high: `rand()%(high-low-1)+low`
+    - To print multiple lines at once (ensure there's no space between `\` and `\n`):
+        ```c
+        printf("\nMemory Addresses: \
+                \nOption 1: %d \
+                \nOption 2: %d\
+                \nOption 3: %d",opt1,opt2,opt3);
+        ```
     - To calculate Execution time for a section of code:
         ```c
         #include<time.h>
@@ -539,6 +546,11 @@ git clone https://github.com/sayande717/code.git
                     <li> Compute serial program execution time and parallel program execution time. </li>
                 </ul>
             </li>
+            <li> Write an OpenMP program to find the prefix sum of all one dimensional array elements. Use an appropriate scheduling clause to find the prefix sum.
+                <ul>
+                    <li> </li>
+                </ul>
+            </li>
         </ol>
     </li>
 </ol>
@@ -720,38 +732,64 @@ compute the maximum flow with the minimum possible cost from a source node $s$ t
         
 ### Operating Systems
 <ol type="1">
-    <li> Write 15 Linux commands and their purpose: man, --help, ls, cat, grep, mkdir, rmdir, rm, shred, cp, mv, chmod, chown, sudo, cal, date, timedatectl, dd, wc </li>
-    <li> OS system calls in C.
-        <ol type="a">
-            <li> `fork()` returns Child process ID in the forked process, and `0` in the parent process. </li>
+    <li>
+        <ol type="1">
+            <li> Write 15 Linux commands and their purpose: man, --help, ls, cat, grep, mkdir, rmdir, rm, shred, cp, mv, chmod, chown, sudo, cal, date, timedatectl, dd, wc </li>
+            <li> OS system calls in C.
+                <ol type="a">
+                    <li> `fork()` returns Child process ID in the forked process, and `0` in the parent process. </li>
+                </ol>
+            </li>
+            <li> Write a program to:
+                <ol type="a">
+                    <li> Create parent & child process and print their id. </li>
+                    <li> Create a zombie process. </li>
+                    <li> Create an orphan process. </li>
+                </ol>
+            </li>
+            <li> CPU Scheduling Algorithms:
+                <ol type="a">
+                    <li> FCFS (First Come First Serve) | Non-Preemptive </li>
+                    <li> SJF (Shortest Job First) & SRTF (Shortest Remaining Time First) | Preemptive & Non-Preemptive </li>
+                    <li> Priority | Preemptive & Non-Preemptive </li>
+                    <li> Round Robin | Non-Preemptive </li>
+                </ol>
+            </li>
         </ol>
     </li>
-    <li> Write a program to:
-        <ol type="a">
-            <li> Create parent & child process and print their id. </li>
-            <li> Create a zombie process. </li>
-            <li> Create an orphan process. </li>
+    <li>
+        <ol type="1">            
+            <li> Solve the following Process synchronization problems:
+                <ol type="a">
+                    <li> Producer Consumer problem using Semaphore </li>
+                    <li> Reader Writer problem using Semaphore </li>
+                    <li> Dining Philosopher problem using Monitor </li>
+                </ol>
+            </li>
+            <li> Implement the following Banker’s algorithm to avoid deadlock in a system:
+                <ol type="a">
+                    <li> Safety Sequence algorithm </li>
+                    <li> Additional Resource Request algorithm </li>
+                </ol>
+            </li>
         </ol>
     </li>
-    <li> CPU Scheduling Algorithms:
-        <ol type="a">
-            <li> FCFS (First Come First Serve) | Non-Preemptive </li>
-            <li> SJF (Shortest Job First) & SRTF (Shortest Remaining Time First) | Preemptive & Non-Preemptive </li>
-            <li> Priority | Preemptive & Non-Preemptive </li>
-            <li> Round Robin | Non-Preemptive </li>
-        </ol>
-    </li>
-    <li> Solve the following Process synchronization problems:
-        <ol type="a">
-            <li> Producer Consumer problem using Semaphore </li>
-            <li> Reader Writer problem using Semaphore </li>
-            <li> Dining Philosopher problem using Monitor </li>
-        </ol>
-    </li>
-    <li> Implement the following Banker’s algorithm to avoid deadlock in a system:
-        <ol type="a">
-            <li> Safety Sequence algorithm </li>
-            <li> Additional Resource Request algorithm </li>
+    <li>
+        <ol type="1">
+            <li> Implement the following Memory Allocation Strategies:
+                <ul>
+                    <li> First Fit </li>
+                    <li> Best Fit </li>
+                    <li> Worst Fit </li>
+                </ul>
+            </li>
+            <li> Implement the following Page Replacement Algorithms. Calculate Page Fault and Hit Ratio for each:
+                <ul>
+                    <li> First In First Out (FIFO) </li>
+                    <li> Least Recently Used (LRU) </li>
+                    <li> Optimal Page Replacement (OPR) </li>
+                </ul>
+            </li>
         </ol>
     </li>
 </ol>
