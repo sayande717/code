@@ -167,6 +167,9 @@ git clone https://github.com/sayande717/code.git
         ```
     - `HashMap`: A HashMap stores key:value pairs.
         ```java
+        import java.util.HashMap;
+        import java.util.Map;
+
         HashMap<Integer,Integer> freqMap = new HashMap<Integer,Integer>(); // Initialize a HashMap
         // Here, the key is the integer, and the value is it's frequency.
         freqMap.put(2,1);                                                  // Insert values
@@ -179,10 +182,21 @@ git clone https://github.com/sayande717/code.git
             int value =  freqMap.get(key);
         }
 
+        // Iterate over both keys and values
+        for (Map.Entry<String, Integer> entry : freqMap.entrySet()) {
+            System.out.printf("Key: %d, Value: %d",entry.getKey(),entry.getValue());
+            }
+        }
+
         // freqMap.values() returns all values in the HashMap, which can then be stored in an ArrayList.
         ArrayList<Integer> values = new ArrayList<Integer>(freqMap.values());
         ```
-
+    - To take segmented input, using `.` as the delimiter (Example: XXX.XXX.XXX.XXX):
+        ```java
+        // "\\.": Use `.` as delimiter.
+        // 4: Take exactly 4 segments, any extras would be discharded.
+        String[] arrIP = "XXX.XXX.XXX.XXX".split("\\.", 4);
+        ```
 - Language: `python`:
     - This is how you catch the exception `NumberFormatException` when parsing a character to an integer:
     ```python
@@ -202,11 +216,22 @@ git clone https://github.com/sayande717/code.git
         - (line 26) List comprehension: remove empty elements and return the list.
         - (line 1,34) Define a class as data type, input elements in it.
     - `for _ in range(10)`: You can put `_` if you don't need the iterator.
-    - TODO Explain code:
+    - If input is a series of integers, like `2 4 5`, and you want to store them in an integer array or individual variables:
         ```python
-        arr = list(map(int, input().split()))
+        arr = list(map(int, input().split(' ')))        # arr=[2,4,5]
+        num1, num2, num3 = map(int,input().split(' '))  # num1 = 2, num2 = 4, num3 = 5
         ```
-    - Functions:
+    - Work with local & global variables with the same name:
+        ```python
+        var = 10
+        def function1():
+            print(var)      # ERROR: by default, var is assumed to be local
+
+        def function2():
+            global var
+            print(var)      # Output: 10, because variable was defined as global
+        ```
+    - functions:
         - `sort(arr)`: Sort list in-place.
         - `arr2 = sorted(arr)`: Create a new sorted list and return it.
     - `Dictionary`: A Dictionary, equivalent of a HashMap in Java, stores key:value pairs.
@@ -295,6 +320,20 @@ git clone https://github.com/sayande717/code.git
         - Preorder
         - Inorder
         - Postorder
+1. [initSort.c](./self/C/initSort.c)
+    - Merge Sort
+    - TODO: Bubble Sort
+    - TODO: Cocktail Sort
+    - TODO: Insertion Sort
+    - TODO: Merge Sort
+    - TODO: Bitonic Sort
+    - TODO: Counting Sort
+    - TODO: Radix Sort
+- [initSearch.c](./self/C/initSearch.c)
+    - Linear Search
+    - Binary Search
+    - TODO: Exponential Search
+    - TODO: Interpolation Search
 
 ### C++
 > [Notes](./notes/Languages.md#c++)
@@ -398,11 +437,6 @@ git clone https://github.com/sayande717/code.git
     - Print the list forwards, and backwards.
     - Insert a node at the beginning and end of the linked list.
     - Delete the first and last node of the linked list.
-1. [initSearch.java](./self/java/initSearch.java)
-    - Linear Search
-    - Binary Search
-1. [initSort.java](./self/java/initSort.java)
-    - Bubble Sort
 
 ### Go
 <!-- > [Notes](./notes/Languages.md#go) -->
@@ -1175,17 +1209,16 @@ compute the maximum flow with the minimum possible cost from a source node $s$ t
         ```text
         2
         ```   
-- Contest 2
+- Contest 3
     1. [contest3.java](./platform/College-1/Litcoder/Week 1/Code/contest3.java)
-    1. [contest3.py](./platform/College-1/Litcoder/Week 1/Code/contest3.py)
     - You are given a list of activities with their start and finish times. Each activity is represented as a pair of integers (start, finish), where start represents the start time of the activity and finish represents the finish time.
 Your task is to implement a function maxActivities(arr) that takes in an array of activity pairs and returns a new array containing the maximum number of non-overlapping activities that can be performed.
     - Example 1: arr = [(1, 3), (2, 4), (3, 6), (5, 7), (8, 9)]. The maximum number of non-overlapping activities that can be performed is 3, represented by the activity pairs (1, 3), (5, 7), and (8, 9).
      - Input:
         ```text
-        6
-        1 3 0 5 5 8
-        2 4 6 7 9 9
+        6           (number of activities)
+        1 3 0 5 5 8 (start times)
+        2 4 6 7 9 9 (end times)
         ```
     - Output:
         ```text
@@ -1194,7 +1227,7 @@ Your task is to implement a function maxActivities(arr) that takes in an array o
         5 7
         8 9
         ```
-     - Input:
+    - Input:
         ```text
         4
         1020 1110 1330 1200
@@ -1204,4 +1237,247 @@ Your task is to implement a function maxActivities(arr) that takes in an array o
         ```text
         1020 1300
         1330 1430
+        ```
+
+
+- Contest 4
+    1. [contest4.java](./platform/College-1/Litcoder/Week 1/Code/contest4.java)
+    - You are given an array of integers representing the daily number of visitors to a park. You need to design a system that allows you to efficiently answer queries about the total number of visitors in a given range of days. Implement a function that preprocesses the array and then answers queries about the total number of visitors for a specific range of days.
+    - Time complexity should be O(n+q) where n is the number of visitors and q is the number of queries.
+    - Input:
+        ```text
+        3 7 2 8 5 9     (visitors array)
+        3               (number of queries)
+        1 4             (tuple 1 of query with start day and end day)
+        0 3             (tuple 2 of query) 
+        2 5             (tuple 3 of query)
+        ```
+    - Output:
+        ```text
+        22              (7+2+8+5)
+        20              (3+7+2+8)
+        24              (2+8+5)
+        9
+        ```
+### Week 3
+- Lab 9:
+    1. [lab9.java](./platform/Litcoder/Week 1/Code/lab9.java)
+    1. [lab9.py](./platform/Litcoder/Week 1/Code/lab9.py)
+    - Charlie and Dave each submitted a project for evaluation. A panel of judges rates the projects based on three criteria: innovation, execution, and impact, assigning scores from 1 to 10.
+Charlie's project received scores represented by the triplet c = (c[0], c[1], c[2]),...
+while Dave's project was scored with the triplet d = (d[0], d[1], d[2])...
+    - The task is to calculate the comparison points by comparing c[0] with d[0], c[1] with d[1], and c[2] with d[2].........
+    - When c[i] is greater than d[i], Charlie earns 1 point, When c[i] is less than d[i], Dave earns 1 point and When c[i] is equal to d[i], neither person receives any points.
+The comparison points represent the total points earned by each person.
+    - Given the scores of Charlie's project (c) and Dave's project (d), determine their respective comparison points.
+    - Input:
+        ```text
+        5 6 7 8 5       (Charlie's Score)
+        3 6 10 10 3     (Dave's Score)
+        ```
+    - Output:
+        ```text
+        2 2             (Charlie's Score <space> Dave's count)
+        ```
+
+- Lab 10:
+    1. [lab10.java](./platform/Litcoder/Week 1/Code/lab10.java)
+    1. [lab10.py](./platform/Litcoder/Week 1/Code/lab10.py)
+    - Given a 1-indexed array initially filled with zeros and a list of operations, perform each operation by adding a value to each element of the array between two given indices (inclusive). After performing all operations, find and return the maximum value in the array.
+    - For example, let's consider the following scenario:
+        - $queries = {[2,4,5],[3,6,3],[1,7,10]}$
+        - Initial Array size = 7
+        - Array: $[0, 0, 0, 0, 0, 0, 0]$
+        - Operations:
+            - Add 5 between indices 2 and 4: $[0, 5, 5, 5, 0, 0, 0]$
+            - Add 3 between indices 3 and 6: $[0, 5, 8, 8, 3, 3, 0]$
+            - Add 10 between indices 1 and 7: $[10, 15, 18, 18, 13, 13, 10]$
+        - In this scenario, the maximum value in the array is 18.
+    - Logic:
+        - Input:
+            ```text
+            5       (number of elements in 1-indexed array)
+            3       (number of queries)
+            2 4 3   (query 1)
+            4 5 9   (query 2)
+            3 3 11  (query 3)
+            ```
+        1. We take the length of the array and number of queries as usual.
+        1. Next, we take the first query = [2,4,3]. So, 3 will be added to all elements in range (2,4).
+        1. Instead of adding 3 to all 3 elements, we `mark` pos 2 by adding 3, and pos 4 by subtracting 3
+        1. So, the array: $[0,3,0,-3,0]$
+        1. Similarly, we continue processing other queries.
+        1. At the end, we traverse through the entire array and find the cumulative sum & max sum.
+    - Input:
+        ```text
+        5       (number of elements in 1-indexed array)
+        3       (number of queries)
+        2 4 3   (query 1)
+        4 5 9   (query 2)
+        3 3 11  (query 3)
+        ```
+    - Output:
+        ```text
+        18      (Maximum sum)
+        ```
+     - Input:
+        ```text
+        10
+        3
+        3 10 3
+        4 5 9
+        2 9 11
+        ```
+    - Output:
+        ```text
+        23
+        ```   
+
+- Lab 11:
+    1. [lab11.java](./platform/Litcoder/Week 1/Code/lab11.java)
+    1. [lab11.py](./platform/Litcoder/Week 1/Code/lab11.py)
+    - You are given three arrays that are sorted in non-decreasing order. Your task is to find and print all the elements that are present in all three arrays. If there are no common elements, you should print the message "NO Elements".
+    - Input:
+        ```
+        3 5     (Array 1)
+        1 3 5   (Array 2)
+        3 5 7   (Array 3)
+        ```
+    - Output:
+        ```
+        3 5     (Common elements)
+        ```
+    - Input:
+        ```
+        2 3 5
+        1 4 6
+        3 5 7
+        ```
+    - Output:
+        ```
+        No Elements
+        ```
+    - Input:
+        ```
+        2 3 5
+        1 3 5
+        3 5 7
+        ```
+    - Output:
+        ```
+        3 5
+        ```
+
+- Lab 12:
+    1. [lab12.java](./platform/Litcoder/Week 1/Code/lab12.java)
+    1. [lab12.py](./platform/Litcoder/Week 1/Code/lab12.py)
+    - You are developing a text editor that allows users to perform various operations on the text using the "CustomStack" class. The class supports the following operations:
+        - insert(value): Inserts a string of characters at the current cursor position in the text.
+        - delete(value): Deletes the last value characters from the text starting from the current cursor position.
+        - get(value): Retrieves the character at index value from the text and displays it.
+        - undo(): Reverts the last executed command on the text.
+    - Each command is represented by a string in the following format:
+        1.Command 1: '1 value' - Inserts the string value at the current cursor position in the text.
+        2.Command 2: '2 value' - Deletes the last value characters from the text starting from the current cursor position.
+        3.Command 3: '3 value' - Retrieves the character at index value from the text and displays it.
+        4.Command 4: '4' - Reverts the last executed command on the text.
+
+    - Consider a scenario where you have a text editor with a "CustomStack" class that implements the required operations. Assume the initial text is empty.
+    - Input:
+        ```
+        1 abc,3 3,2 2,3 1       (Commands, delimited by `,`)
+        ```
+    - Output:
+        ```
+        c
+        a
+        ```
+    - Input:
+        ```
+        1 zxy,3 3,2 2,1 def,3 2
+        ```
+    - Output:
+        ```
+        y
+        d
+        ```
+- Contest 5
+    1. [contest5.java](./platform/College-1/Litcoder/Week 1/Code/contest5.java)
+    - The problem is to determine the number of provinces in a given set of cities. Each city can be directly or indirectly connected to other cities. If city A is directly connected to city B, and city B is directly connected to city C, then city A is indirectly connected to city C. A province is a group of cities that are directly or indirectly connected to each other, and there are no other cities outside of this group.
+    - You are given a matrix isConnected, where isConnected[i][j] is equal to 1 if the ith city and the jth city are directly connected, and 0 otherwise. The task is to find the total number of provinces present in the given matrix.
+    - Input:
+        ```
+        3       (Number of input lines)
+        1 1 0   (Connected Cities 1)
+        1 1 0   (Connected Cities 2)
+        0 0 1   (Connected Cities 3)
+        ```
+    - Output:
+        ```
+        2       (Total number of provinces)
+        ```
+    - Input:
+        ```
+        1 0 0 0 0
+        0 1 1 0 0
+        0 1 1 0 0
+        0 0 0 1 1
+        0 0 0 1 1
+        ```
+    - Output:
+        ```
+        3
+        ```
+- Contest 6
+    1. [contest6.java](./platform/College-1/Litcoder/Week 1/Code/contest6.java)
+    - In a local network the switch is configured to have 4 subclasses within the Class A network.
+    - So the IP looks like 0-255.abc.def.xyz
+    - The Most significant 2bits of MSB of abc used to identify the subclass in the IP address.
+    - So the range of addresses in each class are as follows;
+        - Class L: 000 to 63
+        - Class M: 64 to 127
+        - Class N: 128 to 191
+        - Class P: 192 to 255
+    - Constraints:
+        1. IP Address.length can vary from 7 characters to 15 characters
+        1. It should be valid IP address means each part of abc.def.pqr.xyz ,
+            - 0 <= abc <= 255
+            - 0 <= def <= 255
+            - 0 <= pqr <= 255
+            - 0 <= xyz <= 255
+            - If it violates this condition then output as "Wrong IP Address".
+        1. It should not contain any characters except Numbers. if it contains the output as "Wrong IP Address".
+        1. If the input field is empty the output as "Wrong IP Address"
+    - Write a function/program to identify the subclass in the given IP address.
+    - Input:
+        ```
+        10.210.98.180
+        ```
+    - Output:
+        ```
+        Class P
+        ```
+    - Input:
+        ```
+        32.169.168.46
+        ```
+    - Output:
+        ```
+        Class N
+        ```
+    - Input:
+        ```
+        192.168.42.46.38
+        ```
+    - Output:
+        ```
+        Wrong IP Address
+        ```
+    - Input:
+        ```
+        192.124.89.98
+        ```
+    - Output:
+        ```
+        Class M
         ```

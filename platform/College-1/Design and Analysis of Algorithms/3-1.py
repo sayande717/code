@@ -5,7 +5,7 @@ def rabinKarp(text, pattern):
 
     patternHash = sum(ord(pattern[i]) for i in range(m))
     
-    stringHash = sum(ord(text[i]) for i in range(m))
+    stringHash = sum(ord(text[i]) for i in range(n))
     
     for i in range(n - m + 1):
         if patternHash == stringHash:
