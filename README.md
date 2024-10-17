@@ -254,6 +254,40 @@ git clone https://github.com/sayande717/code.git
         for key, value in my_dict.items():
             print(f"{value}:{key}")
         ```
+    - Work with constructor, class, and main method:
+        ```python
+        class node:
+            # 2. constructor
+            # Global variables can be declared & initialized right in the constructor itself.
+            # to use these variables later,
+            # > Create an object: node_object = node()
+            # > `node_object.data` is the variable.
+            def __init__(self,data):
+                self.data = data
+                self.next = none
+            # self: This variable makes the attributes of the class available to the method.
+            # self is always the first argument given to instance methods.
+            def print_data(self,data):
+                print(self.data)
+        # __name__: This variable translates to:
+        # > "__main__": If the program is directly executed.
+        # > "__none__": If the program is imported by another program, ie indirectly executed.
+        # So, this code snippet can be called as the main() function.
+        if __name__ == "__main__":
+            node_object = node()
+            print(node_object.data)
+
+        ```
+    - do nothing (`pass`):
+        ```python
+        str = input().split(' ')
+        def function():
+            try:
+                print(str[1])
+            except IndexError:
+                # do nothing if str[1] is not found
+                pass
+        ```
 
 - Data Structures:
     - `Array`:
@@ -1480,4 +1514,28 @@ The comparison points represent the total points earned by each person.
     - Output:
         ```
         Class M
+        ```
+- Lab 13:
+    1. [lab13.java](./platform/Litcoder/Week 1/Code/lab13.java)
+    1. [lab13.py](./platform/Litcoder/Week 1/Code/lab13.py)
+    - Write a program to implement a custom queue using two stacks. The queue should support the following three types of queries:
+        - **Enqueue**: This query type is denoted by "1 x", where x is an element to be enqueued. It means that you need to insert element x at the end of the queue.
+        - **Dequeue**: This query type is denoted by "2". It indicates that you should remove the element at the front of the queue.
+        - **Print Front**: This query type is denoted by "3". It instructs you to print the element at the front of the queue without removing it.
+    - Input:
+        ```
+        1 42,2,1 14,3       (Commands, separated by comma)
+        ```
+    - Output:
+        ```
+        14
+        ```
+    - Input:
+        ```
+        1 23,2,1 14,3,2,1 78,3
+        ```
+    - Output:
+        ```
+        14
+        78
         ```

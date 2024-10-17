@@ -4,7 +4,7 @@
 #include<stdbool.h>
 #include<string.h>
 
-void addMatrix(int **matrix1, int **matrix2, int **matrixResult, int rows, int cols, char *scheduleType, int chunkSize) {
+void addMatrix(int** matrix1, int** matrix2, int** matrixResult, int rows, int cols, char* scheduleType, int chunkSize) {
     bool runParallel = true;
     if(strcmp(scheduleType,"serial")==0) {
         runParallel = false;
@@ -29,13 +29,13 @@ void addMatrix(int **matrix1, int **matrix2, int **matrixResult, int rows, int c
     }
 }
 
-void printOutput(char *schedulingClause, double executionTime) {
+void printOutput(char* schedulingClause, double executionTime) {
     printf("\nScheduling Clause: %s\n",schedulingClause);
     printf("Execution Time: %lf",executionTime);
 }
 
-void readMatrix(char *filename, int **matrix, int rows, int cols) {
-    FILE *file = fopen(filename, "r");
+void readMatrix(char* filename, int** matrix, int rows, int cols) {
+    FILE* file = fopen(filename, "r");
     if (file == NULL) {
         perror("Error opening file");
         exit(EXIT_FAILURE);
@@ -50,8 +50,8 @@ void readMatrix(char *filename, int **matrix, int rows, int cols) {
     fclose(file);
 }
 
-void writeMatrix(char *filename, int **matrix, int rows, int cols) {
-    FILE *file = fopen(filename, "w");
+void writeMatrix(char* filename, int** matrix, int rows, int cols) {
+    FILE* file = fopen(filename, "w");
     if (file == NULL) {
         perror("Error opening file");
         exit(EXIT_FAILURE);
@@ -73,17 +73,17 @@ int main() {
     rows = 5000; cols = 5000;
     printf("Enter the chunk size: "); scanf("%d",&chunkSize);
 
-    int **matrix1   = (int **)malloc(sizeof(int *)*cols);
-    int **matrix2   = (int **)malloc(sizeof(int *)*cols);
-    int **matrixSum = (int **)malloc(sizeof(int *)*cols);
+    int** matrix1   = (int**)malloc(sizeof(int*)*cols);
+    int** matrix2   = (int**)malloc(sizeof(int*)*cols);
+    int** matrixSum = (int**)malloc(sizeof(int*)*cols);
     if(matrix1==NULL || matrix2==NULL || matrixSum==NULL) {
         fprintf(stderr,"Memory allocation failed.");
         return EXIT_FAILURE;
     }
     for(int col=0;col<cols;col++) {
-        matrix1[col] = (int *)malloc(sizeof(int)*rows);
-        matrix2[col] = (int *)malloc(sizeof(int)*rows);
-        matrixSum[col] = (int *)malloc(sizeof(int)*rows);
+        matrix1[col] = (int*)malloc(sizeof(int)*rows);
+        matrix2[col] = (int*)malloc(sizeof(int)*rows);
+        matrixSum[col] = (int*)malloc(sizeof(int)*rows);
         if(matrix1[col]==NULL || matrix2[col]==NULL || matrixSum[col]==NULL) {
             fprintf(stderr,"Memory allocation failed.");
             return EXIT_FAILURE;
@@ -95,7 +95,7 @@ int main() {
     readMatrix("3-g-initMatrix2.txt", matrix2, rows, cols);
 
     double start,end;
-    char *schedulingClause = (char *)malloc(sizeof(char)*8);
+    char* schedulingClause = (char*)malloc(sizeof(char)*8);
     if(schedulingClause==NULL) {
         fprintf(stderr,"Memory allocation failed.");
         return EXIT_FAILURE;

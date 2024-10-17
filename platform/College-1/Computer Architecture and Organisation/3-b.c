@@ -12,16 +12,19 @@ int main() {
     {
         int threadID = omp_get_thread_num();
         if(threadID==0) {
+            # pragma omp parallel for
             for(int iter=1;iter<=50;iter++) {
                 sumFirst+=iter;
             }
         } else {
+            # pragma omp parallel for
             for(int iter=51;iter<=100;iter++) {
                 sumSecond+=iter;
             }
         }
     }
     // Master Thread
+    # pragma omp barrier
     sumFinal = sumFirst+sumSecond;
     printf("\nSum: %ld",sumFinal);
 
