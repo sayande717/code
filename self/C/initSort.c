@@ -152,7 +152,7 @@ void cocktailSort(int* arr) {
 
 int main() {
     int *arr = (int *)malloc(sizeof(int)*maxArrSize);
-    int initialArr[] = {9,8,7,6,5,4,3,2,1,0};
+    int initialArr[] = {9,8,7,6,5,4,3,2,2,1};
     for (int index = 0; index < maxArrSize; index++) {
         arr[index] = initialArr[index];
     }
@@ -161,9 +161,9 @@ int main() {
     
     // Runner
     // mergeSort(arr, 0, maxArrSize-1);
-    // insertionSort(arr);
+    insertionSort(arr);
     // bubbleSort(arr);
-    cocktailSort(arr);
+    //cocktailSort(arr);
 
     printf("Sorted Array: "); printArr(arr, maxArrSize);
 

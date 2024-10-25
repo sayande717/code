@@ -4,8 +4,8 @@
 // *inStr points to the first character of the inputString.
 void reverse(char *inStr) {
     if(*inStr) {
-        reverse(inStr+1);
         // Exclusively for strings, *VAL points to the value, while VAL points to the address of the value.
+        reverse(inStr+1);
         printf("%c",*inStr);
     }
 }

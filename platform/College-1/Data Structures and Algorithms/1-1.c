@@ -7,10 +7,8 @@ int main() {
     scanf ("%d",&n);
 
     int age[n];
-    int len = sizeof(age) / sizeof(age[0]);
-    printf("Age: %d",len);
     
-    for(int index=0;index<len;index++) {
+    for(int index=0;index<n;index++) {
         printf("Enter age: ");
         scanf("%d",&age[index]);
     }
@@ -19,16 +17,20 @@ int main() {
     printf("Enter the age to search: ");
     scanf("%d",&target);
     
-    int last = age[len-1];
-    
+    // Backup the last element, add the sentinel at the end.
+    int last = age[n-1];
+    age[n-1] = target;
+
     int index=0;
     while(age[index]!=target) {
         index++;
     }
+
+    // Restore the sentinel element.
+    age[n-1] = last;
     
-    age[len-1] = last;
     
-    if(index<len-1 || age[len-1] == target) {
+    if(index<n-1 || age[n-1] == target) {
         printf("Age exists at position %d.",(index+1));
         exit(0);
     }

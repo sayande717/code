@@ -21,10 +21,6 @@ void sort(int *arr) {
     }
 }
 
-int min(int num1, int num2) {
-    return (num1<=num2)?num1:num2;
-}
-
 // Iterative
 int binarySearch(int *arr, int low, int high, int target) {
     while(low<=high) {
@@ -52,7 +48,7 @@ int exponentialSearch(int *arr, int target) {
         index = index*2;
     }
     int low = index/2;
-    int high = (arr[index]>=target)?(maxArrLen-1):(index/2);
+    int high = (arr[index]>=target)?(index):(maxArrLen-1);
     return binarySearch(arr,low,high, target);
 }
 

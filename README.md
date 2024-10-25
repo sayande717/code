@@ -860,6 +860,20 @@ compute the maximum flow with the minimum possible cost from a source node $s$ t
             </li>
         </ol>
     </li>
+    <li>
+        <ol type="1">
+            <li>  Implement the following disk scheduling algorithms and calculate seek time for each:
+                <ul>
+                    <li> First Come First Serve (FCFS) </li>
+                    <li> Shortest Seek Time First (SSTF) </li>
+                    <li> SCAN </li>
+                    <li> Circular SCAN (C-SCAN) </li>
+                    <li> Circular LOOK (C-LOOK) </li>
+                </ul>
+            </li>
+            <li> Study about any one OS Simulator tool and prepare a report on it. </li>
+        </ol>
+    </li>
 </ol>
 
 ## Platform/College-1/Litcoder
@@ -1066,9 +1080,8 @@ compute the maximum flow with the minimum possible cost from a source node $s$ t
         ```text
         q p r
         ```
-1. Contest 1
+1. Contest 1 (Java)
     1. [contest1.java](./platform/College-1/Litcoder/Week 1/Code/contest1.java)
-    1. [contest1.py](./platform/College-1/Litcoder/Week 1/Code/contest1.py)
     - You are given a collection of tiles, where each tile has a single letter printed on it. The objective is to find out how many different non-empty sequences of letters can be formed using the given tiles. A sequence is considered non-empty if it contains at least one letter.
     - Example: `AAB`
         - In this scenario, we have three tiles with letters "A," "A," and "B" printed on them.
@@ -1101,9 +1114,8 @@ compute the maximum flow with the minimum possible cost from a source node $s$ t
         ```text
         170
         ```
-- Contest 2
+- Contest 2 (Java)
     1. [contest2.java](./platform/College-1/Litcoder/Week 1/Code/contest2.java)
-    1. [contest2.py](./platform/College-1/Litcoder/Week 1/Code/contest2.py)
     - A palindrome is a string that reads the same from left to right and right to left, like 'civic' or '1001'. You are given a string representing an integer and a maximum number of changes you can make. Your goal is to modify the string, one digit at a time, to create the highest possible integer while adhering to the constraint on the number of changes. The length of the string must remain unchanged, and you must consider the position of zeros to the left of all higher digits. For example, '1001' is a valid representation, while '0011' is not.
     - Example:
         - Input:
@@ -1243,7 +1255,7 @@ compute the maximum flow with the minimum possible cost from a source node $s$ t
         ```text
         2
         ```   
-- Contest 3
+- Contest 3 (Java)
     1. [contest3.java](./platform/College-1/Litcoder/Week 1/Code/contest3.java)
     - You are given a list of activities with their start and finish times. Each activity is represented as a pair of integers (start, finish), where start represents the start time of the activity and finish represents the finish time.
 Your task is to implement a function maxActivities(arr) that takes in an array of activity pairs and returns a new array containing the maximum number of non-overlapping activities that can be performed.
@@ -1274,7 +1286,7 @@ Your task is to implement a function maxActivities(arr) that takes in an array o
         ```
 
 
-- Contest 4
+- Contest 4 (Java)
     1. [contest4.java](./platform/College-1/Litcoder/Week 1/Code/contest4.java)
     - You are given an array of integers representing the daily number of visitors to a park. You need to design a system that allows you to efficiently answer queries about the total number of visitors in a given range of days. Implement a function that preprocesses the array and then answers queries about the total number of visitors for a specific range of days.
     - Time complexity should be O(n+q) where n is the number of visitors and q is the number of queries.
@@ -1435,7 +1447,7 @@ The comparison points represent the total points earned by each person.
         y
         d
         ```
-- Contest 5
+- Contest 5 (Java)
     1. [contest5.java](./platform/College-1/Litcoder/Week 1/Code/contest5.java)
     - The problem is to determine the number of provinces in a given set of cities. Each city can be directly or indirectly connected to other cities. If city A is directly connected to city B, and city B is directly connected to city C, then city A is indirectly connected to city C. A province is a group of cities that are directly or indirectly connected to each other, and there are no other cities outside of this group.
     - You are given a matrix isConnected, where isConnected[i][j] is equal to 1 if the ith city and the jth city are directly connected, and 0 otherwise. The task is to find the total number of provinces present in the given matrix.
@@ -1462,7 +1474,7 @@ The comparison points represent the total points earned by each person.
         ```
         3
         ```
-- Contest 6
+- Contest 6 (Java)
     1. [contest6.java](./platform/College-1/Litcoder/Week 1/Code/contest6.java)
     - In a local network the switch is configured to have 4 subclasses within the Class A network.
     - So the IP looks like 0-255.abc.def.xyz
@@ -1538,4 +1550,213 @@ The comparison points represent the total points earned by each person.
         ```
         14
         78
+        ```
+- Lab 14:
+    1. [lab14.java](./platform/Litcoder/Week 1/Code/lab14.java)
+    1. [lab14.py](./platform/Litcoder/Week 1/Code/lab14.py)
+    - Given a string composed of 'L', 'R', and 'X' characters, such as "RXXLRXRXL", a move can be made by replacing either one occurrence of "XL" with "LX" or one occurrence of "RX" with "XR". The task is to determine if it is possible to transform the starting string, "start," into the ending string, "end," by a sequence of these moves. Return True only if such a sequence exists.
+    - Example 1:
+        - Input: start = "RXXLRXRXL", end = "XRLXXRRLX"
+        - Output: true
+    - Explanation: The starting string can be transformed into the ending string using the following steps: `RXXLRXRXL` -> `XRXLRXRXL` -> `XRLXRXRXL` -> `XRLXXRRXL` -> `XRLXXRRLX`
+    - Input:
+        ```
+        RXXLRXRXL
+        XRLXXRRLX
+        ```
+    - Output:
+        ```
+        true
+        ```
+    - Input:
+        ```
+        RXXL
+        XRLX
+        ```
+    - Output:
+        ```
+        true
+        ```
+    - Input:
+        ```
+        RXXLRXRXL
+        XRLXXRXRLX
+        ```
+    - Output:
+        ```
+        false
+        ```
+    - Input:
+        ```
+        RXXLRXRXX
+        XRLXXRRLX
+        ```
+    - Output:
+        ```
+        false
+        ```
+- Lab 15:
+    1. [lab15.java](./platform/Litcoder/Week 1/Code/lab15.java)
+    1. [lab15.py](./platform/Litcoder/Week 1/Code/lab15.py)
+    - Build a wall with lego blocks: How many different ways can you build a wall of height 'n' and width 'm' using an infinite number of Lego bricks of four types, each with different dimensions (depth x height x width)? The types of Lego bricks available are:
+        - Depth: 1, Height: 1, Width: 1
+        - Depth: 1, Height: 1, Width: 2
+        - Depth: 1, Height: 1, Width: 3
+        - Depth: 1, Height: 1, Width: 4
+    - The wall should satisfy the following conditions:
+        - There should be no holes in the wall.
+        - The wall should be a single solid structure without a straight vertical break across all rows of bricks.
+        - The bricks must be laid horizontally.
+    - Provide the number of ways to build the wall, considering that the result should be output modulo $1000000007$.
+    - Input:
+        ```
+        2   (1st row)
+        2   (2nd row)
+        ```
+    - Output:
+        ```
+        3   (Number of ways the wall can be built)
+        ```
+    - Input:
+        ```
+        4
+        4
+        ```
+    - Output:
+        ```
+        3475
+        ```
+
+- Lab 16:
+    1. [lab16.java](./platform/Litcoder/Week 1/Code/lab16.java)
+    1. [lab16.py](./platform/Litcoder/Week 1/Code/lab16.py)
+    - You have a collection of candies, and each candy has a certain sweetness value. Your goal is to combine the candies to create new candies until you reach a specific target sweetness level. Find how many steps need to reach candies sweetness target.
+    - To achieve this, you can select any two candies with the least sweetness and combine them into a new candy with sweetness calculated as follows:
+        > sweetness = (least sweet candy + 2 * second least sweet candy)
+    - Input:
+        ```
+        7           (Target Sweetness)
+        1 2 3 4 5   (Candies)
+        ```
+    - Output:
+        ```
+        3           (Total number of steps taken)
+        ```
+    - Input:
+        ```
+        11
+        2 5 3 7 6 1
+        ```
+    - Output:
+        ```
+        4
+        ```
+1. Contest 7 (Java)
+    1. [contest7.java](./platform/College-1/Litcoder/Week 1/Code/contest7.java)
+    - You are given a number of stocks, and the list of stocks, each with a name and price one by one, and a maximum budget for purchasing these stocks. Your goal is to find all valid combinations of stocks that can be bought within your budget to reach a specific target price. In the output, the quantity of each individual stock must not exceed a maximum of 5. Write a program that takes the following inputs and provides the corresponding output:
+    - Inputs:
+        - Enter your maximum budget as an integer (numeric).
+        - Specify the number of stocks you want to consider as an integer.
+        - For each stock, provide its name (a string) and price (an integer) in same line.
+    - Output:
+        - Your program should generate and display all valid combinations of stocks that meet the target price criteria.
+        - A valid combination is one where the total cost of the stocks matches the target price.
+        - Display each valid combination as a list of quantities, where the quantities of each stock to buy.
+        - Additionally, provide the total count of valid combinations found.
+    - Note: Handle invalid inputs gracefully, such as non-numeric inputs, negative stock prices, or a budget that is not a positive number. For these cases, the output should be 'Invalid input', 'One of the stock prices is higher than the target price', and 'The stock prices should be at least above 0' respectively.
+    - Input:
+        ```
+        1000
+        4           (Number of stocks)
+        Intel 110   (Stock #1)
+        REL 150     (Stock #2)
+        Infosys 720 (Stock #3)
+        Wipro 250   (Stock #4)
+        ```
+    - Output:
+        ```
+        0 0 0 4     (Combination #1)
+        0 5 0 1     (Combination #2)
+        5 3 0 0     (Combination #3)
+        3           (Combination #4)
+        ```
+    - Input:
+        ```
+        2000
+        3
+        Infosys 50
+        Vedanta 150
+        TCS 300         
+        ```
+    - Output:
+        ```
+        1 3 5
+        1 5 4
+        4 2 5
+        4 4 4
+        4
+        ```
+    - Input:
+        ```
+        100
+        3
+        TATA_POWER 67
+        CANARA_BANK 56
+        HDFC_BANK -5         
+        ```
+
+    - Output:
+        ```
+        The stock prices should be at least greater than 0 
+        ```
+    - Input:
+        ```
+        50
+        3
+        BAJAJ 10
+        HONDA 15
+        TVS 20 
+        ```
+    - Output:
+        ```
+        0 2 1
+        1 0 2
+        2 2 0
+        3 0 1
+        5 0 0
+        5
+        ```
+1. Contest 8 (Java)
+    1. [contest8.java](./platform/College-1/Litcoder/Week 1/Code/contest8.java)
+    - On the first day, one person discovers a secret. You are given two integers, delay and forget. Each person will share the secret with a new person every day, starting from delay days after discovering the secret. Additionally, each person will forget the secret days after discovering it. It means they cannot share the secret on the same day they forget it or on any day afterward.
+    - Your task is to find the number of people who know the secret at the end of day n.
+    - Input:
+        ```
+        6
+        2
+        4
+        ```
+    - Output:
+        ```
+        5
+        ```
+    - Input:
+        ```
+        4
+        1
+        3
+        ```
+    - Output:
+        ```
+        6
+        ```
+    - Input:
+        ```
+        3
+        2
+        3
+        ```
+    - Output:
+        ```
+        2
         ```

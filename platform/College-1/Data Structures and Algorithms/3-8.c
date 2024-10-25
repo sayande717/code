@@ -46,6 +46,7 @@ bool removeNode(listNode **head, int targetNode) {
     if(isEmpty((*head))) {
         return false;
     }
+
     if((*head)->next==(*head) && targetNode==1) {
         listNode *tempNode = (*head);
         (*head)=(*head)->next;
