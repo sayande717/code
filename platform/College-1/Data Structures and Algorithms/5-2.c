@@ -1,77 +1,100 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#define MAX_SIZE 20
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#define maxExpLen 20
+/* Assumptions:
+   - The expression will be a standard polynomial expression: 25x^2+50x^1-2x^0
+   - `x^0` will be added at last, which is the same as `1`.
+*/
 
-void merge(char* arr, int low, int mid, int high) {
-    int left = low;
-    int right = mid+1;
-    char* temp = (char*)malloc(sizeof(char)*(high-low+1));
-    int tempIndex = 0;
+typedef struct listNode {
+    float base;
+    int exponent;
+    struct listNode *next;
+} linkedList;
 
-    while(left<=mid && right<=high) {
-        if(arr[left]<=arr[right]) {
-            temp[tempIndex] = arr[left];
-            left++;
-        } else {
-            temp[tempIndex] = arr[right];
-            right++;
-        }
-        tempIndex++;
+void addToLast(linkedList **head, int inBase, int inExponent) {
+    linkedList *newNode = (linkedList *)malloc(sizeof(linkedList));
+    if(newNode==NULL) {
+        fprintf(stderr,"Memory allocation failed.");
+        exit(EXIT_FAILURE);
     }
 
-    while(left<=mid) {
-        temp[tempIndex] = arr[left];
-        left++;
-        tempIndex++;
-    }
+    newNode->base = inBase;
+    newNode->exponent = inExponent;
+    newNode->next = NULL;
 
-    while(right<=high) {
-        temp[tempIndex] = arr[right];
-        right++;
-        tempIndex++;
-    }
-
-    for(int index=low;index<=high;index++) {
-        arr[index] = temp[index-low];
-    }
-    free(temp);
-}
-
-void mergeSort(char* arr, int low, int high) {
-    // Base case
-    if(low==high) {
+    if((*head)==NULL) {
+        (*head)=newNode;
         return;
     }
 
-    int mid = low+(high-low)/2;
-    mergeSort(arr,low,mid);
-    mergeSort(arr,mid+1,high);
-
-    merge(arr,low,mid,high);
+    linkedList *currentNode = (*head);
+    while (currentNode->next!=NULL) {
+        currentNode=currentNode->next;
+    }
+    currentNode->next = newNode;
 }
 
-void printArr(char* arr, int size) {
-    for(int index=0;index<size;index++) {
-        printf("%c ",arr[index]);
+// fill the linked list with data, return the max exponent value
+int fillExpList(linkedList **inList, char *inStr) {
+    float base = 0.0;
+    int exponent = 0;
+    char *token = strtok(inStr, "+-");
+    while (token != NULL) {
+        for(int iter=0;iter<strlen(token);iter++) {
+            // Example: token="45x^2"
+            if(token[iter]=='x') {
+                base = atoi(token);             // range: `45x^2` -> `45`
+                exponent = atoi(token+iter+2);  // range: `45x^2` -> `2`
+                addToLast(inList,base,exponent);
+            }
+        }
+        token = strtok(NULL, "+");
     }
-}   
+}
+
+int fillResultList(linkedList *inHead1, linkedList *inHead2, linkedList **inHeadResult) {
+    linkedList *currNode1 = inHead1;
+    linkedList *currNode2 = inHead2;
+    while(currNode1!=NULL && currNode2!=NULL) {
+        // Perform the polynomial addition, add to the result list.
+        addToLast(inHeadResult,(currNode1->base+currNode2->base),currNode1->exponent);
+        currNode1=currNode1->next;
+        currNode2=currNode2->next;
+    }
+}
+
+void printList(linkedList *inList) {
+    if(inList==NULL) {
+        return;
+    }
+    linkedList *currentNode = inList;
+    while (currentNode != NULL) {
+        printf("%.2fx^%d+", currentNode->base, currentNode->exponent);
+        currentNode = currentNode->next;
+    }
+}
 
 int main() {
-    char* city = (char*)malloc(sizeof(char)*MAX_SIZE);
-    printf("Enter city name (atleast 8 characters): "); scanf("%s",city);
-
-    // Find string length (not using strlen())
-    int size=0;
-    while(city[size]!='\0') {
-        size++;
+    char *exp1 = (char *)malloc(sizeof(char)*maxExpLen);
+    char *exp2 = (char *)malloc(sizeof(char)*maxExpLen);
+    if(exp1==NULL || exp2==NULL) {
+        fprintf(stderr,"Memory allocation failed.");
+        exit(EXIT_FAILURE);
     }
 
-    printf("Original array: "); printArr(city,size);
-    mergeSort(city, 0, size-1);
-    printf("\nSorted array: "); printArr(city,size);
+    linkedList *expList1 = NULL;
+    linkedList *expList2 = NULL;
+    linkedList *resultList = NULL;
 
-    printf("\n");
-    free(city);
+    printf("Enter expression 1: "); scanf("%s", exp1);
+    printf("Enter expression 2: "); scanf("%s", exp2);
+
+    fillExpList(&expList1,exp1);
+    fillExpList(&expList2,exp2);
+    fillResultList(expList1,expList2,&resultList);
+    printf("Result: "); printList(resultList);
+
     return EXIT_SUCCESS;
 }

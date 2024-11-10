@@ -1,61 +1,92 @@
 #include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
+#include<stdbool.h>
+// Update with the value of N
+#define N 5
 
-struct Node {
-    char *name;
-    char *reg;
-    struct Node *next;
+struct linearQueue {
+    int arr[N];
+    int front;
+    int rear;
 };
 
-void input(char *inName, char *inReg) {
-    printf("\nEnter Name: "); scanf("%s",inName);
-    printf("Enter Registration No: "); scanf("%s",inReg);
+void initQueue(struct linearQueue *queue) {
+    queue->front=-1;
+    queue->rear=-1;
 }
 
-void addToEnd(struct Node **head, char *inName, char *inReg) {
-    struct Node *currentNode = *head;
-    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
-    // To copy a string into another, first create a memory space for the new variable, then copy the string to it.
-    newNode->name = (char *)malloc(strlen(inName) + 1);
-    strcpy(newNode->name, inName);
+bool isEmpty(struct linearQueue *queue) {
+    if(queue->front==-1 && queue->rear==-1) {
+        return true;
+    }
+    return false;
+}
+
+bool isFull(struct linearQueue *queue) {
+    if(queue->rear == (sizeof(queue->arr)/sizeof(queue->arr[0])-1)) {
+        return true;
+    }
+    return false;
+}
+
+void enQueue(struct linearQueue *queue, int data) {
+    if(isFull(queue)) {
+        printf("\nQueue Overflow");
+        return;
+    } else if(isEmpty(queue)) {
+        ++queue->front;
+    }
     
-    newNode->reg = (char *)malloc(strlen(inReg) + 1);
-    strcpy(newNode->reg, inReg);
-    newNode->next=NULL;
-    if(currentNode==NULL) {
-        *head = newNode;
+    queue->arr[++queue->rear]=data;
+}
+
+void deQueue(struct linearQueue *queue) {
+    if(isEmpty(queue)) {
+        return;
+    }
+    ++queue->front;
+}
+
+// ERR: -1
+int peek(struct linearQueue *queue) {
+    if(!isEmpty(queue)) {
+        return queue->arr[queue->rear];
+    }
+    return -1;
+}
+
+void traverse(struct linearQueue *queue) {
+    if(isEmpty(queue)) {
+        printf("Queue Underflow");
         return;
     }
     
-    while(currentNode->next!=NULL) {
-        currentNode = currentNode->next;
+    for(int index=queue->front;index<=queue->rear;index++) {
+        printf("%d ",queue->arr[index]);
     }
-    
-    currentNode->next = newNode;
-}
-
-void traverse(struct Node *head) {
-    printf("\nTraversing: \n");
-    struct Node *currentNode = head;
-    while(currentNode!=NULL) {
-        printf("Name: %s, Reg: %s \n",currentNode->name,currentNode->reg);
-        currentNode = currentNode->next;
-    }
-    printf("\n");
 }
 
 int main() {
-    char choice='y';
-    char *name = (char *)malloc(sizeof(char));; 
-    char *reg = (char *)malloc(sizeof(char));;
-    struct Node *head;
-    while(choice=='y') {
-        input(name,reg);
-        addToEnd(&head,name,reg);
-        printf("Enter 'y' to enter more data: "); scanf(" %c",&choice);
-    }
-    
-    traverse(head);
-    free(name); free(reg);
+   struct linearQueue heightQueue;
+   initQueue(&heightQueue);
+   
+   // INPUT: Student's height
+   printf("Enter student's height: \n");
+   for(int iter=0;iter<N;iter++) {
+       int height;
+       printf("%d. ",(iter+1));
+       scanf("%d",&height);
+       enQueue(&heightQueue,height);
+   }
+   
+   // DISPLAY
+   printf("\n Heights in queue: ");
+   traverse(&heightQueue);
+   
+   // Dequeue twice and display
+   deQueue(&heightQueue);
+   deQueue(&heightQueue);
+   printf("\n After dequeueing 2 times, heights in queue: ");
+   traverse(&heightQueue);
+   printf("\n");
+   return 0;
 }

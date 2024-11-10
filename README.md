@@ -289,6 +289,11 @@ git clone https://github.com/sayande717/code.git
                 pass
         ```
 
+- Language: `conda`:
+    - `conda env create environment.yml`: Create an environment & install all dependencies as per the file `environment.yml`.
+    - `conda activate env_name`: Activate the environment.
+    - `conda deactivate`: Deactivate the environment.
+
 - Data Structures:
     - `Array`:
         - 1-Dimensional: [code]()
@@ -621,6 +626,11 @@ git clone https://github.com/sayande717/code.git
             </li>
         </ol>
     </li>
+    <li> Write a CUDA program on:
+        <ol type="a">
+            <li> TODO: Sample CUDA program </li>
+        </ol>
+    </li> 
 </ol>
 
 ### Data Structures and Algorithms 
@@ -645,8 +655,8 @@ git clone https://github.com/sayande717/code.git
     </li>
     <li> Data Structure: <strong>Queue</strong>
         <ol type="a">
-            <li> 2-4.c: Perform linear queue operations on the height of N students. </li>
-            <li> 2-5.c: Accept N patients token no and perform circular queue operations.
+            <li> 3-1.c: Perform linear queue operations on the height of N students. </li>
+            <li> 3-2.c: Accept N patients token no and perform circular queue operations.
                 <ul>
                     <li> `(rear+1)%n` calculates the next position after rear. </li>
                     <li> `(rear+(n-1))%n` calculates the previous position before rear. </li>
@@ -657,22 +667,22 @@ git clone https://github.com/sayande717/code.git
     </li>
     <li> Data Structure: <strong> Linked List </strong>
         <ol type="a">
-            <li> 3-1.c: Create a linked list to accept n students name and reg.no. Display the details  of all students </li>
-            <li> 3-2.c: Perform the stack operations on a single linked list of n employees such as employee no and salary. If salary is >3000 then pop from the linked stack. </li>
-            <li> 3-3.c: Perform Queue operations on a single linked list of in-patient records such as patient name, hospital no and date of admission. Assume patient is allowed to stay for 3 days only. After that patient to be discharged. In other words the patient details to be removed from the queue. </li>
-            <li> 3-4.c: Create a single linked list to accept cricket players details such as name, age,  run score with overs completed. After creating a players  list check if a player scored runs 50 and above in 8 overs then remove that player and add it in the middle. If a player scored 80 runs between 15 and 20 overs, then remove that player and add at the beginning. If a player scored zero runs irrespective of overs then add at the last. Display the players list after each operation. <\li>
-            <li> 3-5.c: Accept any arithmetic expression in infix form. Using stack convert to its prefix notation and display the same. </li>
-            <li> 3-6.c: Perform the operations of a queue in a circular fashion for customers who are visiting the gym. </li>
-            <li> 3-7.c: Accept two polynomials of various degrees. Find the sum of these polynomials using linked list and display the result in polynomial form. </li>
-            <li> 3-8.c: Create a circular linked list to accept student information such as register number, name and age. Add new student information at the last and remove nth student information from the circular list. Display the circular list after performing each operation. </li>
-            <li> 3-9.c: Build a single linked list to accept any two polynomials of various degree. Find the difference between those two polynomials and display the result in a polynomial representation. </li>
+            <li> 4-1.c: Create a linked list to accept n students name and reg.no. Display the details  of all students </li>
+            <li> 4-2.c: Perform the stack operations on a single linked list of n employees such as employee no and salary. If salary is >3000 then pop from the linked stack. </li>
+            <li> 4-3.c: Perform Queue operations on a single linked list of in-patient records such as patient name, hospital no and date of admission. Assume patient is allowed to stay for 3 days only. After that patient to be discharged. In other words the patient details to be removed from the queue. </li>
+            <li> 4-4.c: Create a single linked list to accept cricket players details such as name, age,  run score with overs completed. After creating a players  list check if a player scored runs 50 and above in 8 overs then remove that player and add it in the middle. If a player scored 80 runs between 15 and 20 overs, then remove that player and add at the beginning. If a player scored zero runs irrespective of overs then add at the last. Display the players list after each operation. <\li>
+            <li> 4-5.c: Accept any arithmetic expression in infix form. Using stack convert to its prefix notation and display the same. </li>
+            <li> 4-6.c: Perform the operations of a queue in a circular fashion for customers who are visiting the gym. </li>
+            <li> 4-7.c: Accept two polynomials of various degrees. Find the sum of these polynomials using linked list and display the result in polynomial form. </li>
+            <li> 4-8.c: Create a circular linked list to accept student information such as register number, name and age. Add new student information at the last and remove nth student information from the circular list. Display the circular list after performing each operation. </li>
+            <li> 4-9.c: Build a single linked list to accept any two polynomials of various degree. Find the difference between those two polynomials and display the result in a polynomial representation. </li>
         </ol>
     </li>
     <li> Algorithm: <strong> Searching </strong>
         <ol type="a">
-            <li> 4-1.c: Exponential & Interpolation Search </li>
-            <li> 4-2.c: Accept any two polynomials of various degrees. Find the sum of those two polynomials using linked list and display the result in polynomial form. </li>
-            <li> 4-3.c: Apply interpolation search on the heights of students in a class. Search for particular student height, if found delete it from the list.
+            <li> 5-1.c: Exponential & Interpolation Search </li>
+            <li> 5-2.c: Accept any two polynomials of various degrees. Find the sum of those two polynomials using linked list and display the result in polynomial form. </li>
+            <li> 5-3.c: Apply interpolation search on the heights of students in a class. Search for particular student height, if found delete it from the list.
                 <ol type="i">
                     <li> The logic here is to run Interpolation Search again and again till there are no such elements (target height) left. </li>
                     <li> Here, we make the target elements `-1` because a height of `-1` is invalid. </li>
@@ -682,15 +692,20 @@ git clone https://github.com/sayande717/code.git
     </li>
     <li> Algorithm: <strong> Sorting </strong>
         <ol type="a">
-            <li> 5-1.c: Merge Sort: Accept your name and sort your name using mergesort. Display your name and the sorted order of your name. </li>
-            <li> 5-2.c: Accept your city name with minimum 8 characters length and perform merge sort to display. </li>
+            <li> 6-1.c: Merge Sort: Accept your name and sort your name using mergesort. Display your name and the sorted order of your name. </li>
+            <li> 6-2.c: Accept your city name with minimum 8 characters length and perform merge sort to display. </li>
 the original string and sorted string
         </ol>
     </li>
     <li> Data Structure: <strong> Binary Search Tree </strong>
         <ol type="a">
-            <li> 6-1.c: Create a Binary Search Tree (BST) by accepting characters of your name. Perform any two tree traversals (from preorder, inorder, or postorder). </li>
-            <li> 6-2.c: Perform level order traversal on your name by accepting as a string. Display the level order of it. </li>
+            <li> 7-1.c: Create a Binary Search Tree (BST) by accepting characters of your name. Perform any two tree traversals (from preorder, inorder, or postorder). </li>
+            <li> 7-2.c: Perform level order traversal on your name by accepting as a string. Display the level order of it. </li>
+        </ol>
+    </li>
+    <li> Data Structure: <strong> Heap </strong>
+        <ol type="a">
+            <li> 8-1.c: Accept your name character wise and create a max binary heap.  Identify the traversal which gives output in an ascending order and perform the same. </li>
         </ol>
     </li>
 </ol>
@@ -1527,6 +1542,8 @@ The comparison points represent the total points earned by each person.
         ```
         Class M
         ```
+
+### Week 4
 - Lab 13:
     1. [lab13.java](./platform/Litcoder/Week 1/Code/lab13.java)
     1. [lab13.py](./platform/Litcoder/Week 1/Code/lab13.py)
@@ -1626,7 +1643,6 @@ The comparison points represent the total points earned by each person.
         ```
         3475
         ```
-
 - Lab 16:
     1. [lab16.java](./platform/Litcoder/Week 1/Code/lab16.java)
     1. [lab16.py](./platform/Litcoder/Week 1/Code/lab16.py)
@@ -1651,7 +1667,7 @@ The comparison points represent the total points earned by each person.
         ```
         4
         ```
-1. Contest 7 (Java)
+- Contest 7 (Java)
     1. [contest7.java](./platform/College-1/Litcoder/Week 1/Code/contest7.java)
     - You are given a number of stocks, and the list of stocks, each with a name and price one by one, and a maximum budget for purchasing these stocks. Your goal is to find all valid combinations of stocks that can be bought within your budget to reach a specific target price. In the output, the quantity of each individual stock must not exceed a maximum of 5. Write a program that takes the following inputs and provides the corresponding output:
     - Inputs:
@@ -1726,7 +1742,7 @@ The comparison points represent the total points earned by each person.
         5 0 0
         5
         ```
-1. Contest 8 (Java)
+- Contest 8 (Java)
     1. [contest8.java](./platform/College-1/Litcoder/Week 1/Code/contest8.java)
     - On the first day, one person discovers a secret. You are given two integers, delay and forget. Each person will share the secret with a new person every day, starting from delay days after discovering the secret. Additionally, each person will forget the secret days after discovering it. It means they cannot share the secret on the same day they forget it or on any day afterward.
     - Your task is to find the number of people who know the secret at the end of day n.
@@ -1760,3 +1776,5 @@ The comparison points represent the total points earned by each person.
         ```
         2
         ```
+
+### Week 5

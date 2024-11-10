@@ -1,82 +1,104 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include<stdio.h>
+#include<stdbool.h>
+// Update with the value of N
+#define N 20
 
-struct stackNode {
-    int empno;
-    int salary;
-    struct stackNode *next;
+struct circularQueue {
+    int arr[N];
+    int front;
+    int rear;
 };
 
-void push(struct stackNode **head, int inEmpno, int inSalary) {
-    struct stackNode *newNode = (struct stackNode *)malloc(sizeof(struct stackNode));
-    newNode->empno=inEmpno;
-    newNode->salary=inSalary;
-    newNode->next=NULL;
-    if(*head==NULL) {
-        *head = newNode;
-        return;
-    }
-    struct stackNode *currentNode = *head;
-    while(currentNode->next!=NULL) {
-        currentNode=currentNode->next;
-    }
-    currentNode->next=newNode;
+void initQueue(struct circularQueue *queue) {
+    queue->front = -1;
+    queue->rear = -1;
 }
 
-void checkAndPop(struct stackNode **head) {
-    if(*head==NULL) {
-        printf("Stack underflow.");
+// for isEmpty(), we simply check if both front & rear are -1.
+bool isEmpty(struct circularQueue *queue) {
+    if (queue->front == -1 && queue->rear == -1) {
+        return true;
+    }
+    return false;
+}
+
+// In a circular queue, rear can be at any position, due to which we cannot check for the condition rear==(queue.length-1). Instead, we check if front is right next to rear.
+bool isFull(struct circularQueue *queue) {
+    // (rear+1)%n calculates the next position after rear.
+    if ((queue->rear + 1) % N == queue->front) {
+        return true;
+    }
+    return false;
+}
+
+void enQueue(struct circularQueue *queue, int data) {
+    if (isFull(queue)) {
+        printf("\nQueue Overflow");
         return;
-    } else if((*head)->next==NULL) {
-        if((*head)->salary > 3000) {
-            free(*head);
-            *head = NULL;
-        }
+    } else if (isEmpty(queue)) {
+        queue->front = 0;
+    }
+    
+    queue->rear = (queue->rear + 1) % N;
+    queue->arr[queue->rear] = data;
+}
+
+void deQueue(struct circularQueue *queue) {
+    if (isEmpty(queue)) {
         return;
     }
-
-    struct stackNode *prevNode = *head;
-    struct stackNode *currentNode = (*head)->next;
-    while(currentNode!=NULL) {
-        if(currentNode->salary>3000) {
-            struct stackNode *temp = currentNode;
-            prevNode->next = currentNode->next;
-            currentNode = currentNode->next;
-            free(temp);
-        } else {
-            prevNode=currentNode;
-            currentNode=currentNode->next;
-        }
+    if (queue->front == queue->rear) {
+        queue->front = -1;
+        queue->rear = -1;
+    } else {
+        queue->front = (queue->front + 1) % N;
     }
 }
 
-void traverse(struct stackNode *head) {
-    if(head==NULL) {
-        printf("Stack underflow.");
+// ERR: -1
+int peek(struct circularQueue *queue) {
+    if (isEmpty(queue)) {
+        return -1;
+    }
+    return queue->arr[queue->front];
+}
+
+void traverse(struct circularQueue *queue) {
+    if (isEmpty(queue)) {
+        printf("Queue Underflow");
         return;
     }
-    struct stackNode *currentNode = head;
-    while(currentNode!=NULL) {
-        printf("\nEmployee No: %d, Salary: %d",currentNode->empno,currentNode->salary);
-        currentNode=currentNode->next;
+    
+    int index = queue->front;
+    while (index != queue->rear) {
+        printf("%d ", queue->arr[index]);
+        index = (index + 1) % N;
     }
-    printf("\n");
+    printf("%d", queue->arr[index]);
 }
 
 int main() {
-    char choice='y';
-    int inEmpno;
-    int inSalary;
-    struct stackNode *head = NULL;
-    while(choice=='y') {
-        printf("Enter Employee No: "); scanf("%d",&inEmpno);
-        printf("Enter salary: "); scanf("%d",&inSalary);
-        push(&head,inEmpno,inSalary);
-        printf("Enter 'y' to enter more values: "); scanf(" %c",&choice);
-    }
-
-    printf("Original stack: "); traverse(head);
-    checkAndPop(&head);
-    printf("Stack after popping invalid elements: "); traverse(head);
-    return 0;
+   struct circularQueue patientQueue;
+   initQueue(&patientQueue);
+   
+   // INPUT: Patient ID
+   printf("Enter Patient ID: \n");
+   for (int iter = 0; iter < N; iter++) {
+       int patientID;
+       printf("%d. ", (iter + 1));
+       scanf("%d", &patientID);
+       enQueue(&patientQueue, patientID);
+   }
+   
+   // DISPLAY
+   printf("\n Patient IDs: ");
+   traverse(&patientQueue);
+   
+   // Dequeue twice and display
+   deQueue(&patientQueue);
+   deQueue(&patientQueue);
+   printf("\n After dequeueing 2 times, Patient IDs: ");
+   traverse(&patientQueue);
+   printf("\n");
+   return 0;
 }

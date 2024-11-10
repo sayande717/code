@@ -1,65 +1,77 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#define MAX_SIZE 20
 
-struct node {
-    char data;
-    struct node *left, *right;
-};
+void merge(char* arr, int low, int mid, int high) {
+    int left = low;
+    int right = mid+1;
+    char* temp = (char*)malloc(sizeof(char)*(high-low+1));
+    int tempIndex = 0;
 
-// initializing a new node and returning it to the caller
-struct node* newNode(char data) {
-    struct node *node = (struct node *)malloc(sizeof(struct node));
-    node->data = data;
-    node->left = NULL;
-    node->right = NULL;
-    return (node);
-}
-
-int height(struct node* node) {
-    if (node == NULL) {
-        return EXIT_FAILURE;
-    }
-    else {
-        int leftHeight = height(node->left);
-        int rightHeight = height(node->right);
-        if (leftHeight > rightHeight) {
-            return (leftHeight + 1);
+    while(left<=mid && right<=high) {
+        if(arr[left]<=arr[right]) {
+            temp[tempIndex] = arr[left];
+            left++;
         } else {
-            return (rightHeight + 1);
+            temp[tempIndex] = arr[right];
+            right++;
         }
+        tempIndex++;
     }
-    return -1;
+
+    while(left<=mid) {
+        temp[tempIndex] = arr[left];
+        left++;
+        tempIndex++;
+    }
+
+    while(right<=high) {
+        temp[tempIndex] = arr[right];
+        right++;
+        tempIndex++;
+    }
+
+    for(int index=low;index<=high;index++) {
+        arr[index] = temp[index-low];
+    }
+    free(temp);
 }
 
-void printCurrentLevel(struct node* root, int level) {
-    if (root == NULL) {
+void mergeSort(char* arr, int low, int high) {
+    // Base case
+    if(low==high) {
         return;
     }
-    if (level == 1) {
-        printf("%c ", root->data);
-    } else if (level > 1) {
-        printCurrentLevel(root->left, level - 1);
-        printCurrentLevel(root->right, level - 1);
-    }
+
+    int mid = low+(high-low)/2;
+    mergeSort(arr,low,mid);
+    mergeSort(arr,mid+1,high);
+
+    merge(arr,low,mid,high);
 }
 
-void printLevelOrder(struct node* root) {
-    int h = height(root);
-    for (int iter = 1; iter <= h; iter++) {
-        printCurrentLevel(root, iter);
+void printArr(char* arr, int size) {
+    for(int index=0;index<size;index++) {
+        printf("%c ",arr[index]);
     }
-}
+}   
 
 int main() {
-    char* name = (char*)malloc(sizeof(7));
-    printf("Enter name: "); scanf("%s",name);
-    struct node *root = newNode(name[0]);
-    root->left = newNode(name[1]);
-    root->right = newNode(name[2]);
-    root->left->left = newNode(name[3]);
-    root->left->right = newNode(name[4]);
-    root->left->left->left = newNode(name[5]);
-    root->left->left->right= newNode(name[6]);
-    printLevelOrder(root);
+    char* city = (char*)malloc(sizeof(char)*MAX_SIZE);
+    printf("Enter city name (atleast 8 characters): "); scanf("%s",city);
+
+    // Find string length (not using strlen())
+    int size=0;
+    while(city[size]!='\0') {
+        size++;
+    }
+
+    printf("Original array: "); printArr(city,size);
+    mergeSort(city, 0, size-1);
+    printf("\nSorted array: "); printArr(city,size);
+
+    printf("\n");
+    free(city);
     return EXIT_SUCCESS;
 }
