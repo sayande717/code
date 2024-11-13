@@ -1,89 +1,222 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #define INIT_HEAD 50
 #define MAX_REQUESTS 5
 
 int distance(int pos1, int pos2) {
-    if(pos1>pos2) {
-        return (pos1-pos2);
-    }
-    return (pos2-pos1);
+    return abs(pos1 - pos2);
 }
 
-void printSeekTime(int total_distance) {
-    printf("\nSeek Time: %d",total_distance);
+void printSeekTime(int totalDistance) {
+    printf("\nSeek Time: %d", totalDistance);
 }
 
 void FCFS(int* requests) {
     printf("\n\nAlgorithm: First Come First Serve (FCFS)");
-    int current_pos = INIT_HEAD;
-    int total_distance = 0;
-    for(int request=0;request<MAX_REQUESTS;request++) {
-        int current_req = requests[request];
-        int current_distance = distance(current_pos,current_req);
-        printf("\nHead moving from %d to %d, distance covered: %d",current_pos \
-                                                                ,current_req \
-                                                                ,current_distance);
-        total_distance+=current_distance;
-	current_pos = current_req;
+    int currentPos = INIT_HEAD;
+    int totalDistance = 0;
+    for (int request = 0; request < MAX_REQUESTS; request++) {
+        int currentReq = requests[request];
+        int currentDistance = distance(currentPos, currentReq);
+        printf("\nHead moving from %d to %d, distance covered: %d", currentPos, currentReq, currentDistance);
+        totalDistance += currentDistance;
+        currentPos = currentReq;
     }
-
-    printSeekTime(total_distance);
-
+    printSeekTime(totalDistance);
 }
 
 void SSTF(int* requests) {
     printf("\n\nAlgorithm: Shortest Seek Time First (SSTF)");
-    int current_pos = INIT_HEAD;
-    int* diff = (int*)malloc(sizeof(int)*MAX_REQUESTS);
+    int currentPos = INIT_HEAD;
+    int* diff = (int*)malloc(sizeof(int) * MAX_REQUESTS);
+    int totalDistance = 0;
+    int minDistance = 100;
+    int minIndex = MAX_REQUESTS;
 
-    int total_distance = 0;
-    int min_distance = 100;
-    int min_index = MAX_REQUESTS;
-    // Calculate ALL distances between data locations (only once).
-    for(int request=0;request<MAX_REQUESTS;request++) {
-	int current_req = requests[request];
-	diff[request] = distance(current_pos,current_req);
+    for (int request = 0; request < MAX_REQUESTS; request++) {
+        diff[request] = distance(currentPos, requests[request]);
     }
 
-    // Get minimum distance -> process data -> set arr[index] = -1 -> exclude that location next time.
-    for(int iter=0;iter<MAX_REQUESTS;iter++) {
-	for(int request=0;request<MAX_REQUESTS;request++) {
-	    if((requests[request]!=-1) && (diff[request] < min_distance)) {
-		min_index = request;
-		min_distance = diff[request];
-	    }
-	}
-
-	total_distance+=min_distance;
-        printf("\nHead moving from %d to %d, distance covered: %d",current_pos \
-	    	    					          ,requests[min_index] \
-							          ,min_distance);
-    	requests[min_index] = -1;
-	min_distance = 100;
+    for (int iter = 0; iter < MAX_REQUESTS; iter++) {
+        for (int request = 0; request < MAX_REQUESTS; request++) {
+            if ((requests[request] != -1) && (diff[request] < minDistance)) {
+                minIndex = request;
+                minDistance = diff[request];
+            }
+        }
+        totalDistance += minDistance;
+        printf("\nHead moving from %d to %d, distance covered: %d", currentPos, requests[minIndex], minDistance);
+        currentPos = requests[minIndex];
+        requests[minIndex] = -1;
+        for (int request = 0; request < MAX_REQUESTS; request++) {
+            if (requests[request] != -1) {
+                diff[request] = distance(currentPos, requests[request]);
+            }
+        }
+        minDistance = 100;
     }
-    printSeekTime(total_distance);
+    printSeekTime(totalDistance);
+    free(diff);
 }
 
+void SCAN(int* requests, int direction) {
+    printf("\n\nAlgorithm: SCAN (Elevator)");
+    int currentPos = INIT_HEAD;
+    int totalDistance = 0;
+
+    int sortedRequests[MAX_REQUESTS];
+    memcpy(sortedRequests, requests, sizeof(int) * MAX_REQUESTS);
+
+    for (int i = 0; i < MAX_REQUESTS - 1; i++) {
+        for (int j = 0; j < MAX_REQUESTS - i - 1; j++) {
+            if (sortedRequests[j] > sortedRequests[j + 1]) {
+                int temp = sortedRequests[j];
+                sortedRequests[j] = sortedRequests[j + 1];
+                sortedRequests[j + 1] = temp;
+            }
+        }
+    }
+
+    for (int i = 0; i < MAX_REQUESTS; i++) {
+        if (sortedRequests[i] >= currentPos) {
+            for (int j = i; j < MAX_REQUESTS; j++) {
+                int currentDistance = distance(currentPos, sortedRequests[j]);
+                printf("\nHead moving from %d to %d, distance covered: %d", currentPos, sortedRequests[j], currentDistance);
+                totalDistance += currentDistance;
+                currentPos = sortedRequests[j];
+            }
+            break;
+        }
+    }
+
+    for (int i = MAX_REQUESTS - 1; i >= 0; i--) {
+        if (sortedRequests[i] < currentPos) {
+            int currentDistance = distance(currentPos, sortedRequests[i]);
+            printf("\nHead moving from %d to %d, distance covered: %d", currentPos, sortedRequests[i], currentDistance);
+            totalDistance += currentDistance;
+            currentPos = sortedRequests[i];
+        }
+    }
+
+    printSeekTime(totalDistance);
+}
+
+void C_SCAN(int* requests) {
+    printf("\n\nAlgorithm: C-SCAN (Circular SCAN)");
+    int currentPos = INIT_HEAD;
+    int totalDistance = 0;
+
+    int sortedRequests[MAX_REQUESTS];
+    memcpy(sortedRequests, requests, sizeof(int) * MAX_REQUESTS);
+
+    for (int i = 0; i < MAX_REQUESTS - 1; i++) {
+        for (int j = 0; j < MAX_REQUESTS - i - 1; j++) {
+            if (sortedRequests[j] > sortedRequests[j + 1]) {
+                int temp = sortedRequests[j];
+                sortedRequests[j] = sortedRequests[j + 1];
+                sortedRequests[j + 1] = temp;
+            }
+        }
+    }
+
+    for (int i = 0; i < MAX_REQUESTS; i++) {
+        if (sortedRequests[i] >= currentPos) {
+            for (int j = i; j < MAX_REQUESTS; j++) {
+                int currentDistance = distance(currentPos, sortedRequests[j]);
+                printf("\nHead moving from %d to %d, distance covered: %d", currentPos, sortedRequests[j], currentDistance);
+                totalDistance += currentDistance;
+                currentPos = sortedRequests[j];
+            }
+            break;
+        }
+    }
+
+    if (currentPos != sortedRequests[0]) {
+        int currentDistance = distance(currentPos, sortedRequests[0]);
+        printf("\nHead moving from %d to %d, distance covered: %d", currentPos, sortedRequests[0], currentDistance);
+        totalDistance += currentDistance;
+        currentPos = sortedRequests[0];
+    }
+
+    for (int i = 1; i < MAX_REQUESTS; i++) {
+        int currentDistance = distance(currentPos, sortedRequests[i]);
+        printf("\nHead moving from %d to %d, distance covered: %d", currentPos, sortedRequests[i], currentDistance);
+        totalDistance += currentDistance;
+        currentPos = sortedRequests[i];
+    }
+
+    printSeekTime(totalDistance);
+}
+
+void C_LOOK(int* requests) {
+    printf("\n\nAlgorithm: C-LOOK");
+    int currentPos = INIT_HEAD;
+    int totalDistance = 0;
+
+    int sortedRequests[MAX_REQUESTS];
+    memcpy(sortedRequests, requests, sizeof(int) * MAX_REQUESTS);
+
+    // Sort the requests
+    for (int i = 0; i < MAX_REQUESTS - 1; i++) {
+        for (int j = 0; j < MAX_REQUESTS - i - 1; j++) {
+            if (sortedRequests[j] > sortedRequests[j + 1]) {
+                int temp = sortedRequests[j];
+                sortedRequests[j] = sortedRequests[j + 1];
+                sortedRequests[j + 1] = temp;
+            }
+        }
+    }
+
+    // Move towards the end of the disk
+    for (int i = 0; i < MAX_REQUESTS; i++) {
+        if (sortedRequests[i] >= currentPos) {
+            for (int j = i; j < MAX_REQUESTS; j++) {
+                int currentDistance = distance(currentPos, sortedRequests[j]);
+                printf("\nHead moving from %d to %d, distance covered: %d", currentPos, sortedRequests[j], currentDistance);
+                totalDistance += currentDistance;
+                currentPos = sortedRequests[j];
+            }
+            break;
+        }
+    }
+
+    // Move to the start of the remaining requests
+    if (currentPos != sortedRequests[0]) {
+        int currentDistance = distance(currentPos, sortedRequests[0]);
+        printf("\nHead moving from %d to %d, distance covered: %d", currentPos, sortedRequests[0], currentDistance);
+        totalDistance += currentDistance;
+        currentPos = sortedRequests[0];
+    }
+
+    // Move towards the end of the remaining requests
+    for (int i = 1; i < MAX_REQUESTS; i++) {
+        int currentDistance = distance(currentPos, sortedRequests[i]);
+        printf("\nHead moving from %d to %d, distance covered: %d", currentPos, sortedRequests[i], currentDistance);
+        totalDistance += currentDistance;
+        currentPos = sortedRequests[i];
+    }
+
+    printSeekTime(totalDistance);
+}
 
 int main() {
-    int* requests = (int*)malloc(sizeof(int)*MAX_REQUESTS);
-    if(requests==NULL) {
-        fprintf(stderr,"Memory Allocation failed");
-        exit(EXIT_FAILURE);
-    }
-    requests[0] = 63;
-    requests[1] = 34;
-    requests[2] = 45;
-    requests[3] = 20;
-    requests[4] = 98;
+    int requests[MAX_REQUESTS] = {63, 34, 45, 20, 98};
+    printf("Maximum number of requests: %d", MAX_REQUESTS);
 
-    printf("Maximum number of requests: %d",MAX_REQUESTS);
+    int requestsFcfs[MAX_REQUESTS], requestsSstf[MAX_REQUESTS], requestsScan[MAX_REQUESTS], requestsCscan[MAX_REQUESTS], requestsClook[MAX_REQUESTS];
+    memcpy(requestsFcfs, requests, sizeof(requests));
+    memcpy(requestsSstf, requests, sizeof(requests));
+    memcpy(requestsScan, requests, sizeof(requests));
+    memcpy(requestsCscan, requests, sizeof(requests));
+    memcpy(requestsClook, requests, sizeof(requests));
 
-    FCFS(requests);
-    SSTF(requests);
+    FCFS(requestsFcfs);
+    SSTF(requestsSstf);
+    SCAN(requestsScan, 1);
+    C_SCAN(requestsCscan);
+    C_LOOK(requestsClook);
 
     printf("\n");
-    free(requests);
     return EXIT_SUCCESS;
 }

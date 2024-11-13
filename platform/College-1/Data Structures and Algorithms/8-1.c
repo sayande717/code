@@ -3,17 +3,20 @@
 #include <string.h>
 #define MAX_HEAP_SIZE 10
 
+// Define a structure for MaxHeap
 typedef struct {
-    char data[MAX_HEAP_SIZE];
-    int size;
+    char data[MAX_HEAP_SIZE]; // Array to store heap elements
+    int size; // Current size of the heap
 } MaxHeap;
 
+// Swaps the values pointed to by a and b
 void swap(char *a, char *b) {
     char temp = *a;
     *a = *b;
     *b = temp;
 }
 
+// Moves the element at index up the heap until the max-heap property is restored
 void heapifyUp(MaxHeap *heap, int index) {
     int parentIndex = (index - 1) / 2;
     if (index > 0 && heap->data[index] > heap->data[parentIndex]) {
@@ -22,6 +25,7 @@ void heapifyUp(MaxHeap *heap, int index) {
     }
 }
 
+// Moves the element at index down the heap until the max-heap property is restored
 void heapifyDown(MaxHeap *heap, int index) {
     int largest = index;
     int leftChild = 2 * index + 1;
@@ -41,6 +45,7 @@ void heapifyDown(MaxHeap *heap, int index) {
     }
 }
 
+// Adds a new value to the heap and restores the max-heap property
 void insert(MaxHeap *heap, char value) {
     if (heap->size == MAX_HEAP_SIZE) {
         printf("Heap is full\n");
@@ -51,6 +56,7 @@ void insert(MaxHeap *heap, char value) {
     heapifyUp(heap, heap->size - 1);
 }
 
+// Removes and returns the maximum value from the heap, then restores the max-heap property
 char extractMax(MaxHeap *heap) {
     if (heap->size == 0) {
         printf("Heap is empty\n");
@@ -63,27 +69,10 @@ char extractMax(MaxHeap *heap) {
     return root;
 }
 
+// Extracts elements from the heap one by one and stores them in sortedArray in sorted order
 void heapSort(MaxHeap *heap, char *sortedArray) {
     int originalSize = heap->size;
     for (int i = originalSize - 1; i >= 0; i--) {
         sortedArray[i] = extractMax(heap);
     }
-}
-
-int main() {
-    MaxHeap heap;
-    heap.size = 0;
-    char name[MAX_HEAP_SIZE + 1];
-    printf("Enter a name (max %d characters): ", MAX_HEAP_SIZE); scanf("%7s", name);
-    for (int i = 0; i < strlen(name); i++) {
-        insert(&heap, name[i]);
-    }
-
-    char sortedArray[strlen(name)];
-    heapSort(&heap, sortedArray);
-    for (int i = 0; i < strlen(name); i++) {
-        printf("%c", sortedArray[i]);
-    }
-    printf("\n");
-    return EXIT_SUCCESS;
 }

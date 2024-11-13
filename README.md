@@ -886,7 +886,7 @@ compute the maximum flow with the minimum possible cost from a source node $s$ t
                     <li> Circular LOOK (C-LOOK) </li>
                 </ul>
             </li>
-            <li> Study about any one OS Simulator tool and prepare a report on it. </li>
+            <li> Study about any one OS Simulator tool and prepare a report on it. In the program, Round-Robin Scheduling, a CPU Scheduling algorithm, was performed. </li>
         </ol>
     </li>
 </ol>
