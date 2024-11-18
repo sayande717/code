@@ -1,19 +1,32 @@
-#include <omp.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-int findSum(int* arr) {
-    omp_set_schedule(omp_sched_static,1);
-    int sum = 2;
-    # pragma omp parallel for schedule(runtime)
-    for(int index=0;index<10;index++) {
-        sum += 2;
+typedef struct Node {
+    int data;
+    struct Node* left;
+    struct Node* right;
+} node;
+
+int height(node* head) {
+    if(head==NULL) {
+        return EXIT_FAILURE;
     }
-    return sum;
+    int left_height = height(head->left);
+    int right_height = height(head->right);
+    if(left_height>right_height) {
+        return(left_height+1);
+    } else {
+        return(right_height+1);
+    }
 }
 
 int main() {
-    int* arr = (int*)calloc(10,sizeof(int));
-    printf("Sum: %d",findSum(arr));
+    int data;
+    printf("Enter data: "); scanf("%d",&data);
+    node* head = create_node(data);
+    print_nodes(head);
+    
+    free(head);
+    printf("\n");
     return EXIT_SUCCESS;
 }

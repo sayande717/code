@@ -31,7 +31,10 @@ class Scheduler:
 
 if __name__ == "__main__":
     scheduler = Scheduler(time_quantum=4)
-    processes = [Process(pid=1, burst_time=10), Process(pid=2, burst_time=4), Process(pid=3, burst_time=6)]
+    processes = [Process(pid=1, burst_time=10),
+                 Process(pid=2, burst_time=4),
+                 Process(pid=3, burst_time=6),
+                 Process(pid=4, burst_time=5)]
 
     for process in processes:
         scheduler.add_process(process)

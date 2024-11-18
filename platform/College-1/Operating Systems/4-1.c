@@ -204,18 +204,18 @@ int main() {
     int requests[MAX_REQUESTS] = {63, 34, 45, 20, 98};
     printf("Maximum number of requests: %d", MAX_REQUESTS);
 
-    int requestsFcfs[MAX_REQUESTS], requestsSstf[MAX_REQUESTS], requestsScan[MAX_REQUESTS], requestsCscan[MAX_REQUESTS], requestsClook[MAX_REQUESTS];
-    memcpy(requestsFcfs, requests, sizeof(requests));
-    memcpy(requestsSstf, requests, sizeof(requests));
-    memcpy(requestsScan, requests, sizeof(requests));
-    memcpy(requestsCscan, requests, sizeof(requests));
-    memcpy(requestsClook, requests, sizeof(requests));
+    int requestsFCFS[MAX_REQUESTS], requestsSSTF[MAX_REQUESTS], requestsSCAN[MAX_REQUESTS], requestsCSCAN[MAX_REQUESTS], requestsCLOOK[MAX_REQUESTS];
+    memcpy(requestsFCFS, requests, sizeof(requests));
+    memcpy(requestsSSTF, requests, sizeof(requests));
+    memcpy(requestsSCAN, requests, sizeof(requests));
+    memcpy(requestsCSCAN, requests, sizeof(requests));
+    memcpy(requestsCLOOK, requests, sizeof(requests));
 
-    FCFS(requestsFcfs);
-    SSTF(requestsSstf);
-    SCAN(requestsScan, 1);
-    C_SCAN(requestsCscan);
-    C_LOOK(requestsClook);
+    FCFS(requestsFCFS);
+    SSTF(requestsSSTF);
+    SCAN(requestsSCAN, 1);
+    C_SCAN(requestsCSCAN);
+    C_LOOK(requestsCLOOK);
 
     printf("\n");
     return EXIT_SUCCESS;

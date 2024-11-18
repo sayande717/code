@@ -3,15 +3,16 @@
 
 typedef struct node {
     int data;
-    struct node *left;
-    struct node *right;
+    struct node* left;
+    struct node* right;
 } binaryTreeNode;
 
-binaryTreeNode *createNode(int inData) {
-    binaryTreeNode *newNode = (binaryTreeNode *)malloc(sizeof(binaryTreeNode));
+binaryTreeNode* createNode(int inData) {
+    binaryTreeNode* newNode = (binaryTreeNode*)malloc(sizeof(binaryTreeNode));
     if(newNode==NULL) {
         exit(EXIT_FAILURE);
     }
+
     newNode->data = inData;
     newNode->left = NULL;
     newNode->right = NULL;

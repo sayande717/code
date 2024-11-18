@@ -14,7 +14,7 @@ int linearSentinelSearch(int *arr, int target) {
     arr[maxElements-1] = backup;
 
     // index < maxElement - 1: Index has stopped between 0 and n-2, so element is present.
-    // arr[maxElements-1] == target: the last element of the array is the potential target.
+    // arr[maxElements-1] == target: the last element of the array is the target.
     if(index < maxElements-1 || arr[maxElements-1] == target) {
         return index;
     } else {

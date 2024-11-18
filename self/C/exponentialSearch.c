@@ -32,7 +32,7 @@ int binarySearch(int *arr, int target, int low, int high) {
     if(low>high) {
         return -1;
     }
-    int mid = (low+high)/2;
+    int mid = low+(high-low)/2;
     if(arr[mid]<target) {
         return binarySearch(arr,target,mid+1,high);
     } else if(arr[mid]>target) {
@@ -43,13 +43,17 @@ int binarySearch(int *arr, int target, int low, int high) {
 }
 
 int exponentialSearch(int *arr, int target) {
+    if(arr[0]==target) {
+        return 0;
+    }
+
     int index = 1;
     int low, high;
-    while(arr[index]<target && index < maxElements-1) {
+    while(arr[index]<target && index < maxElements) {
         index *= 2;
     }
     low = index/2;
-    high = (index < maxElements-1)?index:maxElements-1;
+    high = (index < maxElements)?index:maxElements-1;
 
     return binarySearch(arr, target, low, high);
 }

@@ -18,8 +18,7 @@ struct node* newNode(char data) {
 int height(struct node* node) {
     if (node == NULL) {
         return EXIT_FAILURE;
-    }
-    else {
+    } else {
         int leftHeight = height(node->left);
         int rightHeight = height(node->right);
         if (leftHeight > rightHeight) {

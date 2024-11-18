@@ -6,6 +6,8 @@
 /* Index:
  * Merge Sort
  * Insertion Sort
+ * Bubble Sort
+ * Cocktail Sort
 */
 
 void merge(int *arr, int low, int mid, int high) {

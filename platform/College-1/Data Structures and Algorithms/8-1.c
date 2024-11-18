@@ -18,7 +18,7 @@ void swap(char *a, char *b) {
 
 // Moves the element at index up the heap until the max-heap property is restored
 void heapifyUp(MaxHeap *heap, int index) {
-    int parentIndex = (index - 1) / 2;
+    int parentIndex = index / 2;
     if (index > 0 && heap->data[index] > heap->data[parentIndex]) {
         swap(&heap->data[index], &heap->data[parentIndex]);
         heapifyUp(heap, parentIndex);
@@ -28,8 +28,8 @@ void heapifyUp(MaxHeap *heap, int index) {
 // Moves the element at index down the heap until the max-heap property is restored
 void heapifyDown(MaxHeap *heap, int index) {
     int largest = index;
-    int leftChild = 2 * index + 1;
-    int rightChild = 2 * index + 2;
+    int leftChild = (2 * index) + 1;
+    int rightChild = (2 * index) + 2;
 
     if (leftChild < heap->size && heap->data[leftChild] > heap->data[largest]) {
         largest = leftChild;
@@ -75,4 +75,28 @@ void heapSort(MaxHeap *heap, char *sortedArray) {
     for (int i = originalSize - 1; i >= 0; i--) {
         sortedArray[i] = extractMax(heap);
     }
+}
+
+int main() {
+    MaxHeap heap = {{0}, 0};
+    char* name = (char*)malloc(MAX_HEAP_SIZE * sizeof(char));
+    printf("Enter your name: "); scanf("%s", name);
+    int size = 0;
+    while(name[size] != '\0') {
+        insert(&heap, name[size]);
+        size++;
+    }
+    // At this point, we have all the elements in the heap, and the size of the input string.
+    char* sortedName = (char*)malloc(size*sizeof(char));
+    heapSort(&heap, sortedName);
+    
+    printf("Sorted name: ");
+    for(int index=0;index<size;index++) {
+        printf("%c", sortedName[index]);
+    }
+
+    free(name);
+    free(sortedName);
+    printf("\n");
+    return EXIT_SUCCESS;
 }
