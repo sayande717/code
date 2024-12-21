@@ -46,5 +46,5 @@ int main() {
 
     free(head);
     free(Node2);
-    return 0;
+    return EXIT_SUCCESS;
 }

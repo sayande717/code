@@ -124,7 +124,7 @@ void cocktailSort(int* arr) {
     // Condition 2: Checks if any swap has taken place in the previous pass.
     while(start<end || !isSwapped) {
         isSwapped = false;
-        for(int forwardIter=0;forwardIter<end;forwardIter++) {
+        for(int forwardIter=start;forwardIter<end;forwardIter++) {
             if(arr[forwardIter]>arr[forwardIter+1]) {
                 isSwapped = true;
                 int temp = arr[forwardIter];
@@ -137,7 +137,7 @@ void cocktailSort(int* arr) {
         // In Pass 1, the largest element is at the last index.
         end--;
 
-        for(int backwardIter=end-1;backwardIter>=0;backwardIter--) {
+        for(int backwardIter=end-1;backwardIter>=start;backwardIter--) {
             if(arr[backwardIter]>arr[backwardIter+1]) {
                 isSwapped = true;
                 int temp = arr[backwardIter];

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Hints</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 22px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="hints">Hints</h1>
+<h2 id="general">General</h2>
+<ul>
+<li>An <a href="https://golang.org/ref/spec#Integer_literals">integer value</a> can be defined as one or more consecutive digits.</li>
+<li>If you see a <code>panic:</code> error when running the tests, this is because you have not implemented one of the functions (it should say which one) or you have left the boilerplate in place. You need to remove the <code>panic(...)</code> line from the supplied code and replace it with a real implementation.</li>
+</ul>
+<h2 id="1-define-the-expected-oven-time-in-minutes">1. Define the expected oven time in minutes</h2>
+<ul>
+<li>You need to define a <a href="https://tour.golang.org/basics/15">constant</a> and assign it the expected oven time in minutes.</li>
+<li>If you see an <code>undefined: OvenTime</code> error then double check that you have the constant defined.</li>
+<li>If you see an <code>invalid operation: got != tt.expected (mismatched types float64 and int)</code> error then you have likely put a decimal point into the <code>OvenTime</code> causing Go to infer the type as a floating point number. Remove the decimal and the type will be inferred as an <code>int</code>.</li>
+<li>If you see a <code>syntax error: non-declaration statement outside function body</code> error then it is likely that you forgot the <code>const</code> keyword.</li>
+<li>If you see a <code>syntax error: unexpected :=, expecting =</code> error then you are likely trying to assign the constant using <code>:=</code> like a variable; constants are assigned using <code>=</code> not <code>:=</code>.</li>
+</ul>
+<h2 id="2-calculate-the-remaining-oven-time-in-minutes">2. Calculate the remaining oven time in minutes</h2>
+<ul>
+<li>You need to define a <a href="https://tour.golang.org/basics/4">function</a> with a single parameter.</li>
+<li>You have to <a href="https://golang.org/ref/spec#Return_statements">explicitly return an integer</a> from a function.</li>
+<li>The function's parameter is an <a href="https://golang.org/ref/spec#Integer_literals">integer</a>.</li>
+<li>You can <a href="https://golang.org/ref/spec#Calls">call</a> one of the other functions you've defined previously.</li>
+<li>You can use the <a href="https://golang.org/ref/spec#Operators">mathematical operator for subtraction</a> to subtract values.</li>
+</ul>
+<h2 id="3-calculate-the-preparation-time-in-minutes">3. Calculate the preparation time in minutes</h2>
+<ul>
+<li>You need to define a <a href="https://tour.golang.org/basics/4">function</a> with a single parameter.</li>
+<li>You have to <a href="https://golang.org/ref/spec#Return_statements">explicitly return an integer</a> from a function.</li>
+<li>The function's parameter is an <a href="https://golang.org/ref/spec#Integer_literals">integer</a>.</li>
+<li>You can use the <a href="https://golang.org/ref/spec#Operators">mathematical operator for multiplication</a> to multiply values.</li>
+</ul>
+<h2 id="4-calculate-the-elapsed-working-time-in-minutes">4. Calculate the elapsed working time in minutes</h2>
+<ul>
+<li>You need to define a <a href="https://tour.golang.org/basics/4">function</a> with two parameters.</li>
+<li>You have to <a href="https://golang.org/ref/spec#Return_statements">explicitly return an integer</a> from a function.</li>
+<li>The function's parameter is an <a href="https://golang.org/ref/spec#Integer_literals">integer</a>.</li>
+<li>You can <a href="https://golang.org/ref/spec#Calls">call</a> one of the other functions you've defined previously.</li>
+<li>You can use the <a href="https://golang.org/ref/spec#Operators">mathematical operator for addition</a> to add values.</li>
+</ul>
+
+            
+            
+        </body>
+        </html>

@@ -368,11 +368,13 @@ git clone https://github.com/sayande717/code.git
     - TODO: Bitonic Sort
     - TODO: Counting Sort
     - TODO: Radix Sort
-- [initSearch.c](./self/C/initSearch.c)
+1. [initSearch.c](./self/C/initSearch.c)
     - Linear Search
     - Binary Search
     - TODO: Exponential Search
     - TODO: Interpolation Search
+1. [initDynamicProgramming.c](./self/C/initDynamicProgramming.c)
+    - Program on finding the nth term of a Fibonacci sequence, enhancing the generic method using Dynamic Programming.
 
 ### C++
 > [Notes](./notes/Languages.md#c++)
@@ -619,16 +621,13 @@ git clone https://github.com/sayande717/code.git
                     <li> Compute serial program execution time and parallel program execution time. </li>
                 </ul>
             </li>
-            <li> Write an OpenMP program to find the prefix sum of all one dimensional array elements. Use an appropriate scheduling clause to find the prefix sum.
-                <ul>
-                    <li> </li>
-                </ul>
-            </li>
+            <li> Write an OpenMP program to find the prefix sum of all one dimensional array elements. Use an appropriate scheduling clause to find the prefix sum. </li>
         </ol>
     </li>
     <li> Write a CUDA program on:
         <ol type="a">
-            <li> TODO: Sample CUDA program </li>
+            <li> Write a CUDA program to perform the vector addition and calculate its execution time using CUDA events. Use dynamic memory allocation for the arrays considered. </li>
+            <li> Write a CUDA program to perform the addition of two matrices and compare parallel and serial time. Use dynamic memory allocation for the arrays considered and CUDA events for the execution time. </li>
         </ol>
     </li> 
 </ol>
@@ -807,7 +806,7 @@ the original string and sorted string
             <li> Implement the Edmonds-Karp algorithm using Breath-First-Search (BFS) to find the maximum flow in the network.
                 <br><img src="./platform/College-1/Design and Analysis of Algorithms/media/q4-5-1.png" alt="Edmonds-Karp" />
             </li>
-            <li>  Given a directed graph $G=(V,E)$ where each $edge(u,v)$ has a capacity $c(u,v)$ and a cost $cost(u,v)$ for sending flow from $u$ to $v$, implement the Cycle Cancelling algorithm to
+            <li> Given a directed graph $G=(V,E)$ where each $edge(u,v)$ has a capacity $c(u,v)$ and a cost $cost(u,v)$ for sending flow from $u$ to $v$, implement the Cycle Cancelling algorithm to
 compute the maximum flow with the minimum possible cost from a source node $s$ to a sink node $t$. </li>
         </ol>
     </li>
