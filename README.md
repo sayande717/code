@@ -546,6 +546,37 @@ git clone https://github.com/sayande717/code.git
     - Use `rand()` to generate random integers.
 
 ## Platform/College-1
+### Advanced Competitive Coding
+1. [Swap without extra variable](./platform/College-1/Advanced%20Competitive%20Coding/SwapWithoutExtraVariable.java)
+    - A way to swap 2 numbers without using a 3rd variable.
+    - Perform these operations, assuming variables are `a` & `b`:
+        - $a=a+b$
+        - $b=a-b$
+        - $a=a-b$
+2. [Simple Sieve Algorithm](./platform/College-1/Advanced%20Competitive%20Coding/SimpleSieve.java)
+    - An efficient way to find prime numbers within the range `1-n`.
+    - Steps:
+        - Initialize a boolean array `isPrime` of size `n+1` and set all elements to `true`. Set `isPrime[0]` and `isPrime[1]` to `false` as 0 and 1 are not prime numbers.
+        - Iterate from `p = 2` to `sqrt(n)`. For each `p`, if `isPrime[p]` is `true`, mark all multiples of `p` (starting from `p^2`) as `false`.
+        - Collect all indices `i` where `isPrime[i]` is `true`. These indices represent the prime numbers up to `n`.
+        - Return the list of prime numbers.
+3. [Segmented Sieve Algorithm](./platform/College-1/Advanced%20Competitive%20Coding/SegmentedSeive.java)
+    - An efficient way to find prime numbers within the range `m-n`.
+    - Steps:
+        1. Use the Simple Sieve algorithm to find all prime numbers up to $\sqrt{n}$.
+        2. Create a boolean array `isPrime` of size `n-m+1` and initialize all elements to `true`.
+        3. For each prime number `p` found in step 1, mark its multiples in the range `[m, n]` as `false`.
+            - Calculate the starting index for marking multiples of `p` in the range `[m, n]`.
+            - If `p` is greater than `m`, start marking from `p*p`. Otherwise, start marking from the first multiple of `p` greater than or equal to `m`.
+        4. Collect all indices `i` where `isPrime[i]` is `true`. These indices represent the prime numbers in the range `[m, n]`.
+        5. Return the list of prime numbers.
+
+### Deep Learning
+- Miniconda environment: college-1
+<ol type="1">
+    <li> Question: </li>
+</ol>
+
 ### Computer Architecture and Organisation
 <ol type="1">
     <li> Write an OpenMP Program to:
@@ -890,8 +921,8 @@ compute the maximum flow with the minimum possible cost from a source node $s$ t
     </li>
 </ol>
 
-## Platform/College-1/Litcoder
-### Week 1
+### Litcoder
+#### Week 1
 - Handbook: [Code Maturity](./platform/Litcoder/Week 1/Handbook.pdf)
 - Case References:
     1. [Maintainability](./platform/Litcoder/Week 1/Case References/Maintainability.pdf)
@@ -1175,7 +1206,7 @@ compute the maximum flow with the minimum possible cost from a source node $s$ t
         9339
         ```
 
-### Week 2
+#### Week 2
 1. Lab 5
     1. [lab5.java](./platform/Litcoder/Week 1/Code/lab5.java)
     1. [lab5.py](./platform/Litcoder/Week 1/Code/lab5.py)
@@ -1319,7 +1350,7 @@ Your task is to implement a function maxActivities(arr) that takes in an array o
         24              (2+8+5)
         9
         ```
-### Week 3
+#### Week 3
 - Lab 9:
     1. [lab9.java](./platform/Litcoder/Week 1/Code/lab9.java)
     1. [lab9.py](./platform/Litcoder/Week 1/Code/lab9.py)
@@ -1542,7 +1573,7 @@ The comparison points represent the total points earned by each person.
         Class M
         ```
 
-### Week 4
+#### Week 4
 - Lab 13:
     1. [lab13.java](./platform/Litcoder/Week 1/Code/lab13.java)
     1. [lab13.py](./platform/Litcoder/Week 1/Code/lab13.py)
@@ -1776,4 +1807,4 @@ The comparison points represent the total points earned by each person.
         2
         ```
 
-### Week 5
+#### Week 5
