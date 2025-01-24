@@ -10,6 +10,7 @@ git clone https://github.com/sayande717/code.git
 - `int *arr = (int *)calloc(cols,sizeof(int))`: Dynamically allocate memory for a 1D array of size `cols`, then fill all spaces with `0`.
 - `(current + 1) % n` leads us to the next index, after current element.
 - `(current + (n-1)) % n` leads us to the previous index, before current element.
+- To find the number of digits in a number ie length of a number, use `len=log10(num)+1`.
 - Language: `c`:
     - A string always ends with null character '\0'. So you can use this character to identify the end of a string.
         ```c 
@@ -570,7 +571,13 @@ git clone https://github.com/sayande717/code.git
             - If `p` is greater than `m`, start marking from `p*p`. Otherwise, start marking from the first multiple of `p` greater than or equal to `m`.
         4. Collect all indices `i` where `isPrime[i]` is `true`. These indices represent the prime numbers in the range `[m, n]`.
         5. Return the list of prime numbers.
-
+4. [Euler's Phi Algorithm](./platform/College-1/Advanced%20Competitive%20Coding/EulerPhi.java)
+    - This is used to determine the number of integers up to a given integer n that are relatively prime to n. Two numbers are relatively prime if their greatest common divisor (GCD) is 1. $\phi(n)$ is given as $n \times \left(1 - \frac{1}{p_1}\right) \times \left(1 - \frac{1}{p_2}\right) \times \ldots \times \left(1 - \frac{1}{p_k}\right)$.
+    - Steps:
+        1. Initialize the result to n.
+        2. Identify all distinct prime factors of `n`. A distinct prime factor of `n` is a prime number that divides `n` without leaving a remainder.
+        3. For each distinct prime factor `p` of `n`, update the result using the formula $\text{result} = \text{result} \times \left(1 - \frac{1}{p}\right)$.
+        4. The final value of result is $\phi(n)$.
 ### Deep Learning
 - Miniconda environment: college-1
 <ol type="1">
