@@ -71,7 +71,7 @@ void gen_code(int data, int *buffer, bool *parity, int len) {
 
 int main() {
     int data;
-    printf("Enter original data: "); scanf("%d",&data);
+    printf("Enter data bits: "); scanf("%d",&data);
 
     int m = find_length(data);
     int r = no_parity_bits(data);

@@ -277,7 +277,6 @@ git clone https://github.com/sayande717/code.git
         if __name__ == "__main__":
             node_object = node()
             print(node_object.data)
-
         ```
     - do nothing (`pass`):
         ```python
@@ -290,10 +289,32 @@ git clone https://github.com/sayande717/code.git
                 pass
         ```
 
-- Language: `conda`:
-    - `conda env create environment.yml`: Create an environment & install all dependencies as per the file `environment.yml`.
-    - `conda activate env_name`: Activate the environment.
-    - `conda deactivate`: Deactivate the environment.
+- Software: `conda`:
+    - Issues:
+        - Remove (base) from prompt: `conda config --set auto_activate_base false`
+    - Work with environments:
+        - `conda env create <environment.yml>`
+        - `conda create --name <env_name>`
+        - `conda create --name <env_name> python=<version>`
+        - `conda env remove --name <env_name>`
+        - `conda activate <env_name>`
+        - `conda deactivate`
+    - Work with packages:
+        - `conda install <package>`
+        - `conda install pyg -c pyg -c conda-forge`: Install `pyg`. Look for it in the `pyg` channel. Look for it's dependencies in the `conda-forge` channel.
+        - `conda update <package>`
+        - `conda remove <package>`
+        - `conda update --all`
+
+- Software: `pyenv`:
+    - Easily switch between multiple versions of Python.
+    - Commands:
+        - `pyenv install --list`
+        - `pyenv install -v <python_version>`
+        - `ls ~/.pyenv/versions/`: List all installed version
+        - `pyenv remove <python_version>`: Remove a version
+        - `pyenv versions`: Check all installed versions, current is (*)
+        - `pyenv global <python_version>`: Switch the version
 
 - Data Structures:
     - `Array`:
@@ -547,6 +568,15 @@ git clone https://github.com/sayande717/code.git
     - Use `rand()` to generate random integers.
 
 ## Platform/College-1
+
+### Computer Networks
+1. [Generate Hamming Code](./platform/College-1/Computer%20Networks/1.c)
+    - Take a data stream as input, and generate the Hamming Code for it.
+2. [Socket Programming: Server](./platform/College-1/Computer%20Networks/socket_server.c)
+    - Create a network socket on the server side.
+3. [Socket Programming: Client](./platform/College-1/Computer%20Networks/socket_client.c)
+    - Create a network socket on the client side.
+
 ### Advanced Competitive Coding
 1. [Swap without extra variable](./platform/College-1/Advanced%20Competitive%20Coding/SwapWithoutExtraVariable.java)
     - A way to swap 2 numbers without using a 3rd variable.
@@ -562,22 +592,90 @@ git clone https://github.com/sayande717/code.git
         - Collect all indices `i` where `isPrime[i]` is `true`. These indices represent the prime numbers up to `n`.
         - Return the list of prime numbers.
 3. [Segmented Sieve Algorithm](./platform/College-1/Advanced%20Competitive%20Coding/SegmentedSeive.java)
-    - An efficient way to find prime numbers within the range `m-n`.
+    - An efficient way to find prime numbers within the range `l-h`.
     - Steps:
-        1. Use the Simple Sieve algorithm to find all prime numbers up to $\sqrt{n}$.
-        2. Create a boolean array `isPrime` of size `n-m+1` and initialize all elements to `true`.
-        3. For each prime number `p` found in step 1, mark its multiples in the range `[m, n]` as `false`.
-            - Calculate the starting index for marking multiples of `p` in the range `[m, n]`.
-            - If `p` is greater than `m`, start marking from `p*p`. Otherwise, start marking from the first multiple of `p` greater than or equal to `m`.
-        4. Collect all indices `i` where `isPrime[i]` is `true`. These indices represent the prime numbers in the range `[m, n]`.
-        5. Return the list of prime numbers.
+        1. Create a boolean array `nonPrime` of size `h+1` and initialize all elements to `false`.
+        2. Iterate overa ll numbers from `2` to `sqrt(h)`.
+            - For each `p`, calculate the smallest multiple of `p` which is $\geq{l}$. If $sm \leq l$, adjust `sm` to be the next multiple of `p`.
+            - Next, mark all multiples of `p` in the range `[sm,h]` as non-prime.
+        3. Return the list of prime numbers within the range `l-h`.
 4. [Euler's Phi Algorithm](./platform/College-1/Advanced%20Competitive%20Coding/EulerPhi.java)
-    - This is used to determine the number of integers up to a given integer n that are relatively prime to n. Two numbers are relatively prime if their greatest common divisor (GCD) is 1. $\phi(n)$ is given as $n \times \left(1 - \frac{1}{p_1}\right) \times \left(1 - \frac{1}{p_2}\right) \times \ldots \times \left(1 - \frac{1}{p_k}\right)$.
+    - This is used to determine the number of integers up to a given integer n that are relatively co-prime to n. Two numbers are relatively prime if their greatest common divisor (GCD) is 1. $\phi(n)$ is given as $n \times \left(1 - \frac{1}{p_1}\right) \times \left(1 - \frac{1}{p_2}\right) \times \ldots \times \left(1 - \frac{1}{p_k}\right)$.
     - Steps:
         1. Initialize the result to n.
         2. Identify all distinct prime factors of `n`. A distinct prime factor of `n` is a prime number that divides `n` without leaving a remainder.
         3. For each distinct prime factor `p` of `n`, update the result using the formula $\text{result} = \text{result} \times \left(1 - \frac{1}{p}\right)$.
         4. The final value of result is $\phi(n)$.
+5. [BinaryPalindrome](./platform/College-1/Advanced%20Competitive%20Coding/BinaryPalindrome.java)
+    - Palindrome number: A Palindrome number is a number that remains the same after reversing it. Examples in this case: `1001`, `101`, etc.
+    - It takes an integer (base-10) as input, converts it to binary, then checks if the binary equivalent is a palindrome number or not.
+6. [Chinese Remainder Theorem](./platform/College-1/Advanced%20Competitive%20Coding/ChineseRemainder.java)
+    - Find `X`, ie the Chinese Remainder.
+    - Shorcut: Find X (starting from 1) such that $X\%m[j]=a[j]$. $j=(\text{number of equations})-1$
+    - Definition:
+        - Equations: 
+            - $X \equiv a_1 \pmod{m_1}$
+            - $X \equiv a_2 \pmod{m_2}$
+            - $X \equiv a_3 \pmod{m_3}$
+            - ... and so on.
+        - In this, $m_1,m_2,m_3$, etc. must be relatively co-prime. 
+            - GCD of $m_1,m_2,m_3$, etc. must be 1.
+            - Example: Since there is no common factor except `1` that can divide $3,5,7$, we can say that they're relatively prime.
+        - Example, given: $a_1=2,a_2=3,a_3=2$ and $m_1=3,m_2=5,m_3=7$, assuming we have 3 variables to work with.
+        - To find: $M_1,M_2,M_3$, and $M_1^{-1}, M_2^{-1},M_3^{-1}$, $M$ and $X$.
+            1. $M=m_1*m_2*m_3=3*5*7=105$
+            2. $M_1$ ... $M_3$
+                - $M_1=\frac{M}{m_1}=\frac{105}{3}=35$
+                - $M_2=\frac{M}{m_2}=\frac{105}{5}=21$
+                - $M_3=\frac{M}{m_3}=\frac{105}{7}=15$
+            3. $M_1^{-1}$ ... $M_3^{-1}$
+                - $M_1*M_1^{-1}=1(\text{mod } m_1)$
+                    - $35*M_1^{-1}=1(\text{mod } 3)$. Now we have to find $M_1^{-1}$.
+                    - Let's start from assuming $M_1^{-1}=1$
+                    - $35*1=35=1(\text{mod } 3)$. We need to check if $35\%3=1$ or not, which is `false`.
+                    - $35*2=70=1(\text{mod } 3)$? True. So. $M_1^{-1}=2$.
+                - $M_2*M_2^{-1}=1(\text{mod } m_2)$
+                    - $21*M_2^{-1}=1(\text{mod } 5)$. Now we have to find $M_2^{-1}$.
+                    - $21*1=21=1(\text{mod } 5)$? True. So. $M_2^{-1}=1$.
+                - $M_3*M_3^{-1}=1(\text{mod } m_3)$
+                    - $15*M_3^{-1}=1(\text{mod } 7)$. Now we have to find $M_3^{-1}$.
+                    - $15*1=15=1(\text{mod } 7)$? True. So. $M_3^{-1}=1$.
+                - So, $M_1^{-1}=2,M_2^{-1}=1,M_3^{-1}=1$
+            4. $X=(a_1*M_1*M_1^{-1}*a_2*M_2*M_2^{-1}*a_3*M_3*M_3^{-1})\text{mod } M$
+                - $X=(2*35*2+3*21*1+2*15*2)\text{(mod j}105\text{)}$
+                - $=233\text{(mod }105\text{)}$
+                - $=233\%105=23$
+            5. Check with the original equation:
+                - $23 \equiv 2 \pmod{3}$? True
+                - $23 \equiv 3 \pmod{5}$? True
+                - $23 \equiv 2 \pmod{7}$? True
+7. [Maximum Product Sub-array](./platform/College-1/Advanced%20Competitive%20Coding/maxProductSubArray.java)
+    - Find the maximum product of the elements, out of all sub-arrays of a given array.
+    - Changing the elements is not allowed.
+    - **TODO**: What if the array contains a `0` in it?
+
+8. [Euclidean Algorithm](./platform/College-1/Advanced%20Competitive%20Coding/EuclidsAlgorithm.java)
+    - Find the GCD of 2 numbers using Euclid's Algorithm.
+    - Example of GCD (Greatest Common Divisor):
+        - Let's take 2 numbers, $a=12$ & $b=36$
+        - $12=2*2*3$
+        - $36=2*2*3*3$
+        - Common: $2*2*3=12$, so GCD of a & b is $12$.
+    - Working of the algorithm, Let $a=18$, $b=8$
+        1. return $(8,18\%8)$ = return $(8,2)$
+        2. return $(2,8\%2)$ = return $(2,0)$
+        3. $b==0$, so return $2$ (a).
+    - Working of the algorithm, Let $a=8$, $b=18$
+        1. return $(18,8\%18)$ = $(18,8)$
+        2. return $(8,18\%8)$ = $(8,2)$
+        3. return $(2,8\%2)$ = $(2,0)$
+        4. $b==0$, so return $2$ (a).
+9.  [Find missing number in Array](./platform/College-1/Advanced%20Competitive%20Coding/findMissingNumberInArray.java)
+    - Assuming an array is supposed to have all numbers from 1 to n (n is given), find the number missing from it.
+10. [Sort the 0's and 1's](./platform/College-1/Advanced%20Competitive%20Coding/sortZeroAndOnes.java)
+    - An array contains 0's and 1's in a random order. Sort it in such a way that all the 0's come to 1 side, and all 1's to the other side.
+    - Time complexity should be $O(n)$.
+
 ### Deep Learning
 - Miniconda environment: college-1
 <ol type="1">

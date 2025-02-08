@@ -10,13 +10,13 @@ class EulerPhi {
                 while(n%p==0) {
                     n=n/p;
                 }
-                result = result - (result/p); // As per the formula of Euler's Phi.
+                result -= (result/p); // As per the formula of Euler's Phi.
             }
         }
 
         // If n is STILL > 1, that means it's a prime number, and also greater than sqrt(n).
         if(n>1) {
-            result=result - (result/n);
+            result -= (result/n);
         }
         return result;
     }
