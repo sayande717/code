@@ -1,4 +1,5 @@
 *.txt
 *.ods
-*.stignore
+.stignore
+.stfolder/
 datasets/

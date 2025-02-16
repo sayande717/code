@@ -677,9 +677,30 @@ git clone https://github.com/sayande717/code.git
     - Time complexity should be $O(n)$.
 
 ### Deep Learning
-- Miniconda environment: college-1
+<ul>
+    <li> Conda environment name: `college-1` </li>
+    <li> Environment create command: `conda create --name college-1 tensorflow` </li>
+    <li> Install commands:
+        <ul>
+            <li> `conda install numpy matplotlib pandas seaborn plotly` </li>
+        </ul>
+    </li>
+</ul>
 <ol type="1">
-    <li> Question: </li>
+    <li> Python primer </li>
+    <li> Use the `Pandas` library. </li>
+    <li> Learn about loss function and activation function. </li>
+    <li> Learn about the Deep Learning Model Lifecycle, work on a Digit Recognition System. </li>
+    <li> Perform Image Classification with Cifar-10 </li>
+    <li> Work on the Dog-Cat classification dataset. </li>
+    <li> Mid-Term practice (Question [here](./platform/College-1/Deep%20Learning/media/6%20(Q).pdf))
+        <ol type="a">
+            <li> Define a function for representing an expression, computing the gradient, and printing them. </li>
+            <li> Obtain graphs for sigmoid and relu using TensorFlow packages. </li>
+            <li> Implement a feedforward calculation and obtain the values of 4 nodes. </li>
+            <li> Implement a simple digit recognition system and justify the performance. </li>
+        </ol>
+    </li>
 </ol>
 
 ### Computer Architecture and Organisation
