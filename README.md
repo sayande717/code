@@ -296,9 +296,11 @@ git clone https://github.com/sayande717/code.git
         - `conda env create <environment.yml>`
         - `conda create --name <env_name>`
         - `conda create --name <env_name> python=<version>`
+        - `conda rename -n old_name new_name`
         - `conda env remove --name <env_name>`
         - `conda activate <env_name>`
         - `conda deactivate`
+        - `conda clean -a`
     - Work with packages:
         - `conda install <package>`
         - `conda install pyg -c pyg -c conda-forge`: Install `pyg`. Look for it in the `pyg` channel. Look for it's dependencies in the `conda-forge` channel.
@@ -675,6 +677,32 @@ git clone https://github.com/sayande717/code.git
 10. [Sort the 0's and 1's](./platform/College-1/Advanced%20Competitive%20Coding/sortZeroAndOnes.java)
     - An array contains 0's and 1's in a random order. Sort it in such a way that all the 0's come to 1 side, and all 1's to the other side.
     - Time complexity should be $O(n)$.
+11. [Swap the nibbles in a byte](./platform/College-1/Advanced%20Competitive%20Coding/SwapNibbles.java)
+    - A nibble consists of 4 bits.
+    - In a binary byte (8 bits) `01100100`, `0110` is the first nibble, `0100` is the 2nd one.
+    - The task here is to swap the 2 nibbles in the binary byte. Example: `01101000` -> `01000110`
+12. [Leader in an Array](./platform/College-1/Advanced%20Competitive%20Coding/LeaderInArray.java)
+    - A Leader in an array that is the largest out of all the elements **on the right side of it.**
+    - By definition, the rightmost element will always be a leader.
+    - Example: In ${5,6,7,0,1,3,2}$, $7$,$3$ and $2$ are leaders.
+
+### Machine Learning
+<ul>
+    <li> Conda environment name: `college-1` </li>
+    <li> Environment create command: `conda create --name college-1 tensorflow` </li>
+    <li> Install commands:
+        <ul>
+            <li> `conda install numpy matplotlib pandas seaborn plotly` </li>
+        </ul>
+    </li>
+</ul>
+<ol type="1">
+    <li> Data Preprocessing & Logistic Regression (dataset: Product_Discount.csv) </li>
+    <li> Simple Linear Regression </li>
+    <li> Stock Prediction using Linear Regression (dataset: AAPL_Stock.csv) </li>
+    <li> Multi-Layer Perceptron in XOR Gate </li>
+    <li> Multi-Layer Perceptron using training (4 inputs) and test (2 outputs) data. </li>
+</ol>
 
 ### Deep Learning
 <ul>
@@ -688,8 +716,8 @@ git clone https://github.com/sayande717/code.git
 </ul>
 <ol type="1">
     <li> Python primer </li>
-    <li> Use the `Pandas` library. </li>
-    <li> Learn about loss function and activation function. </li>
+    <li> Use the `Pandas` library. Generate Graphs using matplotlib.pyplot. </li>
+    <li> Learn about loss function and activation function. Plot Sigmoid, ReLU, LeakyReLU and softmax functions using matplotlib.pyplot. </li>
     <li> Learn about the Deep Learning Model Lifecycle, work on a Digit Recognition System. </li>
     <li> Perform Image Classification with Cifar-10 </li>
     <li> Work on the Dog-Cat classification dataset. </li>
