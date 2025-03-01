@@ -578,6 +578,10 @@ git clone https://github.com/sayande717/code.git
     - Create a network socket on the server side.
 3. [Socket Programming: Client](./platform/College-1/Computer%20Networks/socket_client.c)
     - Create a network socket on the client side.
+4. [Cyclic Redundancy Check](./platform/College-1/Computer%20Networks/error_crc.c)
+5. [Checksum](./platform/College-1/Computer%20Networks/error_checksum.c)
+6. [Sliding Window Protocol](./platform/College-1/Computer%20Networks/proto_sliding-window.c)
+7. [Go Back N Protocol](./platform/College-1/Computer%20Networks/proto_go-back-n.c)
 
 ### Advanced Competitive Coding
 1. [Swap without extra variable](./platform/College-1/Advanced%20Competitive%20Coding/SwapWithoutExtraVariable.java)
@@ -655,7 +659,6 @@ git clone https://github.com/sayande717/code.git
     - Find the maximum product of the elements, out of all sub-arrays of a given array.
     - Changing the elements is not allowed.
     - **TODO**: What if the array contains a `0` in it?
-
 8. [Euclidean Algorithm](./platform/College-1/Advanced%20Competitive%20Coding/EuclidsAlgorithm.java)
     - Find the GCD of 2 numbers using Euclid's Algorithm.
     - Example of GCD (Greatest Common Divisor):
@@ -685,6 +688,38 @@ git clone https://github.com/sayande717/code.git
     - A Leader in an array that is the largest out of all the elements **on the right side of it.**
     - By definition, the rightmost element will always be a leader.
     - Example: In ${5,6,7,0,1,3,2}$, $7$,$3$ and $2$ are leaders.
+13. [Majority Element](./platform/College-1/Advanced%20Competitive%20Coding/MajorityElement.java)
+    - A Majority Element is one that appears more than 1/2 times in an array.
+    - If the size of an array is `n`, the majority element must appear atleast `>(n/2)` times in it. There can only be 1 Majority element.
+    - In other words, if the array contains 10 elements, a number that appears atleast 6 times is the Majority Element.
+14. [Block Swap](./platform/College-1/Advanced%20Competitive%20Coding/BlockSwap.java)
+    - Block Swapping means rotating an array left or right.
+    - **Left Rotation** (k=+ve): ${1,2,3,4,5}$ -> ${2,3,4,5,1}$
+    - **Right Rotation** (k=-ve): ${1,2,3,4,5}$ -> ${5,1,2,3,4}$
+    - If `k` is the number of **Left Rotations** & `n` (let `n=5`) is the length of the array,
+        - The number of rotations is `0` for k=0,5,10 ... (assuming `n=5`)
+        - The number of rotations is `1` for k=1,6,11 ... (assuming `n=5`)
+        - The number of rotations is `2` for k=2,7,12 ... (assuming `n=5`)
+        - and so on. So, $k\%n$ is the number of rotations we need to perform.
+     -  In the case of **Right Rotations**, we need to use $k=k+n$ to convert it to the positive equivalent.
+15. [Maximum sum of hourglass in matrix](./platform/College-1/Advanced%20Competitive%20Coding/MaxSumHourglassInMatrix.java)
+    - Find the maximum sum of the hourglass in a matrix.
+    - The minimum size of a matrix needs to be `3x3`.
+    - Example:
+        - Original Matrix:
+            - 2 4 0 0
+            - 0 1 1 0
+            - 0 3 0 1
+        - 1st hourglass:
+            - **2 4 0** 0
+            - 0 **1** 1 0
+            - **0 3 0** 1
+        - 2nd hourglass:
+            - 2 **4 0 0**
+            - 0 1 **1** 0
+            - 0 **3 0 1**
+        - ... and so on.
+    - The objective of this problem is to find the maximum out of ALL the hourglasses, in the target matrix.
 
 ### Machine Learning
 <ul>
@@ -701,7 +736,13 @@ git clone https://github.com/sayande717/code.git
     <li> Simple Linear Regression </li>
     <li> Stock Prediction using Linear Regression (dataset: AAPL_Stock.csv) </li>
     <li> Multi-Layer Perceptron in XOR Gate </li>
-    <li> Multi-Layer Perceptron using training (4 inputs) and test (2 outputs) data. </li>
+    <li> Multi-Layer Perceptron using training (4 inputs) and test (2 outputs) data.
+        <ol type="a">
+            <li> Using 1 MLP with 4 inputs, predicting both outputs. </li>
+            <li> Using 2 MLP's with 4 inputs, predicting 1 output each. </li>
+        </ol>
+    </li>
+    <li> Natural Language processing (dataset: 20 Newsgroups) </li>
 </ol>
 
 ### Deep Learning

@@ -1,41 +1,65 @@
 public class LeaderInArray {
-    private static boolean[] findLeaders(int[] arr) {
-        int len = arr.length;
+    private static void printLeaders2Loops(int[] arr) {
+        int n = arr.length;
         // Input array is empty
-        if(len==0) {
-            return new boolean[] {};
+        if(n==0) {
+           return;
         }
 
-        boolean[] leaders = new boolean[len];
-        // Input array only contains 1 element.
-        if (len==1) {
-            leaders[0] = true;
-            return leaders;
+        // The only element is always a Leader.
+        if(n==1) {
+            System.out.print(arr[0]+" ");
         }
-        leaders[len-1] = true;
 
-        for(int i=0;i<len-1;i++) {
+        // The last element can't be compared with itself.
+        for(int i=0;i<(n-1);i++) {
             int j;
-            for(j=i+1;j<len-1;j++) {
+            for(j=(i+1);j<(n-1);j++) {
                 if(arr[j]>arr[i]) {
                     break;
                 }
             }
-            if(j==len-1) {
-                leaders[i] = true;
-            }
-        }
-        return leaders;
-    }
-    public static void main(String[] args) {
-        int[] arr = {5,6,7,0,1,3,2};
-        boolean[] result = findLeaders(arr);
-        System.out.print("Leaders: ");
-        for(int i=0;i<arr.length;i++) {
-            if(result[i]==true) {
+            if(j==(n-1)) {
+                // arr[i] is a leader.
                 System.out.print(arr[i]+" ");
             }
         }
+
+        // The last element is printed as-is, since it's automatically a Leader.
+        System.out.print(arr[n-1]);
+    }
+    // Prints the Leaders from the end of the array.
+    private static void printLeaders1Loop(int[] arr) {
+        int n = arr.length;
+        // Input array is empty
+        if(n==0) {
+            return;
+        }
+
+        // leaders[len-1] = true;
+        System.out.print(arr[n-1]+" ");
+
+        int leader=arr[n-1];
+        for(int i=(n-2);i>=0;i--) {
+            if(arr[i] > leader) {
+                // arr[i] is a Leader.
+                System.out.print(arr[i]+" ");
+                leader = arr[i];
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {5,6,7,0,1,3,2};
+
+        System.out.print("Leaders (2 Loops): ");
+        printLeaders2Loops(arr);
+
+        System.out.println();
+
+        System.out.print("Leaders (1 Loop): ");
+        printLeaders1Loop(arr);
+
         System.exit(0);
     }
 }
