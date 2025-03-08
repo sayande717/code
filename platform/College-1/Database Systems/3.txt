@@ -1,0 +1,51 @@
+// use myDatabase;
+
+// db;
+
+// Database without defined schema
+db.Game_Info1.insertOne({
+  game_id: NumberInt(100),
+  game_name: "Dishonored",
+  date_of_release: "17-06-2017"
+});
+
+// Database with defined schema
+db.createCollection("Game_Info2", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["game_id","game_name","date_of_release"],
+      properties: {
+        game_id: {
+          bsonType: "int",
+          description: "Must be unique number"
+        },
+        game_name: {
+          bsonType: "string",
+          description: "Name of the game"
+        },
+        // Specify custom format for date.
+        date_of_release: {
+          bsonType: "string",
+          // (0[1-9]|[12][0-9]|3[01]): Day. 0[1-9]: 01-09, [12][0-9]: 10-29, 3[01]: 30-31
+          // (\\d{4}): Year. \\d: Match any digit. {4}: Match exactly 4 digits.
+          pattern: "^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(\\d{4})$",
+          description: "Date of first release of the game. Format: DD-MM-YYYY"
+        }
+      }
+    }
+  }
+});
+
+
+// Insert a value
+db.Game_Info2.insertOne({
+  game_id: NumberInt(100),
+  game_name: "Dishonored",
+  date_of_release: "17-06-2017"
+});
+
+// Display ALL entries
+db.Game_Info2.find();
+// pretty(): Indents the output
+db.Game_Info2.find().pretty();
