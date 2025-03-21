@@ -28,6 +28,7 @@ public class LeaderInArray {
         // The last element is printed as-is, since it's automatically a Leader.
         System.out.print(arr[n-1]);
     }
+    
     // Prints the Leaders from the end of the array.
     private static void printLeaders1Loop(int[] arr) {
         int n = arr.length;

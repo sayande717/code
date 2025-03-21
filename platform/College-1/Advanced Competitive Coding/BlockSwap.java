@@ -16,6 +16,7 @@ public class BlockSwap {
             rotateOnceLeft(arr);
         }
     }
+
     private static void printArr(int[] arr) {
         for(int i=0;i<arr.length;i++) {
             System.out.print(arr[i]+" ");
@@ -35,14 +36,13 @@ public class BlockSwap {
         int choice = in.nextInt();
         System.out.print("Enter the number of rotations: ");
         int k = in.nextInt();
-        
+        k = (k%n); // Every `n` steps, we don't have to rotate the array.
         switch(choice) {
             case 1:
-                k = (k%n);
                 rotate(arr,k);
                 break;
             case 2:
-                k = (k+n); // Converting k from (-)ve to (+)ve
+                k = (n-k);
                 rotate(arr,k);
                 break;
             default:

@@ -17,8 +17,8 @@ public class KaratsubaMultiplication {
         int s1 = (a*c);
         int s2 = (b*d);
         int s3 = (a+b)*(c+d);
-        int s4 = s3-s2-s1;
-        int s5 = s1*power(10, n) + s4*power(10, n_half) + s2;
+        int s4 = s3-(s1+s2);
+        int s5 = s1*power(10, n) + s2 + s4*power(10, n_half);
         // Result
         return s5;
     }

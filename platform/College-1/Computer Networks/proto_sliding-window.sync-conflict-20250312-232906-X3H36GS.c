@@ -1,7 +1,6 @@
 #include <stdio.h>
 
 void printSlidingWindow(int arr[], int n, int windowSize) {
-    printf("Sending packets: \n");
     for (int i = 0; i <= n - windowSize; i++) {
         printf("Window %d: ", i + 1);
         for (int j = 0; j < windowSize; j++) {

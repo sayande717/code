@@ -731,6 +731,13 @@ git clone https://github.com/sayande717/code.git
         6. Find $s4=s3-s2-s1$
         7. Find $s5=s1*{10^n} + s4*{10^{n/2}} + s2$
 
+17. [Booth's Algorithm](./platform/College-1/Advanced%20Competitive%20Coding/BoothsAlgorithm.java)
+    - Booth's Algorithm is used to calculate the product of 2 binary numbers.
+18. [Longest Sequence of 1's after flipping 1 bit](./platform/College-1/Advanced%20Competitive%20Coding/LongestSequenceOf1.java)
+    - This algorithm only works with binary numbers.
+    - Given `11011001101`, we need to flip 1 `0` bit, and find out which bit-flip results in the maximum number of 1's.
+    - In this example, flipping the `1st bit at position 3` will give us the answer, `5`.
+
 ### Machine Learning
 <ul>
     <li> Conda environment name: `college-1` </li>
@@ -753,7 +760,14 @@ git clone https://github.com/sayande717/code.git
         </ol>
     </li>
     <li> Natural Language processing (dataset: 20 Newsgroups) </li>
-</ol>
+    <li>
+        <ol type="a">
+            <li> Algorithm: K Nearest Neighbours </li>
+            <li> Algorithm: Random Forest </li>
+        </ol>
+    </li>
+    <li> Mid-Term Exam </li>
+ </ol>
 
 ### Deep Learning
 <ul>
@@ -761,7 +775,7 @@ git clone https://github.com/sayande717/code.git
     <li> Environment create command: `conda create --name college-1 tensorflow` </li>
     <li> Install commands:
         <ul>
-            <li> `conda install numpy matplotlib pandas seaborn plotly` </li>
+            <li> `conda install ipykernel notebook numpy matplotlib pandas seaborn plotly` </li>
         </ul>
     </li>
 </ul>
@@ -780,6 +794,8 @@ git clone https://github.com/sayande717/code.git
             <li> Implement a simple digit recognition system and justify the performance. </li>
         </ol>
     </li>
+    <li> Design a Simple RNN (Recurrent Neural Network). </li>
+    <li> Perform Timeseries-Forecasting for Weather Prediction, using RNN-LSTM. </li>
 </ol>
 
 ### Computer Architecture and Organisation
