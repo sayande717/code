@@ -1,3 +1,7 @@
+# Unneeded output binaries
+.class
+.out
+
 .stignore
 .stfolder/
 .obsidian/
