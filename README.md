@@ -582,6 +582,8 @@ git clone https://github.com/sayande717/code.git
 5. [Checksum](./platform/College-1/Computer%20Networks/error_checksum.c)
 6. [Sliding Window Protocol](./platform/College-1/Computer%20Networks/proto_sliding-window.c)
 7. [Go Back N Protocol](./platform/College-1/Computer%20Networks/proto_go-back-n.c)
+8. [Open Shortest Path First (OSPF) Protocol](./platform/College-1/Computer%20Networks/proto_ospf.c)
+9. [Border Gateway Protocol (BGP)](./platform/College-1/Computer%20Networks/proto_bgp.c)
 
 ### Advanced Competitive Coding
 1. [Swap without extra variable](./platform/College-1/Advanced%20Competitive%20Coding/SwapWithoutExtraVariable.java)
@@ -780,22 +782,111 @@ git clone https://github.com/sayande717/code.git
     </li>
 </ul>
 <ol type="1">
-    <li> Python primer </li>
-    <li> Use the `Pandas` library. Generate Graphs using matplotlib.pyplot. </li>
-    <li> Learn about loss function and activation function. Plot Sigmoid, ReLU, LeakyReLU and softmax functions using matplotlib.pyplot. </li>
-    <li> Learn about the Deep Learning Model Lifecycle, work on a Digit Recognition System. </li>
-    <li> Perform Image Classification with Cifar-10 </li>
-    <li> Work on the Dog-Cat classification dataset. </li>
-    <li> Mid-Term practice (Question [here](./platform/College-1/Deep%20Learning/media/6%20(Q).pdf))
-        <ol type="a">
-            <li> Define a function for representing an expression, computing the gradient, and printing them. </li>
-            <li> Obtain graphs for sigmoid and relu using TensorFlow packages. </li>
-            <li> Implement a feedforward calculation and obtain the values of 4 nodes. </li>
-            <li> Implement a simple digit recognition system and justify the performance. </li>
-        </ol>
+    <li> Python primer: Learn basic Python functions and syntax. </li>
+    <li> Use the `Pandas` library. Generate graphs using matplotlib.pyplot. </li>
+    <li> Learn about loss function and activation function. Plot sigmoid, ReLU, leaky ReLU, and softmax functions using matplotlib.pyplot. </li>
+    <li> Learn about the deep learning model lifecycle, work on a digit recognition system. </li>
+    <li> Perform image classification with CiFAR-10. </li>
+    <li> Work on the dog-cat classification dataset. </li>
+    <li> Mid-term 1 (Question <a href="./platform/College-1/Deep%20Learning/media/6%20(Q).pdf">here</a>)</li>
+    <ol type="a">
+        <li> Define a function for representing an expression, computing the gradient, and printing them. </li>
+        <li> Obtain graphs for sigmoid and ReLU using TensorFlow packages. </li>
+        <li> Implement a feedforward calculation and obtain the values of 4 nodes. </li>
+        <li> Implement a simple digit recognition system and justify the performance. </li>
+    </ol>
+    <li> Design a simple RNN (recurrent neural network). </li>
+    <li> Perform time series forecasting for weather prediction, using RNN-LSTM. </li>
+    <li> Explore generic adversarial networks. </li>
+    <li> Build a custom attention layer on a recurrent neural network (RNN). </li>
+    <li> Mid-term 2 (Question <a href="./platform/College-1/Deep%20Learning/media/12%20(Q).pdf">here</a>)</li>
+    <ol type="a">
+        <li> Compute and plot the derivative of the sigmoid function. Implement using TensorFlow using automatic differentiation with the GradientTape function. </li>
+        <li>
+            <ol type="i">
+                <li> For image classification of animals, like cat, dog, elephant, horse, and human, the target and output are given. Calculate categorical cross-entropy loss using TensorFlow.
+                    <ul>
+                        <li> y_true = [[0, 1, 0], [0, 0, 1]] </li>
+                        <li> y_pred = [[0.05, 0.95, 0.56], [0.1, 0.4, 0.1]] </li>
+                    </ul>
+                </li>
+                <li> Given target and output values, calculate the sparse categorical cross-entropy using TensorFlow.
+                    <ul>
+                        <li> y_true = [1, 0] </li>
+                        <li> y_pred = [[0.15, 0.75, 0.1], [0.75, 0.15, 0.1]] </li>
+                    </ul>
+                </li>
+            </ol>
+        </li>
+        <li> Implement a CNN for the CiFAR-10 dataset. Print the classification report and confusion matrix with and without hyperparameter tuning. </li>
+    </ol>
+    <li> Project (DA): Microorganism Classification and Analysis using Deep Learning. </li>
+</ol>
+
+### Database Management
+<ol type="1">
+    <li> Introduction to DBMS. </li>
+    <li> DDL, DML commands and Constraints in DBMS.
+        <ul>
+            <li> DDL: Data Definition Language </li>
+            <li> DML: Data Manipulation Language </li>
+            <li> Constraints: Limits on values in the database </li>
     </li>
-    <li> Design a Simple RNN (Recurrent Neural Network). </li>
-    <li> Perform Timeseries-Forecasting for Weather Prediction, using RNN-LSTM. </li>
+    <li> SQL Operators and Functions </li>
+    <li> SQL Joins, Views, Subqueries and Range Partitioning </li>
+    <li> Exploring MongoDB
+        <ul>
+            <li> Basic CRUD Operations. </li>
+            <li> Find elements in a collection </li>
+            <li> automatically index collections </li>
+            <li> Perform Map Reduce </li>
+        </ul>
+    </li>
+    <li> Cursors, Triggers, Procedures and Functions
+        <ul>
+            <li> Cursors: Implicit & Explicit
+                <ol type="1">
+                    <li> Display compatible & incompatible games in each table </li>
+                    <li> Open an <strong>implicit cursor</strong>, fetch all rows of `game_info` row-wise, and display them in an easy-to-interpret format. Finally, close the cursor. </li> 
+                    <li> Open an <strong>explicit cursor</strong>, fetch all rows of `game_info` row-wise, and display them in an easy-to-interpret format. Finally, close the cursor. </li>
+                </ol>
+            </li>
+            <li> Triggers: Before or After an Insert, Update or Delete operation
+                <ol type: 1>
+                     <li> Define Triggers Before and After an Insert operation:
+                        <ul>
+                            <li> Before Insert: Check if `game_id` is a positive number, and if `game_name` is null. <li>
+                            <li> After Insert: Acknowledge the insertion of the data tuple. </li>
+                        </ul>
+                     </li>
+                     <li> Define Triggers Before and After an Update operation.
+                        <ul>
+                            <li> Before Update: Check if new `game_id` is different from the old `game_id`, and if new `game_name` is null. <li>
+                            <li> After Update: Acknowledge the updation of the data tuple. </li>
+                        </ul>
+                     </li>
+                     <li> Define Triggers Before and After a Delete operation.
+                        <ul>
+                            <li> Before Delete: Delete ALL data tuples which reference to the current table's Primary Key. <li>
+                            <li> After Delete: Acknowledge the succesful deletion of the data tuple. </li>
+                        </ul>
+                     </li>
+                </ol>
+            </li>
+            <li> Procedures
+                <ol type="1">
+                    <li> Create a procedure that eases the process of inserting values in the base table, `game_info`. </li>
+                    <li> Create a procedure that is compatible for the `linux_compat` table. It takes in values from the user: GAME_ID, and COMPATIBILITY, which is taken as ‘yes’ or ‘no’. The task of the Procedure is to convert ‘yes’ to `, and ‘no’ to 0. </li>
+                </ol>
+            </li>
+            <li> Functions
+                <ol type="1">
+                    <li> Create a function that checks for games in the game_info table launched before the specified date, and display their game_id’s. </li>
+                    <li> Create a function that checks if a particular game is compatible with macOS, using the `mac_compat` table. </li>
+                </ol>
+            </li>
+        </ul>
+    </li>
 </ol>
 
 ### Computer Architecture and Organisation
