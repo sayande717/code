@@ -1,62 +1,104 @@
 #include <stdio.h>
 #include <string.h>
-#define POLYNOMIAL 0xD8  // Example polynomial: x^8 + x^7 + x^6 + x^4 + x^2 + 1
 
-void generateCRC(char *input, char *output) {
-    int len = strlen(input);
-    strcpy(output, input);
-
-    for (int i = 0; i < 8; i++) {
-        output[len + i] = '0';
+void generateCRC(char *data, char *divisor, char *crc) {
+    int dataLen = strlen(data);
+    int divisorLen = strlen(divisor);
+    char temp[dataLen + divisorLen];
+    char remainder[divisorLen];
+    
+    strcpy(temp, data);
+    for (int i = 0; i < divisorLen - 1; i++) {
+        temp[dataLen + i] = '0';
     }
-    output[len + 8] = '\0';
+    temp[dataLen + divisorLen - 1] = '\0';
 
-    for (int i = 0; i < len; i++) {
-        if (output[i] == '1') {
-            for (int j = 0; j < 8; j++) {
-                output[i + j] = (output[i + j] == POLYNOMIAL & (1 << (7 - j)) ? '1' : '0');
+    strncpy(remainder, temp, divisorLen);
+    remainder[divisorLen] = '\0';
+
+    for (int i = 0; i < dataLen; i++) {
+        if (remainder[0] == '1') {
+            for (int j = 0; j < divisorLen; j++) {
+                remainder[j] = (remainder[j] == divisor[j]) ? '0' : '1';
             }
         }
+        memmove(remainder, remainder + 1, divisorLen - 1);
+        remainder[divisorLen - 1] = temp[i + divisorLen];
     }
 
-    for (int i = 0; i < 8; i++) {
-        output[len + i] = output[len + i] == '1' ? '1' : '0';
-    }
+    strncpy(crc, remainder, divisorLen - 1);
+    crc[divisorLen - 1] = '\0';
+    printf("\nGenerated CRC: %s\n",crc);
+
+    strcat(data, crc);
+    printf("New Data: %s\n", data);
 }
 
-int detectError(char *input) {
-    int len = strlen(input);
+int checkCRC(char *data, char *divisor) {
+    int dataLen = strlen(data);
+    int divisorLen = strlen(divisor);
+    char temp[dataLen + 1];
+    char remainder[divisorLen];
+    strcpy(temp, data);
 
-    for (int i = 0; i < len - 8; i++) {
-        if (input[i] == '1') {
-            for (int j = 0; j < 8; j++) {
-                input[i + j] = (input[i + j] == POLYNOMIAL & (1 << (7 - j)) ? '1' : '0');
+
+    strncpy(remainder, temp, divisorLen);
+    remainder[divisorLen] = '\0';
+
+    for (int i = 0; i < dataLen - divisorLen + 1; i++) {
+        if (remainder[0] == '1') {
+            for (int j = 0; j < divisorLen; j++) {
+                remainder[j] = (remainder[j] == divisor[j]) ? '0' : '1';
             }
         }
+        memmove(remainder, remainder + 1, divisorLen - 1);
+        remainder[divisorLen - 1] = temp[i + divisorLen];
     }
 
-    for (int i = len - 8; i < len; i++) {
-        if (input[i] == '1') {
-            return 1;  // Error detected
+    for (int i = 0; i < divisorLen - 1; i++) {
+        if (remainder[i] != '0') {
+            return 0;
         }
     }
-
-    return 0;  // No error
+    // 1 = Data is correct
+    return 1;
 }
 
 int main() {
-    char data[100], encodedData[108];
+    char data[100], divisor[100], crc[100];
 
-    printf("Enter data: ");
-    scanf("%s", data);
+    int choice;
+    printf("1. Generate CRC\n");
+    printf("2. Check for data corruption using CRC\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
 
-    generateCRC(data, encodedData);
-    printf("Encoded data: %s\n", encodedData);
+    switch (choice) {
+        case 1:
+            printf("\nEnter data: "); scanf("%s", data);
+            printf("Enter divisor: "); scanf("%s", divisor);
+            generateCRC(data, divisor, crc);
+            break;
 
-    if (detectError(encodedData)) {
-        printf("Error detected in received data.\n");
-    } else {
-        printf("No error detected in received data.\n");
+        case 2: {
+            char recv_data[10];
+            printf("\nEnter received data: "); scanf("%s", recv_data);
+
+            if(checkCRC(recv_data, divisor)==1) {
+                printf("Data is correct.\n");
+            } else {
+                printf("Data is corrupted.\n");
+            }
+            break;
+        }
+
+        case 3:
+            return 0;
+            break;
+
+        default:
+            printf("Invalid choice.");
     }
+
     return 0;
 }
