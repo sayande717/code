@@ -572,18 +572,21 @@ git clone https://github.com/sayande717/code.git
 ## Platform/College-1
 
 ### Computer Networks
-1. [Generate Hamming Code](./platform/College-1/Computer%20Networks/1.c)
+1. Data Generation: [Hamming Code](./platform/College-1/Computer%20Networks/1.c)
     - Take a data stream as input, and generate the Hamming Code for it.
-2. [Socket Programming: Server](./platform/College-1/Computer%20Networks/socket_server.c)
-    - Create a network socket on the server side.
-3. [Socket Programming: Client](./platform/College-1/Computer%20Networks/socket_client.c)
+1. Error Checking: [Check Hamming Code](./platform/College-1/Computer%20Networks/error_hamming_code.c)
+1. Socket Programming: [Server](./platform/College-1/Computer%20Networks/socket_server.c)
+   - Create a network socket on the server side.
+1. Socket Programming: [Client](./platform/College-1/Computer%20Networks/socket_client.c)
     - Create a network socket on the client side.
-4. [Cyclic Redundancy Check](./platform/College-1/Computer%20Networks/error_crc.c)
-5. [Checksum](./platform/College-1/Computer%20Networks/error_checksum.c)
-6. [Sliding Window Protocol](./platform/College-1/Computer%20Networks/proto_sliding-window.c)
-7. [Go Back N Protocol](./platform/College-1/Computer%20Networks/proto_go-back-n.c)
-8. [Open Shortest Path First (OSPF) Protocol](./platform/College-1/Computer%20Networks/proto_ospf.c)
-9. [Border Gateway Protocol (BGP)](./platform/College-1/Computer%20Networks/proto_bgp.c)
+2. Error Checking & Data Generation: [Cyclic Redundancy Check](./platform/College-1/Computer%20Networks/error_crc.c)
+3. Error Checking: [Checksum](./platform/College-1/Computer%20Networks/error_checksum.c)
+4. [Sliding Window Protocol](./platform/College-1/Computer%20Networks/proto_sliding-window.c)
+5. [Go Back N Protocol](./platform/College-1/Computer%20Networks/proto_go-back-n.c)
+6. Routing Protocol: [Open Shortest Path First (OSPF) Protocol](./platform/College-1/Computer%20Networks/proto_ospf.c)
+7. Routing Protocol: [Border Gateway Protocol (BGP)](./platform/College-1/Computer%20Networks/proto_bgp.c)
+8. Routing Protocol: [Dijkstra](./platform/College-1/Computer%20Networks/proto_dijkstra.c)
+9. Routing Protocol: [Bellman Ford](./platform/College-1/Computer%20Networks/proto_bellmanford.c)
 
 ### Advanced Competitive Coding
 1. [Swap without extra variable](./platform/College-1/Advanced%20Competitive%20Coding/SwapWithoutExtraVariable.java)
@@ -746,7 +749,7 @@ git clone https://github.com/sayande717/code.git
     <li> Environment create command: `conda create --name college-1 tensorflow` </li>
     <li> Install commands:
         <ul>
-            <li> `conda install numpy matplotlib pandas seaborn plotly` </li>
+            <li> `conda install numpy matplotlib pandas seaborn plotly scikit-learn ipykernel nbconvert` </li>
         </ul>
     </li>
 </ul>
@@ -765,10 +768,26 @@ git clone https://github.com/sayande717/code.git
     <li>
         <ol type="a">
             <li> Algorithm: K Nearest Neighbours </li>
-            <li> Algorithm: Random Forest </li>
+            <li> Algorithm: Decision Tree </li>
         </ol>
     </li>
     <li> Mid-Term Exam </li>
+    <li> K-Means Algorithm (dataset: 20 Newsgroups)
+        <ul>
+            <li> Use `Elbow Method` & `WCSS` (Within-Cluster Sum of Squares) to determine the optimal `k`.</li>
+            <li> Plot the `WCSS` vs `k` graph, visualize and determine the optimal value of `k`. </li>
+            <li> Apply K-Means with the optimal k. </li>
+            <li> Print the 1st few documents per cluster: first 5 documents in each cluster, first 200 characters in each document. </li>
+        </ul>
+    </li>
+    <li> Random Forest classifier (dataset: Image pixel values, 5x784) </li>
+    <li> FAT (Final Assessment) (dateset: Cricket Strike Rates)
+        <ul>
+            <li> Strike rate is the target column. Handle the missing values and apply the other required preprocessing techniques and perform linear regression to predict the strike rate. </li>
+            <li> Opposition team is the target column. Use all the other columns as features. Handle the missing values and apply the other required preprocessing techniques and perform Naïve Bayes Classifier and SVM to predict the opposition team. </li>
+            <li> Which one performs better - SVM or NB? </li>
+        </ul>
+    </li>
  </ol>
 
 ### Deep Learning
@@ -820,7 +839,14 @@ git clone https://github.com/sayande717/code.git
         </li>
         <li> Implement a CNN for the CiFAR-10 dataset. Print the classification report and confusion matrix with and without hyperparameter tuning. </li>
     </ol>
-    <li> Project (DA): Microorganism Classification and Analysis using Deep Learning. </li>
+    <li> Project: Microorganism Classification and Analysis using Deep Learning. </li>
+    <li> FAT (Final Assesement)
+        <ul>
+            <li> Train a CNN using CIFAR-10 dataset, and find the gradients of a sample. </li>
+            <li> Implement the Gradient Descent Rule to update the model's weights. </li>
+            <li> Train a RNN to accurately predict the next value of the sine wave sequence. </li>
+        </ul>
+    </li>
 </ol>
 
 ### Database Management

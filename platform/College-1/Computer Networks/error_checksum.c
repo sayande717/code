@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdint.h>
+#include <string.h>
+#include <stdlib.h>
 
 // Function to calculate checksum
 uint16_t calculate_checksum(uint8_t *data, size_t length) {
@@ -19,11 +21,38 @@ int check_data(uint8_t *data, size_t length, uint16_t received_checksum) {
     return calculated_checksum == received_checksum;
 }
 
-int main() {
-    uint8_t data[] = {0x01, 0x02, 0x03, 0x04, 0x05};
-    size_t length = sizeof(data) / sizeof(data[0]);
+// Function to convert binary string to byte array
+size_t binary_string_to_byte_array(const char *binary_string, uint8_t **data) {
+    size_t length = strlen(binary_string);
+    *data = (uint8_t *)malloc(length);
+    if (*data == NULL) {
+        perror("Failed to allocate memory");
+        exit(EXIT_FAILURE);
+    }
 
-    // Calculate checksum
+    for (size_t i = 0; i < length; i++) {
+        if (binary_string[i] == '0') {
+            (*data)[i] = 0;
+        } else if (binary_string[i] == '1') {
+            (*data)[i] = 1;
+        } else {
+            fprintf(stderr, "Invalid character in binary string: %c\n", binary_string[i]);
+            free(*data);
+            exit(EXIT_FAILURE);
+        }
+    }
+    return length;
+}
+
+int main() {
+    // invalid 10102
+    char binary_input[256];
+    printf("Enter binary string: ");
+    scanf("%255s", binary_input);
+
+    uint8_t *data;
+    size_t length = binary_string_to_byte_array(binary_input, &data);
+
     uint16_t checksum = calculate_checksum(data, length);
     printf("Calculated Checksum: 0x%04X\n", checksum);
 
@@ -35,5 +64,6 @@ int main() {
         printf("Data is corrupted.\n");
     }
 
+    free(data);
     return 0;
 }
