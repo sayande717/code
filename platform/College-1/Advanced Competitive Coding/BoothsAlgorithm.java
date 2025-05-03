@@ -22,7 +22,7 @@ public class BoothsAlgorithm {
             }
             
             // Arithmetic Right Shift (ARS)
-            
+
             // (Q & 1) means the least significant bit of Q.
             Q_1 = (Q & 1); // Store LSB of Q before shift
 
