@@ -15,9 +15,14 @@ public class ChineseRemainder {
 
     // Brute Force, Time: O(M), M is M_Prod=m_1*m_2*m_3...m_m
     private static int calcRemainderNE(int[] a, int[] m) {
-        int i=1;
-        while(true) {
-            if(i%m[0]==a[0] && i%m[1]==a[1] && i%m[2]==a[2]) {
+        int M_Prod = 1;
+        for (int i=0;i<m.length;i++) {
+            M_Prod *= m[i];
+        }
+        
+        int i = 1;
+        while (i <= M_Prod) {
+            if (i % m[0] == a[0] && i % m[1] == a[1] && i % m[2] == a[2]) {
                 break;
             } else {
                 i++;

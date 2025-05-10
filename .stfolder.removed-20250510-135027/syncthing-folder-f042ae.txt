@@ -1,0 +1,5 @@
+# This directory is a Syncthing folder marker.
+# Do not delete.
+
+folderID: wgjac-wftmg
+created: 2025-01-24T08:10:15+05:30
